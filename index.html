@@ -1,4 +1,4 @@
-html
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -9,25 +9,38 @@ html
 
   <meta
     name="description"
-    content="Conocé el Alfajor Paceño, una creación de Yesi Yodra, maestra pastelera y campeona nacional."
+    content="Conocé Alfajor Paceño, una creación de Yesi Yodra, maestra pastelera y campeona nacional."
   >
 
   <style>
+
     /* =====================================================
-       VARIABLES Y CONFIGURACIÓN GENERAL
+       PALETA DE COLORES
     ===================================================== */
 
     :root {
-      --chocolate: #32170f;
-      --chocolate-claro: #5c2d1e;
-      --caramelo: #b87538;
-      --dorado: #d9a85b;
-      --crema: #f7eddf;
-      --blanco: #ffffff;
-      --texto: #3b241b;
-      --sombra: 0 20px 60px rgba(48, 23, 15, 0.18);
-      --transicion: 0.4s ease;
+      --beige: #F5E6D3;
+      --rojo: #A84432;
+      --chocolate: #4A261A;
+      --dulce: #D98745;
+      --oliva: #70734B;
+
+      --blanco: #FFF9F1;
+      --texto: #4A261A;
+      --texto-suave: #73564A;
+
+      --sombra:
+        0 25px 65px
+        rgba(74, 38, 26, 0.16);
+
+      --transicion:
+        0.4s ease;
     }
+
+
+    /* =====================================================
+       CONFIGURACIÓN GENERAL
+    ===================================================== */
 
     * {
       margin: 0;
@@ -40,661 +53,1411 @@ html
     }
 
     body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: var(--crema);
-      color: var(--texto);
-      overflow-x: hidden;
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+      background:
+        var(--beige);
+
+      color:
+        var(--texto);
+
+      overflow-x:
+        hidden;
     }
 
-    body.menu-abierto {
-      overflow: hidden;
+    body.sin-scroll {
+      overflow:
+        hidden;
     }
 
     img {
-      max-width: 100%;
-      display: block;
+      display:
+        block;
+
+      max-width:
+        100%;
     }
 
     a {
-      color: inherit;
-      text-decoration: none;
+      color:
+        inherit;
+
+      text-decoration:
+        none;
     }
 
-    button {
-      font: inherit;
+    button,
+    input {
+      font:
+        inherit;
     }
 
     .contenedor {
-      width: min(1180px, calc(100% - 40px));
-      margin: 0 auto;
+      width:
+        min(
+          1180px,
+          calc(100% - 40px)
+        );
+
+      margin:
+        0 auto;
     }
 
     .seccion {
-      padding: 110px 0;
-      overflow: hidden;
+      padding:
+        105px 0;
+
+      overflow:
+        hidden;
     }
 
-    .etiqueta {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 10px 16px;
-      border-radius: 100px;
-      background: rgba(184, 117, 56, 0.12);
-      color: var(--chocolate-claro);
-      font-size: 0.8rem;
-      font-weight: 800;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-    }
 
-    .titulo-seccion {
-      margin-top: 18px;
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(2.2rem, 5vw, 4.5rem);
-      line-height: 1;
-      color: var(--chocolate);
-    }
-
-    .descripcion-seccion {
-      max-width: 680px;
-      margin-top: 22px;
-      color: #68493d;
-      font-size: 1.05rem;
-      line-height: 1.8;
-    }
+    /* =====================================================
+       BOTONES
+    ===================================================== */
 
     .boton {
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 54px;
-      padding: 14px 25px;
-      border: 2px solid transparent;
-      border-radius: 100px;
-      background: var(--chocolate);
-      color: var(--blanco);
-      font-weight: 800;
-      cursor: pointer;
-      transition: transform var(--transicion),
-                  background var(--transicion),
-                  box-shadow var(--transicion);
+      display:
+        inline-flex;
+
+      align-items:
+        center;
+
+      justify-content:
+        center;
+
+      min-height:
+        54px;
+
+      padding:
+        14px 25px;
+
+      border:
+        2px solid transparent;
+
+      border-radius:
+        100px;
+
+      background:
+        var(--rojo);
+
+      color:
+        var(--blanco);
+
+      font-size:
+        0.92rem;
+
+      font-weight:
+        800;
+
+      cursor:
+        pointer;
+
+      transition:
+        transform var(--transicion),
+        background var(--transicion),
+        box-shadow var(--transicion);
     }
 
     .boton:hover {
-      transform: translateY(-4px);
-      background: var(--chocolate-claro);
-      box-shadow: 0 15px 35px rgba(50, 23, 15, 0.25);
+      transform:
+        translateY(-4px);
+
+      background:
+        var(--chocolate);
+
+      box-shadow:
+        0 16px 35px
+        rgba(74, 38, 26, 0.2);
     }
 
-    .boton-claro {
-      background: transparent;
-      color: var(--blanco);
-      border-color: rgba(255, 255, 255, 0.75);
+    .boton-secundario {
+      border-color:
+        var(--chocolate);
+
+      background:
+        transparent;
+
+      color:
+        var(--chocolate);
     }
 
-    .boton-claro:hover {
-      background: var(--blanco);
-      color: var(--chocolate);
+    .boton-secundario:hover {
+      background:
+        var(--chocolate);
+
+      color:
+        var(--blanco);
     }
+
+
+    /* =====================================================
+       TÍTULOS
+    ===================================================== */
+
+    .etiqueta {
+      display:
+        inline-flex;
+
+      padding:
+        9px 16px;
+
+      border-radius:
+        100px;
+
+      background:
+        rgba(112, 115, 75, 0.14);
+
+      color:
+        var(--oliva);
+
+      font-size:
+        0.75rem;
+
+      font-weight:
+        900;
+
+      letter-spacing:
+        1.5px;
+
+      text-transform:
+        uppercase;
+    }
+
+    .titulo-seccion {
+      margin-top:
+        17px;
+
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+      font-size:
+        clamp(
+          2.2rem,
+          5vw,
+          4.3rem
+        );
+
+      line-height:
+        1.04;
+
+      color:
+        var(--chocolate);
+    }
+
+    .descripcion {
+      max-width:
+        680px;
+
+      margin-top:
+        22px;
+
+      color:
+        var(--texto-suave);
+
+      font-size:
+        1.04rem;
+
+      line-height:
+        1.8;
+    }
+
 
     /* =====================================================
        HEADER
     ===================================================== */
 
     .header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: 1000;
-      width: 100%;
-      padding: 14px 0;
-      transition: background var(--transicion),
-                  box-shadow var(--transicion),
-                  padding var(--transicion);
+      position:
+        fixed;
+
+      z-index:
+        1000;
+
+      top:
+        0;
+
+      left:
+        0;
+
+      width:
+        100%;
+
+      padding:
+        15px 0;
+
+      background:
+        rgba(
+          245,
+          230,
+          211,
+          0.9
+        );
+
+      backdrop-filter:
+        blur(14px);
+
+      border-bottom:
+        1px solid
+        rgba(
+          74,
+          38,
+          26,
+          0.08
+        );
+
+      transition:
+        box-shadow var(--transicion),
+        padding var(--transicion);
     }
 
     .header.activo {
-      padding: 8px 0;
-      background: rgba(247, 237, 223, 0.96);
-      backdrop-filter: blur(16px);
-      box-shadow: 0 8px 30px rgba(45, 20, 12, 0.1);
-    }
+      padding:
+        8px 0;
 
-    .header-contenido {
-      width: min(1320px, calc(100% - 40px));
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 25px;
-    }
-
-    .logo-header {
-      width: 145px;
-      filter: brightness(0) invert(1);
-      transition: filter var(--transicion);
-    }
-
-    .header.activo .logo-header {
-      filter: none;
-    }
-
-    .nav {
-      display: flex;
-      align-items: center;
-      gap: 28px;
-    }
-
-    .nav a {
-      color: var(--blanco);
-      font-size: 0.92rem;
-      font-weight: 800;
-      transition: color var(--transicion);
-    }
-
-    .header.activo .nav a {
-      color: var(--chocolate);
-    }
-
-    .nav a:hover {
-      color: var(--dorado);
-    }
-
-    .boton-header {
-      min-height: 44px;
-      padding: 10px 19px;
-      background: var(--dorado);
-      color: var(--chocolate);
-    }
-
-    .boton-header:hover {
-      background: var(--blanco);
-    }
-
-    .menu-boton {
-      display: none;
-      width: 48px;
-      height: 48px;
-      border: 0;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.18);
-      color: var(--blanco);
-      font-size: 1.35rem;
-      cursor: pointer;
-    }
-
-    .header.activo .menu-boton {
-      background: var(--chocolate);
-      color: var(--blanco);
-    }
-
-    /* =====================================================
-       HERO Y CARRUSEL
-    ===================================================== */
-
-    .hero {
-      position: relative;
-      min-height: 100svh;
-      background: var(--chocolate);
-      color: var(--blanco);
-      overflow: hidden;
-    }
-
-    .hero-slides {
-      position: absolute;
-      inset: 0;
-    }
-
-    .hero-slide {
-      position: absolute;
-      inset: 0;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 1s ease, visibility 1s ease;
-    }
-
-    .hero-slide.activo {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .hero-slide img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transform: scale(1.08);
-      transition: transform 7s ease;
-    }
-
-    .hero-slide.activo img {
-      transform: scale(1);
-    }
-
-    .hero-capa {
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(
-          90deg,
-          rgba(25, 10, 5, 0.82) 0%,
-          rgba(25, 10, 5, 0.48) 45%,
-          rgba(25, 10, 5, 0.16) 100%
-        ),
-        linear-gradient(
-          0deg,
-          rgba(20, 8, 4, 0.62) 0%,
-          transparent 45%
+      box-shadow:
+        0 8px 30px
+        rgba(
+          74,
+          38,
+          26,
+          0.1
         );
     }
 
+    .header-contenido {
+      width:
+        min(
+          1320px,
+          calc(100% - 40px)
+        );
+
+      margin:
+        0 auto;
+
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      justify-content:
+        space-between;
+
+      gap:
+        25px;
+    }
+
+    .logo-header {
+      width:
+        135px;
+
+      height:
+        55px;
+
+      object-fit:
+        contain;
+
+      object-position:
+        left center;
+    }
+
+    .nav {
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      gap:
+        27px;
+    }
+
+    .nav a {
+      color:
+        var(--chocolate);
+
+      font-size:
+        0.9rem;
+
+      font-weight:
+        800;
+
+      transition:
+        color var(--transicion);
+    }
+
+    .nav a:hover {
+      color:
+        var(--rojo);
+    }
+
+    .boton-header {
+      min-height:
+        43px;
+
+      padding:
+        10px 18px;
+
+      background:
+        var(--rojo);
+
+      color:
+        var(--blanco);
+    }
+
+    .menu-boton {
+      display:
+        none;
+
+      width:
+        48px;
+
+      height:
+        48px;
+
+      border:
+        0;
+
+      border-radius:
+        50%;
+
+      background:
+        var(--chocolate);
+
+      color:
+        var(--blanco);
+
+      font-size:
+        1.4rem;
+
+      cursor:
+        pointer;
+    }
+
+
+    /* =====================================================
+       HERO
+    ===================================================== */
+
+    .hero {
+      position:
+        relative;
+
+      min-height:
+        650px;
+
+      padding:
+        115px 0 55px;
+
+      overflow:
+        hidden;
+
+      background:
+
+        radial-gradient(
+          circle at 84% 22%,
+          rgba(
+            217,
+            135,
+            69,
+            0.25
+          ),
+          transparent 28%
+        ),
+
+        radial-gradient(
+          circle at 10% 80%,
+          rgba(
+            168,
+            68,
+            50,
+            0.1
+          ),
+          transparent 30%
+        ),
+
+        var(--beige);
+    }
+
+    .hero::before {
+      content:
+        "";
+
+      position:
+        absolute;
+
+      width:
+        420px;
+
+      height:
+        420px;
+
+      right:
+        -180px;
+
+      bottom:
+        -210px;
+
+      border-radius:
+        50%;
+
+      background:
+        var(--dulce);
+
+      opacity:
+        0.12;
+    }
+
     .hero-contenido {
-      position: relative;
-      z-index: 5;
-      width: min(1320px, calc(100% - 40px));
-      min-height: 100svh;
-      margin: 0 auto;
-      padding: 135px 0 120px;
-      display: flex;
-      align-items: center;
+      position:
+        relative;
+
+      z-index:
+        2;
+
+      min-height:
+        500px;
+
+      display:
+        grid;
+
+      grid-template-columns:
+        1fr 1fr;
+
+      align-items:
+        center;
+
+      gap:
+        65px;
     }
 
     .hero-texto {
-      max-width: 720px;
+      max-width:
+        560px;
     }
 
     .logo-hero-contenedor {
-      width: min(650px, 88vw);
-      overflow: hidden;
-      margin-bottom: 25px;
+      width:
+        min(
+          520px,
+          100%
+        );
+
+      overflow:
+        hidden;
+
+      margin-bottom:
+        25px;
     }
 
     .logo-hero {
-      width: 100%;
-      max-height: 290px;
-      object-fit: contain;
-      object-position: left center;
-      filter:
-        brightness(0)
-        invert(1)
-        drop-shadow(0 15px 30px rgba(0, 0, 0, 0.35));
+      width:
+        100%;
 
-      transform: translateX(-105%);
-      animation: revelarLogo 2.1s cubic-bezier(.22,.9,.25,1) 0.5s forwards;
+      max-height:
+        235px;
+
+      object-fit:
+        contain;
+
+      object-position:
+        left center;
+
+      transform:
+        translateX(-110%);
+
+      animation:
+        revelarLogo
+        1.9s
+        cubic-bezier(
+          .2,
+          .85,
+          .25,
+          1
+        )
+        0.3s
+        forwards;
     }
 
     @keyframes revelarLogo {
+
       to {
-        transform: translateX(0);
+
+        transform:
+          translateX(0);
+
       }
+
     }
 
-    .hero-frase {
-      max-width: 590px;
-      margin-bottom: 15px;
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(1.8rem, 4vw, 3.4rem);
-      line-height: 1.08;
-      text-shadow: 0 5px 25px rgba(0, 0, 0, 0.35);
-      opacity: 0;
-      transform: translateY(25px);
-      animation: aparecerHero 0.9s ease 1.8s forwards;
+    .hero-texto h1 {
+      margin-bottom:
+        17px;
+
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+      font-size:
+        clamp(
+          2rem,
+          4vw,
+          3.5rem
+        );
+
+      line-height:
+        1.08;
+
+      color:
+        var(--chocolate);
+
+      opacity:
+        0;
+
+      transform:
+        translateY(25px);
+
+      animation:
+        aparecer
+        0.8s
+        ease
+        1.45s
+        forwards;
     }
 
-    .hero-descripcion {
-      max-width: 550px;
-      margin-bottom: 30px;
-      color: rgba(255, 255, 255, 0.9);
-      font-size: 1.05rem;
-      line-height: 1.7;
-      opacity: 0;
-      transform: translateY(25px);
-      animation: aparecerHero 0.9s ease 2.05s forwards;
+    .hero-texto p {
+      max-width:
+        530px;
+
+      margin-bottom:
+        28px;
+
+      color:
+        var(--texto-suave);
+
+      font-size:
+        1.03rem;
+
+      line-height:
+        1.75;
+
+      opacity:
+        0;
+
+      transform:
+        translateY(25px);
+
+      animation:
+        aparecer
+        0.8s
+        ease
+        1.7s
+        forwards;
     }
 
     .hero-botones {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      opacity: 0;
-      transform: translateY(25px);
-      animation: aparecerHero 0.9s ease 2.3s forwards;
+      display:
+        flex;
+
+      flex-wrap:
+        wrap;
+
+      gap:
+        13px;
+
+      opacity:
+        0;
+
+      transform:
+        translateY(25px);
+
+      animation:
+        aparecer
+        0.8s
+        ease
+        1.95s
+        forwards;
     }
 
-    @keyframes aparecerHero {
+    @keyframes aparecer {
+
       to {
-        opacity: 1;
-        transform: translateY(0);
+
+        opacity:
+          1;
+
+        transform:
+          translateY(0);
+
       }
+
     }
 
-    .flecha-hero {
-      position: absolute;
-      z-index: 10;
-      top: 50%;
-      width: 54px;
-      height: 54px;
-      border: 1px solid rgba(255, 255, 255, 0.35);
-      border-radius: 50%;
-      background: rgba(20, 8, 4, 0.28);
-      backdrop-filter: blur(8px);
-      color: var(--blanco);
-      font-size: 1.6rem;
-      cursor: pointer;
-      transform: translateY(-50%);
-      transition: background var(--transicion),
-                  transform var(--transicion);
+
+    /* =====================================================
+       CARRUSEL DEL HERO
+    ===================================================== */
+
+    .hero-carrusel {
+      position:
+        relative;
+
+      width:
+        100%;
+
+      height:
+        470px;
+
+      padding:
+        15px;
+
+      overflow:
+        hidden;
+
+      border:
+        1px solid
+        rgba(
+          74,
+          38,
+          26,
+          0.1
+        );
+
+      border-radius:
+        34px;
+
+      background:
+        var(--blanco);
+
+      box-shadow:
+        var(--sombra);
     }
 
-    .flecha-hero:hover {
-      background: rgba(255, 255, 255, 0.2);
+    .hero-slides {
+      position:
+        relative;
+
+      width:
+        100%;
+
+      height:
+        100%;
+
+      overflow:
+        hidden;
+
+      border-radius:
+        24px;
+
+      background:
+        #EAD5BE;
     }
 
-    .flecha-hero.anterior {
-      left: 25px;
+    .hero-slide {
+      position:
+        absolute;
+
+      inset:
+        0;
+
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      justify-content:
+        center;
+
+      opacity:
+        0;
+
+      visibility:
+        hidden;
+
+      transition:
+        opacity 0.8s ease,
+        visibility 0.8s ease;
     }
 
-    .flecha-hero.siguiente {
-      right: 25px;
+    .hero-slide.activo {
+      opacity:
+        1;
+
+      visibility:
+        visible;
+    }
+
+    .hero-slide img {
+      width:
+        100%;
+
+      height:
+        100%;
+
+      object-fit:
+        contain;
+
+      padding:
+        8px;
+
+      transform:
+        scale(0.96);
+
+      transition:
+        transform 5s ease;
+    }
+
+    .hero-slide.activo img {
+      transform:
+        scale(1);
+    }
+
+    .hero-flecha {
+      position:
+        absolute;
+
+      z-index:
+        10;
+
+      top:
+        50%;
+
+      width:
+        48px;
+
+      height:
+        48px;
+
+      border:
+        0;
+
+      border-radius:
+        50%;
+
+      background:
+        rgba(
+          74,
+          38,
+          26,
+          0.78
+        );
+
+      color:
+        var(--blanco);
+
+      font-size:
+        1.7rem;
+
+      cursor:
+        pointer;
+
+      transform:
+        translateY(-50%);
+
+      transition:
+        background var(--transicion),
+        transform var(--transicion);
+    }
+
+    .hero-flecha:hover {
+      background:
+        var(--rojo);
+
+      transform:
+        translateY(-50%)
+        scale(1.08);
+    }
+
+    .hero-flecha.anterior {
+      left:
+        28px;
+    }
+
+    .hero-flecha.siguiente {
+      right:
+        28px;
     }
 
     .hero-indicadores {
-      position: absolute;
-      z-index: 10;
-      left: 50%;
-      bottom: 34px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      transform: translateX(-50%);
+      position:
+        absolute;
+
+      z-index:
+        20;
+
+      left:
+        50%;
+
+      bottom:
+        28px;
+
+      display:
+        flex;
+
+      gap:
+        8px;
+
+      transform:
+        translateX(-50%);
     }
 
     .indicador {
-      width: 10px;
-      height: 10px;
-      padding: 0;
-      border: 0;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.45);
-      cursor: pointer;
-      transition: width var(--transicion),
-                  background var(--transicion);
+      width:
+        9px;
+
+      height:
+        9px;
+
+      padding:
+        0;
+
+      border:
+        0;
+
+      border-radius:
+        100px;
+
+      background:
+        rgba(
+          255,
+          249,
+          241,
+          0.55
+        );
+
+      cursor:
+        pointer;
+
+      transition:
+        width var(--transicion),
+        background var(--transicion);
     }
 
     .indicador.activo {
-      width: 34px;
-      border-radius: 100px;
-      background: var(--blanco);
+      width:
+        30px;
+
+      background:
+        var(--blanco);
     }
 
-    .hero-scroll {
-      position: absolute;
-      z-index: 10;
-      right: 35px;
-      bottom: 28px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      color: rgba(255, 255, 255, 0.75);
-      font-size: 0.75rem;
-      font-weight: 800;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      writing-mode: vertical-rl;
-    }
-
-    .hero-scroll::after {
-      content: "";
-      width: 1px;
-      height: 55px;
-      background: rgba(255, 255, 255, 0.65);
-    }
 
     /* =====================================================
-       PRESENTACIÓN
+       HISTORIA
     ===================================================== */
 
-    .presentacion {
-      position: relative;
+    .historia {
       background:
-        radial-gradient(
-          circle at 90% 10%,
-          rgba(217, 168, 91, 0.16),
-          transparent 30%
-        ),
-        var(--crema);
+        var(--blanco);
     }
 
-    .presentacion-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: center;
-      gap: 80px;
+    .historia-grid {
+      display:
+        grid;
+
+      grid-template-columns:
+        1fr 1fr;
+
+      align-items:
+        center;
+
+      gap:
+        80px;
     }
 
-    .imagen-presentacion {
-      position: relative;
+    .historia-imagen {
+      position:
+        relative;
     }
 
-    .imagen-presentacion img {
-      width: 100%;
-      min-height: 580px;
-      object-fit: cover;
-      border-radius: 35px;
-      box-shadow: var(--sombra);
+    .historia-imagen img {
+      width:
+        100%;
+
+      height:
+        570px;
+
+      object-fit:
+        cover;
+
+      border-radius:
+        32px;
+
+      box-shadow:
+        var(--sombra);
     }
 
-    .sello-premio {
-      position: absolute;
-      right: -25px;
-      bottom: 35px;
-      width: 180px;
-      min-height: 180px;
-      padding: 25px;
-      border: 7px solid var(--crema);
-      border-radius: 50%;
-      background: var(--dorado);
-      color: var(--chocolate);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      box-shadow: var(--sombra);
-      transform: rotate(10deg);
+    .sello {
+      position:
+        absolute;
+
+      right:
+        -25px;
+
+      bottom:
+        30px;
+
+      width:
+        165px;
+
+      height:
+        165px;
+
+      padding:
+        20px;
+
+      border:
+        7px solid
+        var(--blanco);
+
+      border-radius:
+        50%;
+
+      display:
+        flex;
+
+      flex-direction:
+        column;
+
+      align-items:
+        center;
+
+      justify-content:
+        center;
+
+      text-align:
+        center;
+
+      background:
+        var(--dulce);
+
+      color:
+        var(--chocolate);
+
+      box-shadow:
+        var(--sombra);
+
+      transform:
+        rotate(9deg);
     }
 
-    .sello-premio strong {
-      font-family: Georgia, serif;
-      font-size: 1.8rem;
-      line-height: 1;
+    .sello strong {
+      font-size:
+        1.7rem;
     }
 
-    .sello-premio span {
-      margin-top: 7px;
-      font-size: 0.72rem;
-      font-weight: 900;
-      letter-spacing: 1px;
-      text-transform: uppercase;
+    .sello span {
+      margin-top:
+        7px;
+
+      font-size:
+        0.68rem;
+
+      font-weight:
+        900;
+
+      letter-spacing:
+        1px;
+
+      text-transform:
+        uppercase;
     }
 
-    .datos-marca {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      margin-top: 35px;
+    .datos {
+      display:
+        grid;
+
+      grid-template-columns:
+        repeat(
+          3,
+          1fr
+        );
+
+      gap:
+        12px;
+
+      margin-top:
+        35px;
     }
 
     .dato {
-      padding: 22px 16px;
-      border: 1px solid rgba(92, 45, 30, 0.13);
-      border-radius: 20px;
-      background: rgba(255, 255, 255, 0.52);
-      text-align: center;
+      padding:
+        22px 12px;
+
+      border:
+        1px solid
+        rgba(
+          74,
+          38,
+          26,
+          0.1
+        );
+
+      border-radius:
+        20px;
+
+      background:
+        var(--beige);
+
+      text-align:
+        center;
     }
 
-    .dato-icono {
-      display: block;
-      margin-bottom: 8px;
-      font-size: 1.7rem;
+    .dato span {
+      display:
+        block;
+
+      margin-bottom:
+        8px;
+
+      font-size:
+        1.6rem;
     }
 
     .dato strong {
-      display: block;
-      color: var(--chocolate);
-      font-size: 0.88rem;
+      font-size:
+        0.82rem;
+
+      color:
+        var(--chocolate);
     }
+
 
     /* =====================================================
        BANNER
     ===================================================== */
 
-    .banner-promocional {
-      position: relative;
-      padding: 45px 0;
-      overflow: hidden;
-      background: var(--chocolate);
-      color: var(--blanco);
+    .banner {
+      position:
+        relative;
+
+      padding:
+        52px 0;
+
+      overflow:
+        hidden;
+
+      background:
+        var(--rojo);
+
+      color:
+        var(--blanco);
     }
 
-    .banner-promocional::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      opacity: 0.15;
-      background-image:
-        radial-gradient(
-          circle,
-          var(--dorado) 2px,
-          transparent 2px
-        );
-      background-size: 28px 28px;
+    .banner::after {
+      content:
+        "";
+
+      position:
+        absolute;
+
+      width:
+        400px;
+
+      height:
+        400px;
+
+      top:
+        -250px;
+
+      right:
+        -100px;
+
+      border-radius:
+        50%;
+
+      background:
+        var(--dulce);
+
+      opacity:
+        0.3;
     }
 
     .banner-contenido {
-      position: relative;
-      z-index: 2;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 35px;
+      position:
+        relative;
+
+      z-index:
+        2;
+
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      justify-content:
+        space-between;
+
+      gap:
+        35px;
     }
 
-    .banner-contenido h2 {
-      max-width: 760px;
-      font-family: Georgia, serif;
-      font-size: clamp(1.8rem, 4vw, 3.5rem);
-      line-height: 1.08;
+    .banner h2 {
+      max-width:
+        760px;
+
+      font-family:
+        Georgia,
+        serif;
+
+      font-size:
+        clamp(
+          1.9rem,
+          4vw,
+          3.4rem
+        );
+
+      line-height:
+        1.1;
     }
 
-    .banner-contenido p {
-      margin-top: 12px;
-      color: rgba(255, 255, 255, 0.75);
-      line-height: 1.6;
+    .banner p {
+      margin-top:
+        12px;
+
+      color:
+        rgba(
+          255,
+          255,
+          255,
+          0.8
+        );
+
+      line-height:
+        1.7;
     }
 
-    .banner-contenido .boton {
-      flex-shrink: 0;
-      background: var(--dorado);
-      color: var(--chocolate);
+    .banner .boton {
+      flex-shrink:
+        0;
+
+      background:
+        var(--blanco);
+
+      color:
+        var(--rojo);
     }
+
 
     /* =====================================================
        PUNTOS DE VENTA
     ===================================================== */
 
     .puntos {
-      background: var(--blanco);
+      background:
+        var(--beige);
     }
 
-    .encabezado-puntos {
-      display: flex;
-      justify-content: space-between;
-      align-items: end;
-      gap: 30px;
-      margin-bottom: 50px;
+    .puntos-encabezado {
+      display:
+        flex;
+
+      align-items:
+        end;
+
+      justify-content:
+        space-between;
+
+      gap:
+        35px;
+
+      margin-bottom:
+        48px;
     }
 
     .buscador {
-      display: flex;
-      gap: 10px;
-      width: min(470px, 100%);
-      padding: 8px;
-      border: 1px solid rgba(50, 23, 15, 0.12);
-      border-radius: 100px;
-      background: var(--crema);
+      display:
+        flex;
+
+      width:
+        min(
+          470px,
+          100%
+        );
+
+      padding:
+        8px;
+
+      border:
+        1px solid
+        rgba(
+          74,
+          38,
+          26,
+          0.1
+        );
+
+      border-radius:
+        100px;
+
+      background:
+        var(--blanco);
     }
 
     .buscador input {
-      width: 100%;
-      min-width: 0;
-      padding: 10px 14px;
-      border: 0;
-      outline: 0;
-      background: transparent;
-      color: var(--texto);
+      width:
+        100%;
+
+      min-width:
+        0;
+
+      padding:
+        10px 15px;
+
+      border:
+        0;
+
+      outline:
+        0;
+
+      background:
+        transparent;
+
+      color:
+        var(--chocolate);
     }
 
     .buscador button {
-      min-width: 115px;
-      border: 0;
-      border-radius: 100px;
-      background: var(--chocolate);
-      color: var(--blanco);
-      font-weight: 800;
-      cursor: pointer;
+      min-width:
+        115px;
+
+      border:
+        0;
+
+      border-radius:
+        100px;
+
+      background:
+        var(--rojo);
+
+      color:
+        var(--blanco);
+
+      font-weight:
+        800;
+
+      cursor:
+        pointer;
     }
 
-    .tarjetas-puntos {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
+    .puntos-grid {
+      display:
+        grid;
+
+      grid-template-columns:
+        repeat(
+          3,
+          1fr
+        );
+
+      gap:
+        22px;
     }
 
     .punto {
-      padding: 30px;
-      border: 1px solid rgba(50, 23, 15, 0.1);
-      border-radius: 26px;
-      background: var(--crema);
-      transition: transform var(--transicion),
-                  box-shadow var(--transicion);
+      padding:
+        30px;
+
+      border:
+        1px solid
+        rgba(
+          74,
+          38,
+          26,
+          0.09
+        );
+
+      border-radius:
+        27px;
+
+      background:
+        var(--blanco);
+
+      transition:
+        transform var(--transicion),
+        box-shadow var(--transicion);
     }
 
     .punto:hover {
-      transform: translateY(-8px);
-      box-shadow: var(--sombra);
+      transform:
+        translateY(-8px);
+
+      box-shadow:
+        var(--sombra);
     }
 
     .punto-icono {
-      width: 58px;
-      height: 58px;
-      margin-bottom: 22px;
-      border-radius: 18px;
-      background: var(--chocolate);
-      color: var(--dorado);
-      display: grid;
-      place-items: center;
-      font-size: 1.6rem;
+      width:
+        58px;
+
+      height:
+        58px;
+
+      margin-bottom:
+        22px;
+
+      border-radius:
+        18px;
+
+      display:
+        grid;
+
+      place-items:
+        center;
+
+      background:
+        var(--oliva);
+
+      font-size:
+        1.6rem;
     }
 
     .punto h3 {
-      margin-bottom: 9px;
-      color: var(--chocolate);
-      font-family: Georgia, serif;
-      font-size: 1.5rem;
+      margin-bottom:
+        10px;
+
+      font-family:
+        Georgia,
+        serif;
+
+      font-size:
+        1.55rem;
+
+      color:
+        var(--chocolate);
     }
 
     .punto p {
-      color: #73564a;
-      line-height: 1.65;
+      color:
+        var(--texto-suave);
+
+      line-height:
+        1.7;
     }
 
     .punto a {
-      display: inline-flex;
-      margin-top: 22px;
-      color: var(--chocolate-claro);
-      font-weight: 900;
+      display:
+        inline-block;
+
+      margin-top:
+        22px;
+
+      color:
+        var(--rojo);
+
+      font-weight:
+        900;
     }
+
 
     /* =====================================================
        GALERÍA
@@ -702,526 +1465,1023 @@ html
 
     .galeria {
       background:
-        linear-gradient(
-          180deg,
-          var(--crema) 0%,
-          #f1dfca 100%
-        );
+        var(--blanco);
     }
 
     .galeria-encabezado {
-      display: flex;
-      justify-content: space-between;
-      align-items: end;
-      gap: 30px;
-      margin-bottom: 45px;
+      display:
+        flex;
+
+      align-items:
+        end;
+
+      justify-content:
+        space-between;
+
+      gap:
+        30px;
+
+      margin-bottom:
+        45px;
     }
 
     .galeria-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      grid-auto-rows: 220px;
-      gap: 16px;
+      display:
+        grid;
+
+      grid-template-columns:
+        repeat(
+          4,
+          1fr
+        );
+
+      grid-auto-rows:
+        215px;
+
+      gap:
+        16px;
     }
 
     .galeria-item {
-      position: relative;
-      overflow: hidden;
-      border: 0;
-      border-radius: 24px;
-      background: var(--chocolate);
-      cursor: pointer;
-      box-shadow: 0 12px 35px rgba(50, 23, 15, 0.12);
+      position:
+        relative;
+
+      overflow:
+        hidden;
+
+      padding:
+        0;
+
+      border:
+        0;
+
+      border-radius:
+        23px;
+
+      background:
+        var(--beige);
+
+      cursor:
+        pointer;
+
+      box-shadow:
+        0 12px 35px
+        rgba(
+          74,
+          38,
+          26,
+          0.1
+        );
     }
 
     .galeria-item:nth-child(1) {
-      grid-column: span 2;
-      grid-row: span 2;
+      grid-column:
+        span 2;
+
+      grid-row:
+        span 2;
     }
 
     .galeria-item:nth-child(5) {
-      grid-column: span 2;
+      grid-column:
+        span 2;
     }
 
     .galeria-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.65s ease;
+      width:
+        100%;
+
+      height:
+        100%;
+
+      object-fit:
+        cover;
+
+      transition:
+        transform
+        0.65s
+        ease;
     }
 
     .galeria-item::after {
-      content: "Ver imagen";
-      position: absolute;
-      inset: 0;
-      display: grid;
-      place-items: center;
-      background: rgba(50, 23, 15, 0.58);
-      color: var(--blanco);
-      font-weight: 900;
-      opacity: 0;
-      transition: opacity var(--transicion);
+      content:
+        "Ver imagen";
+
+      position:
+        absolute;
+
+      inset:
+        0;
+
+      display:
+        grid;
+
+      place-items:
+        center;
+
+      background:
+        rgba(
+          74,
+          38,
+          26,
+          0.62
+        );
+
+      color:
+        var(--blanco);
+
+      font-weight:
+        900;
+
+      opacity:
+        0;
+
+      transition:
+        opacity var(--transicion);
     }
 
     .galeria-item:hover img {
-      transform: scale(1.1);
+      transform:
+        scale(1.09);
     }
 
     .galeria-item:hover::after {
-      opacity: 1;
+      opacity:
+        1;
     }
 
     .galeria-item.oculta {
-      display: none;
+      display:
+        none;
     }
 
     .galeria-acciones {
-      display: flex;
-      justify-content: center;
-      margin-top: 40px;
+      display:
+        flex;
+
+      justify-content:
+        center;
+
+      margin-top:
+        42px;
     }
+
+
+    /* =====================================================
+       CONTACTO
+    ===================================================== */
+
+    .contacto {
+      background:
+        var(--chocolate);
+
+      color:
+        var(--blanco);
+    }
+
+    .contacto-grid {
+      display:
+        grid;
+
+      grid-template-columns:
+        1.1fr 0.9fr;
+
+      align-items:
+        center;
+
+      gap:
+        75px;
+    }
+
+    .contacto .titulo-seccion {
+      color:
+        var(--blanco);
+    }
+
+    .contacto .descripcion {
+      color:
+        rgba(
+          255,
+          255,
+          255,
+          0.72
+        );
+    }
+
+    .contacto-card {
+      padding:
+        42px;
+
+      border:
+        1px solid
+        rgba(
+          255,
+          255,
+          255,
+          0.12
+        );
+
+      border-radius:
+        30px;
+
+      background:
+        rgba(
+          255,
+          255,
+          255,
+          0.07
+        );
+    }
+
+    .contacto-card h3 {
+      margin-bottom:
+        12px;
+
+      font-family:
+        Georgia,
+        serif;
+
+      font-size:
+        2rem;
+    }
+
+    .contacto-card p {
+      margin-bottom:
+        27px;
+
+      color:
+        rgba(
+          255,
+          255,
+          255,
+          0.7
+        );
+
+      line-height:
+        1.7;
+    }
+
+    .contacto-card .boton {
+      width:
+        100%;
+
+      background:
+        var(--dulce);
+
+      color:
+        var(--chocolate);
+    }
+
+
+    /* =====================================================
+       FOOTER
+    ===================================================== */
+
+    .footer {
+      padding:
+        52px 0 25px;
+
+      background:
+        #351A12;
+
+      color:
+        rgba(
+          255,
+          255,
+          255,
+          0.68
+        );
+    }
+
+    .footer-superior {
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      justify-content:
+        space-between;
+
+      gap:
+        30px;
+
+      padding-bottom:
+        35px;
+
+      border-bottom:
+        1px solid
+        rgba(
+          255,
+          255,
+          255,
+          0.1
+        );
+    }
+
+    .logo-footer {
+      width:
+        180px;
+
+      filter:
+        brightness(0)
+        invert(1);
+    }
+
+    .footer-redes {
+      display:
+        flex;
+
+      gap:
+        12px;
+    }
+
+    .footer-redes a {
+      width:
+        45px;
+
+      height:
+        45px;
+
+      border-radius:
+        50%;
+
+      display:
+        grid;
+
+      place-items:
+        center;
+
+      background:
+        rgba(
+          255,
+          255,
+          255,
+          0.08
+        );
+
+      transition:
+        background var(--transicion);
+    }
+
+    .footer-redes a:hover {
+      background:
+        var(--dulce);
+
+      color:
+        var(--chocolate);
+    }
+
+    .footer-inferior {
+      display:
+        flex;
+
+      justify-content:
+        space-between;
+
+      gap:
+        20px;
+
+      padding-top:
+        25px;
+
+      font-size:
+        0.82rem;
+    }
+
 
     /* =====================================================
        MODAL
     ===================================================== */
 
-    .modal-galeria {
-      position: fixed;
-      z-index: 3000;
-      inset: 0;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 30px;
-      background: rgba(12, 5, 3, 0.92);
+    .modal {
+      position:
+        fixed;
+
+      z-index:
+        5000;
+
+      inset:
+        0;
+
+      display:
+        none;
+
+      align-items:
+        center;
+
+      justify-content:
+        center;
+
+      padding:
+        30px;
+
+      background:
+        rgba(
+          25,
+          10,
+          6,
+          0.93
+        );
     }
 
-    .modal-galeria.abierto {
-      display: flex;
+    .modal.abierto {
+      display:
+        flex;
     }
 
-    .modal-imagen {
-      max-width: min(1000px, 92vw);
-      max-height: 84vh;
-      border-radius: 18px;
-      object-fit: contain;
-      box-shadow: 0 25px 80px rgba(0, 0, 0, 0.6);
+    .modal img {
+      max-width:
+        min(
+          1000px,
+          92vw
+        );
+
+      max-height:
+        84vh;
+
+      border-radius:
+        18px;
+
+      object-fit:
+        contain;
+
+      box-shadow:
+        0 25px 80px
+        rgba(
+          0,
+          0,
+          0,
+          0.65
+        );
     }
 
-    .modal-cerrar,
-    .modal-anterior,
-    .modal-siguiente {
-      position: absolute;
-      border: 1px solid rgba(255, 255, 255, 0.28);
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.12);
-      color: var(--blanco);
-      cursor: pointer;
+    .modal button {
+      position:
+        absolute;
+
+      border:
+        1px solid
+        rgba(
+          255,
+          255,
+          255,
+          0.25
+        );
+
+      border-radius:
+        50%;
+
+      background:
+        rgba(
+          255,
+          255,
+          255,
+          0.1
+        );
+
+      color:
+        var(--blanco);
+
+      cursor:
+        pointer;
     }
 
     .modal-cerrar {
-      top: 25px;
-      right: 25px;
-      width: 52px;
-      height: 52px;
-      font-size: 1.5rem;
+      top:
+        25px;
+
+      right:
+        25px;
+
+      width:
+        52px;
+
+      height:
+        52px;
+
+      font-size:
+        1.5rem;
     }
 
     .modal-anterior,
     .modal-siguiente {
-      top: 50%;
-      width: 55px;
-      height: 55px;
-      font-size: 1.7rem;
-      transform: translateY(-50%);
+      top:
+        50%;
+
+      width:
+        55px;
+
+      height:
+        55px;
+
+      font-size:
+        1.7rem;
+
+      transform:
+        translateY(-50%);
     }
 
     .modal-anterior {
-      left: 25px;
+      left:
+        25px;
     }
 
     .modal-siguiente {
-      right: 25px;
+      right:
+        25px;
     }
+
 
     /* =====================================================
-       CONTACTO Y FOOTER
-    ===================================================== */
-
-    .contacto {
-      background: var(--chocolate);
-      color: var(--blanco);
-    }
-
-    .contacto-grid {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      align-items: center;
-      gap: 70px;
-    }
-
-    .contacto .titulo-seccion {
-      color: var(--blanco);
-    }
-
-    .contacto .descripcion-seccion {
-      color: rgba(255, 255, 255, 0.75);
-    }
-
-    .contacto-tarjeta {
-      padding: 40px;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 30px;
-      background: rgba(255, 255, 255, 0.07);
-    }
-
-    .contacto-tarjeta h3 {
-      margin-bottom: 12px;
-      font-family: Georgia, serif;
-      font-size: 2rem;
-    }
-
-    .contacto-tarjeta p {
-      margin-bottom: 25px;
-      color: rgba(255, 255, 255, 0.7);
-      line-height: 1.7;
-    }
-
-    .contacto-tarjeta .boton {
-      width: 100%;
-      background: var(--dorado);
-      color: var(--chocolate);
-    }
-
-    .footer {
-      padding: 55px 0 25px;
-      background: #1e0d08;
-      color: rgba(255, 255, 255, 0.7);
-    }
-
-    .footer-superior {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 35px;
-      padding-bottom: 35px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .logo-footer {
-      width: 180px;
-      filter: brightness(0) invert(1);
-    }
-
-    .footer-redes {
-      display: flex;
-      gap: 12px;
-    }
-
-    .footer-redes a {
-      width: 45px;
-      height: 45px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.08);
-      display: grid;
-      place-items: center;
-      transition: background var(--transicion);
-    }
-
-    .footer-redes a:hover {
-      background: var(--dorado);
-      color: var(--chocolate);
-    }
-
-    .footer-inferior {
-      padding-top: 25px;
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-      font-size: 0.82rem;
-    }
-
-    /* =====================================================
-       ANIMACIONES AL HACER SCROLL
+       ANIMACIONES DE SCROLL
     ===================================================== */
 
     .revelar {
-      opacity: 0;
+      opacity:
+        0;
+
       transition:
         opacity 0.9s ease,
-        transform 0.9s cubic-bezier(.2,.75,.25,1);
+        transform
+        0.9s
+        cubic-bezier(
+          .2,
+          .75,
+          .25,
+          1
+        );
     }
 
-    .desde-izquierda {
-      transform: translateX(-90px);
+    .izquierda {
+      transform:
+        translateX(-80px);
     }
 
-    .desde-derecha {
-      transform: translateX(90px);
+    .derecha {
+      transform:
+        translateX(80px);
     }
 
-    .desde-abajo {
-      transform: translateY(65px);
+    .abajo {
+      transform:
+        translateY(60px);
     }
 
     .revelar.visible {
-      opacity: 1;
-      transform: translate(0, 0);
+      opacity:
+        1;
+
+      transform:
+        translate(0);
     }
 
+
     /* =====================================================
-       RESPONSIVE
+       TABLET
     ===================================================== */
 
-    @media (max-width: 980px) {
+    @media (
+      max-width: 980px
+    ) {
 
       .nav {
-        position: fixed;
-        z-index: 2000;
-        top: 0;
-        right: -100%;
-        width: min(350px, 88vw);
-        height: 100svh;
-        padding: 110px 35px 35px;
-        flex-direction: column;
-        align-items: flex-start;
-        background: var(--crema);
-        box-shadow: -20px 0 60px rgba(0, 0, 0, 0.2);
-        transition: right 0.45s ease;
+        position:
+          fixed;
+
+        z-index:
+          2000;
+
+        top:
+          0;
+
+        right:
+          -100%;
+
+        width:
+          min(
+            350px,
+            88vw
+          );
+
+        height:
+          100vh;
+
+        padding:
+          105px
+          35px
+          35px;
+
+        display:
+          flex;
+
+        flex-direction:
+          column;
+
+        align-items:
+          flex-start;
+
+        background:
+          var(--blanco);
+
+        box-shadow:
+          -20px 0 60px
+          rgba(
+            0,
+            0,
+            0,
+            0.18
+          );
+
+        transition:
+          right
+          0.45s
+          ease;
       }
 
       .nav.abierta {
-        right: 0;
+        right:
+          0;
       }
 
-      .nav a,
-      .header.activo .nav a {
-        color: var(--chocolate);
-        font-size: 1.2rem;
+      .nav a {
+        font-size:
+          1.15rem;
       }
 
       .boton-header {
-        width: 100%;
+        width:
+          100%;
       }
 
       .menu-boton {
-        position: relative;
-        z-index: 2100;
-        display: grid;
-        place-items: center;
+        position:
+          relative;
+
+        z-index:
+          2100;
+
+        display:
+          grid;
+
+        place-items:
+          center;
       }
 
-      .presentacion-grid,
-      .contacto-grid {
-        grid-template-columns: 1fr;
-        gap: 55px;
-      }
+      .hero {
+        min-height:
+          auto;
 
-      .imagen-presentacion {
-        max-width: 700px;
-        margin: 0 auto;
-      }
-
-      .tarjetas-puntos {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .encabezado-puntos,
-      .galeria-encabezado {
-        align-items: flex-start;
-        flex-direction: column;
-      }
-
-      .buscador {
-        width: 100%;
-      }
-
-      .galeria-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (max-width: 650px) {
-
-      .contenedor {
-        width: min(100% - 28px, 1180px);
-      }
-
-      .seccion {
-        padding: 80px 0;
-      }
-
-      .header-contenido {
-        width: calc(100% - 28px);
-      }
-
-      .logo-header {
-        width: 125px;
+        padding:
+          125px 0 70px;
       }
 
       .hero-contenido {
-        width: calc(100% - 30px);
-        padding: 125px 0 100px;
-        align-items: center;
+        min-height:
+          auto;
+
+        grid-template-columns:
+          1fr;
+
+        gap:
+          50px;
       }
 
-      .hero-capa {
-        background:
-          linear-gradient(
-            90deg,
-            rgba(25, 10, 5, 0.78),
-            rgba(25, 10, 5, 0.42)
-          ),
-          linear-gradient(
-            0deg,
-            rgba(20, 8, 4, 0.72),
-            transparent 55%
+      .hero-texto {
+        max-width:
+          700px;
+      }
+
+      .hero-carrusel {
+        width:
+          min(
+            680px,
+            100%
           );
+
+        height:
+          470px;
+
+        margin:
+          0 auto;
       }
 
-      .logo-hero-contenedor {
-        width: 100%;
+      .historia-grid,
+      .contacto-grid {
+        grid-template-columns:
+          1fr;
+
+        gap:
+          55px;
       }
 
-      .hero-frase {
-        font-size: 2rem;
+      .historia-imagen {
+        max-width:
+          700px;
+
+        margin:
+          0 auto;
       }
 
-      .hero-descripcion {
-        font-size: 0.96rem;
-      }
+      .puntos-encabezado,
+      .galeria-encabezado {
+        flex-direction:
+          column;
 
-      .hero-botones {
-        flex-direction: column;
-      }
-
-      .hero-botones .boton {
-        width: 100%;
-      }
-
-      .flecha-hero {
-        top: auto;
-        bottom: 78px;
-        width: 46px;
-        height: 46px;
-        transform: none;
-      }
-
-      .flecha-hero.anterior {
-        left: 20px;
-      }
-
-      .flecha-hero.siguiente {
-        right: 20px;
-      }
-
-      .hero-scroll {
-        display: none;
-      }
-
-      .hero-indicadores {
-        bottom: 27px;
-      }
-
-      .indicador {
-        width: 8px;
-        height: 8px;
-      }
-
-      .indicador.activo {
-        width: 24px;
-      }
-
-      .imagen-presentacion img {
-        min-height: 430px;
-      }
-
-      .sello-premio {
-        right: -5px;
-        bottom: -20px;
-        width: 145px;
-        min-height: 145px;
-      }
-
-      .sello-premio strong {
-        font-size: 1.4rem;
-      }
-
-      .datos-marca {
-        grid-template-columns: 1fr;
-      }
-
-      .banner-contenido {
-        align-items: flex-start;
-        flex-direction: column;
-      }
-
-      .banner-contenido .boton {
-        width: 100%;
-      }
-
-      .tarjetas-puntos {
-        grid-template-columns: 1fr;
+        align-items:
+          flex-start;
       }
 
       .buscador {
-        flex-direction: column;
-        border-radius: 22px;
+        width:
+          100%;
       }
 
-      .buscador input {
-        min-height: 50px;
-      }
-
-      .buscador button {
-        min-height: 50px;
+      .puntos-grid {
+        grid-template-columns:
+          1fr 1fr;
       }
 
       .galeria-grid {
-        grid-template-columns: 1fr 1fr;
-        grid-auto-rows: 165px;
-        gap: 10px;
+        grid-template-columns:
+          1fr 1fr;
+      }
+
+    }
+
+
+    /* =====================================================
+       CELULAR
+    ===================================================== */
+
+    @media (
+      max-width: 650px
+    ) {
+
+      .contenedor {
+        width:
+          calc(
+            100% - 28px
+          );
+      }
+
+      .seccion {
+        padding:
+          78px 0;
+      }
+
+      .header-contenido {
+        width:
+          calc(
+            100% - 28px
+          );
+      }
+
+      .logo-header {
+        width:
+          120px;
+      }
+
+      .hero {
+        padding:
+          105px 0 55px;
+      }
+
+      .hero-contenido {
+        gap:
+          35px;
+      }
+
+      .logo-hero-contenedor {
+        width:
+          100%;
+      }
+
+      .logo-hero {
+        max-height:
+          180px;
+      }
+
+      .hero-texto h1 {
+        font-size:
+          2.15rem;
+      }
+
+      .hero-texto p {
+        font-size:
+          0.96rem;
+      }
+
+      .hero-botones {
+        flex-direction:
+          column;
+      }
+
+      .hero-botones .boton {
+        width:
+          100%;
+      }
+
+      .hero-carrusel {
+        height:
+          350px;
+
+        padding:
+          10px;
+
+        border-radius:
+          25px;
+      }
+
+      .hero-slides {
+        border-radius:
+          18px;
+      }
+
+      .hero-slide img {
+        padding:
+          3px;
+      }
+
+      .hero-flecha {
+        width:
+          43px;
+
+        height:
+          43px;
+      }
+
+      .hero-flecha.anterior {
+        left:
+          18px;
+      }
+
+      .hero-flecha.siguiente {
+        right:
+          18px;
+      }
+
+      .hero-indicadores {
+        bottom:
+          18px;
+      }
+
+      .indicador {
+        width:
+          8px;
+
+        height:
+          8px;
+      }
+
+      .indicador.activo {
+        width:
+          25px;
+      }
+
+      .historia-imagen img {
+        height:
+          430px;
+      }
+
+      .sello {
+        right:
+          -5px;
+
+        bottom:
+          -18px;
+
+        width:
+          140px;
+
+        height:
+          140px;
+      }
+
+      .datos {
+        grid-template-columns:
+          1fr;
+      }
+
+      .banner-contenido {
+        flex-direction:
+          column;
+
+        align-items:
+          flex-start;
+      }
+
+      .banner .boton {
+        width:
+          100%;
+      }
+
+      .buscador {
+        flex-direction:
+          column;
+
+        border-radius:
+          23px;
+      }
+
+      .buscador input {
+        min-height:
+          50px;
+      }
+
+      .buscador button {
+        min-height:
+          50px;
+      }
+
+      .puntos-grid {
+        grid-template-columns:
+          1fr;
+      }
+
+      .galeria-grid {
+        grid-template-columns:
+          1fr 1fr;
+
+        grid-auto-rows:
+          160px;
+
+        gap:
+          10px;
       }
 
       .galeria-item {
-        border-radius: 15px;
+        border-radius:
+          15px;
       }
 
       .galeria-item:nth-child(1),
       .galeria-item:nth-child(5) {
-        grid-column: span 2;
+
+        grid-column:
+          span 2;
+
       }
 
       .galeria-item:nth-child(1) {
-        grid-row: span 1;
-      }
 
-      .modal-galeria {
-        padding: 15px;
-      }
+        grid-row:
+          span 1;
 
-      .modal-anterior,
-      .modal-siguiente {
-        top: auto;
-        bottom: 20px;
-        transform: none;
-        width: 48px;
-        height: 48px;
-      }
-
-      .modal-anterior {
-        left: 25%;
-      }
-
-      .modal-siguiente {
-        right: 25%;
       }
 
       .footer-superior,
       .footer-inferior {
-        align-items: flex-start;
-        flex-direction: column;
+
+        flex-direction:
+          column;
+
+        align-items:
+          flex-start;
+
       }
+
+      .modal {
+
+        padding:
+          15px;
+
+      }
+
+      .modal-anterior,
+      .modal-siguiente {
+
+        top:
+          auto;
+
+        bottom:
+          20px;
+
+        width:
+          48px;
+
+        height:
+          48px;
+
+        transform:
+          none;
+
+      }
+
+      .modal-anterior {
+
+        left:
+          25%;
+
+      }
+
+      .modal-siguiente {
+
+        right:
+          25%;
+
+      }
+
     }
 
   </style>
@@ -1229,15 +2489,22 @@ html
 
 <body>
 
+
   <!-- =====================================================
        HEADER
   ====================================================== -->
 
-  <header class="header" id="header">
+  <header
+    class="header"
+    id="header"
+  >
 
     <div class="header-contenido">
 
-      <a href="#inicio" aria-label="Ir al inicio">
+      <a
+        href="#inicio"
+        aria-label="Ir al inicio"
+      >
 
         <img
           class="logo-header"
@@ -1247,33 +2514,52 @@ html
 
       </a>
 
-      <nav class="nav" id="nav">
 
-        <a href="#inicio">Inicio</a>
+      <nav
+        class="nav"
+        id="nav"
+      >
 
-        <a href="#historia">Nuestra historia</a>
+        <a href="#inicio">
+          Inicio
+        </a>
 
-        <a href="#puntos">Puntos de venta</a>
+        <a href="#historia">
+          Nuestra historia
+        </a>
 
-        <a href="#galeria">Galería</a>
+        <a href="#puntos">
+          Puntos de venta
+        </a>
 
-        <a href="#contacto">Contacto</a>
+        <a href="#galeria">
+          Galería
+        </a>
+
+        <a href="#contacto">
+          Contacto
+        </a>
 
         <a
           class="boton boton-header"
           href="#puntos"
         >
+
           ¿Dónde comprar?
+
         </a>
 
       </nav>
+
 
       <button
         class="menu-boton"
         id="menuBoton"
         aria-label="Abrir menú"
       >
+
         ☰
+
       </button>
 
     </div>
@@ -1281,143 +2567,210 @@ html
   </header>
 
 
-  <!-- =====================================================
-       HERO
-  ====================================================== -->
-
   <main>
 
-    <section class="hero" id="inicio">
 
-      <div class="hero-slides" id="heroSlides">
+    <!-- ===================================================
+         HERO
+    ==================================================== -->
 
-        <article class="hero-slide activo">
+    <section
+      class="hero"
+      id="inicio"
+    >
 
-          <img
-            src="https://iili.io/C8TGzcN.jpg"
-            alt="Alfajor Paceño"
-          >
+      <div class="contenedor">
 
-        </article>
+        <div class="hero-contenido">
 
-        <article class="hero-slide">
 
-          <img
-            src="https://iili.io/C8TGxFp.jpg"
-            alt="Alfajor Paceño"
-          >
+          <!-- TEXTO Y LOGO -->
 
-        </article>
+          <div class="hero-texto">
 
-        <article class="hero-slide">
+            <div class="logo-hero-contenedor">
 
-          <img
-            src="https://iili.io/C8TGnPR.jpg"
-            alt="Alfajor Paceño"
-          >
+              <img
+                class="logo-hero"
+                src="logo-alfajor-paceno.svg"
+                alt="Alfajor Paceño"
+              >
 
-        </article>
+            </div>
 
-        <article class="hero-slide">
 
-          <img
-            src="https://iili.io/C8TGCMv.jpg"
-            alt="Alfajor Paceño"
-          >
+            <h1>
 
-        </article>
+              Una historia hecha de pasión, sabor y tradición.
 
-        <article class="hero-slide">
+            </h1>
 
-          <img
-            src="https://iili.io/C8TGISI.jpg"
-            alt="Alfajor Paceño"
-          >
 
-        </article>
+            <p>
 
-        <article class="hero-slide">
+              Conocé el Alfajor Paceño, una creación de
+              Yesi Yodra, maestra pastelera y campeona
+              nacional.
 
-          <img
-            src="https://iili.io/C8TGu9t.jpg"
-            alt="Alfajor Paceño"
-          >
+            </p>
 
-        </article>
 
-        <article class="hero-slide">
+            <div class="hero-botones">
 
-          <img
-            src="https://iili.io/C8TGAAX.jpg"
-            alt="Alfajor Paceño"
-          >
+              <a
+                class="boton"
+                href="#puntos"
+              >
 
-        </article>
+                Encontrá dónde comprar
 
-        <article class="hero-slide">
+              </a>
 
-          <img
-            src="https://iili.io/C8TGRNn.jpg"
-            alt="Alfajor Paceño"
-          >
 
-        </article>
+              <a
+                class="boton boton-secundario"
+                href="#historia"
+              >
 
-        <article class="hero-slide">
+                Conocé nuestra historia
 
-          <img
-            src="https://iili.io/C8TGYoG.jpg"
-            alt="Alfajor Paceño"
-          >
+              </a>
 
-        </article>
-
-      </div>
-
-      <div class="hero-capa"></div>
-
-      <div class="hero-contenido">
-
-        <div class="hero-texto">
-
-          <div class="logo-hero-contenedor">
-
-            <img
-              class="logo-hero"
-              src="logo-alfajor-paceno.svg"
-              alt="Alfajor Paceño"
-            >
+            </div>
 
           </div>
 
-          <h1 class="hero-frase">
 
-            Una historia hecha de pasión, sabor y tradición.
+          <!-- CARRUSEL -->
 
-          </h1>
+          <div class="hero-carrusel">
 
-          <p class="hero-descripcion">
-
-            Conocé el Alfajor Paceño, una creación de
-            Yesi Yodra, maestra pastelera y campeona nacional.
-
-          </p>
-
-          <div class="hero-botones">
-
-            <a
-              class="boton"
-              href="#puntos"
+            <div
+              class="hero-slides"
+              id="heroSlides"
             >
-              Encontrá dónde comprar
-            </a>
 
-            <a
-              class="boton boton-claro"
-              href="#historia"
+
+              <article class="hero-slide activo">
+
+                <img
+                  src="https://iili.io/C8TGzcN.jpg"
+                  alt="Alfajor Paceño"
+                >
+
+              </article>
+
+
+              <article class="hero-slide">
+
+                <img
+                  src="https://iili.io/C8TGxFp.jpg"
+                  alt="Alfajor Paceño"
+                >
+
+              </article>
+
+
+              <article class="hero-slide">
+
+                <img
+                  src="https://iili.io/C8TGnPR.jpg"
+                  alt="Alfajor Paceño"
+                >
+
+              </article>
+
+
+              <article class="hero-slide">
+
+                <img
+                  src="https://iili.io/C8TGCMv.jpg"
+                  alt="Alfajor Paceño"
+                >
+
+              </article>
+
+
+              <article class="hero-slide">
+
+                <img
+                  src="https://iili.io/C8TGISI.jpg"
+                  alt="Alfajor Paceño"
+                >
+
+              </article>
+
+
+              <article class="hero-slide">
+
+                <img
+                  src="https://iili.io/C8TGu9t.jpg"
+                  alt="Alfajor Paceño"
+                >
+
+              </article>
+
+
+              <article class="hero-slide">
+
+                <img
+                  src="https://iili.io/C8TGAAX.jpg"
+                  alt="Alfajor Paceño"
+                >
+
+              </article>
+
+
+              <article class="hero-slide">
+
+                <img
+                  src="https://iili.io/C8TGRNn.jpg"
+                  alt="Alfajor Paceño"
+                >
+
+              </article>
+
+
+              <article class="hero-slide">
+
+                <img
+                  src="https://iili.io/C8TGYoG.jpg"
+                  alt="Alfajor Paceño"
+                >
+
+              </article>
+
+
+            </div>
+
+
+            <button
+              class="hero-flecha anterior"
+              id="heroAnterior"
+              aria-label="Imagen anterior"
             >
-              Conocé nuestra historia
-            </a>
+
+              ‹
+
+            </button>
+
+
+            <button
+              class="hero-flecha siguiente"
+              id="heroSiguiente"
+              aria-label="Imagen siguiente"
+            >
+
+              ›
+
+            </button>
+
+
+            <div
+              class="hero-indicadores"
+              id="heroIndicadores"
+            ></div>
+
 
           </div>
 
@@ -1425,61 +2778,38 @@ html
 
       </div>
 
-      <button
-        class="flecha-hero anterior"
-        id="heroAnterior"
-        aria-label="Imagen anterior"
-      >
-        ‹
-      </button>
-
-      <button
-        class="flecha-hero siguiente"
-        id="heroSiguiente"
-        aria-label="Imagen siguiente"
-      >
-        ›
-      </button>
-
-      <div
-        class="hero-indicadores"
-        id="heroIndicadores"
-      ></div>
-
-      <div class="hero-scroll">
-
-        Deslizá
-
-      </div>
-
     </section>
 
 
-    <!-- =====================================================
+    <!-- ===================================================
          HISTORIA
-    ====================================================== -->
+    ==================================================== -->
 
     <section
-      class="seccion presentacion"
+      class="seccion historia"
       id="historia"
     >
 
       <div class="contenedor">
 
-        <div class="presentacion-grid">
+        <div class="historia-grid">
+
 
           <div
-            class="imagen-presentacion revelar desde-izquierda"
+            class="historia-imagen revelar izquierda"
           >
 
             <img
               src="https://iili.io/C8TGxFp.jpg"
-              alt="Creación artesanal de Alfajor Paceño"
+              alt="Alfajor Paceño"
             >
 
-            <div class="sello-premio">
 
-              <strong>🏆</strong>
+            <div class="sello">
+
+              <strong>
+                🏆
+              </strong>
 
               <span>
                 Campeona Nacional
@@ -1489,8 +2819,9 @@ html
 
           </div>
 
+
           <div
-            class="revelar desde-derecha"
+            class="revelar derecha"
           >
 
             <span class="etiqueta">
@@ -1499,13 +2830,15 @@ html
 
             </span>
 
+
             <h2 class="titulo-seccion">
 
               Mucho más que un alfajor.
 
             </h2>
 
-            <p class="descripcion-seccion">
+
+            <p class="descripcion">
 
               Detrás de cada Alfajor Paceño hay una historia
               de pasión, aprendizaje y dedicación. Una receta
@@ -1514,20 +2847,25 @@ html
 
             </p>
 
-            <p class="descripcion-seccion">
 
-              Soy Yesi Yodra, maestra pastelera y creadora del
-              Alfajor Paceño. Este proyecto nació del amor por
-              la pastelería y del deseo de crear un producto
-              único, auténtico y lleno de personalidad.
+            <p class="descripcion">
+
+              Soy Yesi Yodra, maestra pastelera y creadora
+              del Alfajor Paceño. Este proyecto nació del
+              amor por la pastelería y del deseo de crear
+              un producto único y auténtico.
 
             </p>
 
-            <div class="datos-marca">
+
+            <div class="datos">
+
 
               <article class="dato">
 
-                <span class="dato-icono">🧑‍🍳</span>
+                <span>
+                  🧑‍🍳
+                </span>
 
                 <strong>
                   Maestra pastelera
@@ -1535,9 +2873,12 @@ html
 
               </article>
 
+
               <article class="dato">
 
-                <span class="dato-icono">🏆</span>
+                <span>
+                  🏆
+                </span>
 
                 <strong>
                   Campeona nacional
@@ -1545,15 +2886,19 @@ html
 
               </article>
 
+
               <article class="dato">
 
-                <span class="dato-icono">🇦🇷</span>
+                <span>
+                  🇦🇷
+                </span>
 
                 <strong>
                   Creación argentina
                 </strong>
 
               </article>
+
 
             </div>
 
@@ -1566,16 +2911,16 @@ html
     </section>
 
 
-    <!-- =====================================================
-         BANNER PROMOCIONAL
-    ====================================================== -->
+    <!-- ===================================================
+         BANNER
+    ==================================================== -->
 
-    <section class="banner-promocional">
+    <section class="banner">
 
       <div class="contenedor">
 
         <div
-          class="banner-contenido revelar desde-abajo"
+          class="banner-contenido revelar abajo"
         >
 
           <div>
@@ -1588,12 +2933,13 @@ html
 
             <p>
 
-              Encontrá el punto de venta más cercano y descubrí
-              un sabor creado para compartir.
+              Encontrá el punto de venta más cercano
+              y descubrí un sabor creado para compartir.
 
             </p>
 
           </div>
+
 
           <a
             class="boton"
@@ -1611,9 +2957,9 @@ html
     </section>
 
 
-    <!-- =====================================================
+    <!-- ===================================================
          PUNTOS DE VENTA
-    ====================================================== -->
+    ==================================================== -->
 
     <section
       class="seccion puntos"
@@ -1622,10 +2968,12 @@ html
 
       <div class="contenedor">
 
-        <div class="encabezado-puntos">
+
+        <div class="puntos-encabezado">
+
 
           <div
-            class="revelar desde-izquierda"
+            class="revelar izquierda"
           >
 
             <span class="etiqueta">
@@ -1634,31 +2982,33 @@ html
 
             </span>
 
+
             <h2 class="titulo-seccion">
 
               Puntos de venta
 
             </h2>
 
-            <p class="descripcion-seccion">
 
-              Buscá tu localidad y descubrí dónde podés
-              encontrar Alfajor Paceño.
+            <p class="descripcion">
+
+              Buscá tu localidad y descubrí dónde
+              podés encontrar Alfajor Paceño.
 
             </p>
 
           </div>
 
+
           <form
-            class="buscador revelar desde-derecha"
+            class="buscador revelar derecha"
             id="formBuscador"
           >
 
             <input
               type="search"
-              id="buscadorPuntos"
-              placeholder="Escribí una ciudad o localidad..."
-              aria-label="Buscar punto de venta"
+              id="inputBuscador"
+              placeholder="Ciudad o localidad..."
             >
 
             <button type="submit">
@@ -1669,33 +3019,38 @@ html
 
           </form>
 
+
         </div>
 
-        <!--
-          ESTOS SON EJEMPLOS.
-          DESPUÉS SE REEMPLAZAN POR LOS PUNTOS
-          REALES QUE VENGAN DEL PANEL ADMINISTRADOR.
-        -->
 
         <div
-          class="tarjetas-puntos"
-          id="tarjetasPuntos"
+          class="puntos-grid"
+          id="puntosGrid"
         >
 
+
           <article
-            class="punto revelar desde-abajo"
+            class="punto revelar abajo"
             data-busqueda="buenos aires palermo"
           >
 
-            <div class="punto-icono">📍</div>
+            <div class="punto-icono">
+
+              📍
+
+            </div>
 
             <h3>
+
               Próximamente
+
             </h3>
 
             <p>
-              Acá se mostrará el nombre del comercio,
+
+              Acá aparecerá el nombre del comercio,
               dirección, localidad y horarios.
+
             </p>
 
             <a href="#contacto">
@@ -1706,20 +3061,29 @@ html
 
           </article>
 
+
           <article
-            class="punto revelar desde-abajo"
+            class="punto revelar abajo"
             data-busqueda="la plata buenos aires"
           >
 
-            <div class="punto-icono">🏪</div>
+            <div class="punto-icono">
+
+              🏪
+
+            </div>
 
             <h3>
+
               Próximamente
+
             </h3>
 
             <p>
-              Los puntos de venta podrán cargarse y
-              actualizarse desde el panel administrador.
+
+              Los puntos de venta podrán cargarse
+              y modificarse desde el panel.
+
             </p>
 
             <a href="#contacto">
@@ -1730,20 +3094,30 @@ html
 
           </article>
 
+
           <article
-            class="punto revelar desde-abajo"
+            class="punto revelar abajo"
             data-busqueda="argentina distribuidor"
           >
 
-            <div class="punto-icono">🗺️</div>
+            <div class="punto-icono">
+
+              🗺️
+
+            </div>
 
             <h3>
+
               ¿Querés vender?
+
             </h3>
 
             <p>
-              Si tenés un comercio y querés incorporar
-              Alfajor Paceño, ponete en contacto.
+
+              Si tenés un comercio y querés
+              incorporar Alfajor Paceño,
+              ponete en contacto.
+
             </p>
 
             <a href="#contacto">
@@ -1754,7 +3128,9 @@ html
 
           </article>
 
+
         </div>
+
 
         <p
           id="sinResultados"
@@ -1762,22 +3138,22 @@ html
             display:none;
             margin-top:30px;
             text-align:center;
-            color:#68493d;
           "
         >
 
-          No encontramos puntos de venta para esa búsqueda.
+          No encontramos puntos para esa búsqueda.
 
         </p>
+
 
       </div>
 
     </section>
 
 
-    <!-- =====================================================
+    <!-- ===================================================
          GALERÍA
-    ====================================================== -->
+    ==================================================== -->
 
     <section
       class="seccion galeria"
@@ -1786,10 +3162,12 @@ html
 
       <div class="contenedor">
 
+
         <div class="galeria-encabezado">
 
+
           <div
-            class="revelar desde-izquierda"
+            class="revelar izquierda"
           >
 
             <span class="etiqueta">
@@ -1798,23 +3176,26 @@ html
 
             </span>
 
+
             <h2 class="titulo-seccion">
 
               Galería Paceña
 
             </h2>
 
-            <p class="descripcion-seccion">
+
+            <p class="descripcion">
 
               Una selección de imágenes para conocer
-              el producto, sus detalles y su identidad.
+              el producto y su identidad.
 
             </p>
 
           </div>
 
+
           <a
-            class="boton revelar desde-derecha"
+            class="boton revelar derecha"
             href="#contacto"
           >
 
@@ -1822,17 +3203,19 @@ html
 
           </a>
 
+
         </div>
+
 
         <div
           class="galeria-grid"
           id="galeriaGrid"
         >
 
+
           <button
             class="galeria-item"
             data-imagen="0"
-            aria-label="Abrir imagen 1"
           >
 
             <img
@@ -1843,10 +3226,10 @@ html
 
           </button>
 
+
           <button
             class="galeria-item"
             data-imagen="1"
-            aria-label="Abrir imagen 2"
           >
 
             <img
@@ -1857,10 +3240,10 @@ html
 
           </button>
 
+
           <button
             class="galeria-item"
             data-imagen="2"
-            aria-label="Abrir imagen 3"
           >
 
             <img
@@ -1871,10 +3254,10 @@ html
 
           </button>
 
+
           <button
             class="galeria-item"
             data-imagen="3"
-            aria-label="Abrir imagen 4"
           >
 
             <img
@@ -1885,10 +3268,10 @@ html
 
           </button>
 
+
           <button
             class="galeria-item"
             data-imagen="4"
-            aria-label="Abrir imagen 5"
           >
 
             <img
@@ -1899,10 +3282,10 @@ html
 
           </button>
 
+
           <button
-            class="galeria-item"
+            class="galeria-item oculta"
             data-imagen="5"
-            aria-label="Abrir imagen 6"
           >
 
             <img
@@ -1913,10 +3296,10 @@ html
 
           </button>
 
+
           <button
             class="galeria-item oculta"
             data-imagen="6"
-            aria-label="Abrir imagen 7"
           >
 
             <img
@@ -1927,10 +3310,10 @@ html
 
           </button>
 
+
           <button
             class="galeria-item oculta"
             data-imagen="7"
-            aria-label="Abrir imagen 8"
           >
 
             <img
@@ -1941,10 +3324,10 @@ html
 
           </button>
 
+
           <button
             class="galeria-item oculta"
             data-imagen="8"
-            aria-label="Abrir imagen 9"
           >
 
             <img
@@ -1955,13 +3338,15 @@ html
 
           </button>
 
+
         </div>
+
 
         <div class="galeria-acciones">
 
           <button
             class="boton"
-            id="botonVerMas"
+            id="verMas"
           >
 
             Ver más imágenes
@@ -1970,14 +3355,15 @@ html
 
         </div>
 
+
       </div>
 
     </section>
 
 
-    <!-- =====================================================
+    <!-- ===================================================
          CONTACTO
-    ====================================================== -->
+    ==================================================== -->
 
     <section
       class="seccion contacto"
@@ -1988,8 +3374,9 @@ html
 
         <div class="contacto-grid">
 
+
           <div
-            class="revelar desde-izquierda"
+            class="revelar izquierda"
           >
 
             <span class="etiqueta">
@@ -1998,24 +3385,27 @@ html
 
             </span>
 
+
             <h2 class="titulo-seccion">
 
               Sumate a la historia del Alfajor Paceño.
 
             </h2>
 
-            <p class="descripcion-seccion">
 
-              Consultanos por puntos de venta, disponibilidad
-              o la posibilidad de incorporar nuestros productos
-              a tu comercio.
+            <p class="descripcion">
+
+              Consultanos por puntos de venta,
+              disponibilidad o la posibilidad de
+              incorporar nuestros productos a tu comercio.
 
             </p>
 
           </div>
 
+
           <div
-            class="contacto-tarjeta revelar desde-derecha"
+            class="contacto-card revelar derecha"
           >
 
             <h3>
@@ -2026,8 +3416,8 @@ html
 
             <p>
 
-              Próximamente este botón podrá abrir el
-              WhatsApp oficial de la marca.
+              Próximamente este botón se conectará
+              al WhatsApp oficial de la marca.
 
             </p>
 
@@ -2043,11 +3433,13 @@ html
 
           </div>
 
+
         </div>
 
       </div>
 
     </section>
+
 
   </main>
 
@@ -2060,7 +3452,9 @@ html
 
     <div class="contenedor">
 
+
       <div class="footer-superior">
+
 
         <img
           class="logo-footer"
@@ -2068,37 +3462,44 @@ html
           alt="Alfajor Paceño"
         >
 
+
         <div class="footer-redes">
+
 
           <a
             href="#"
-            aria-label="Instagram"
             onclick="return false;"
+            aria-label="Instagram"
           >
 
             ◎
 
           </a>
 
+
           <a
             href="#"
-            aria-label="WhatsApp"
             onclick="return false;"
+            aria-label="WhatsApp"
           >
 
             ☏
 
           </a>
 
+
         </div>
 
+
       </div>
+
 
       <div class="footer-inferior">
 
         <p>
 
-          © 2026 Alfajor Paceño. Todos los derechos reservados.
+          © 2026 Alfajor Paceño.
+          Todos los derechos reservados.
 
         </p>
 
@@ -2110,6 +3511,7 @@ html
 
       </div>
 
+
     </div>
 
   </footer>
@@ -2120,47 +3522,47 @@ html
   ====================================================== -->
 
   <div
-    class="modal-galeria"
-    id="modalGaleria"
-    aria-hidden="true"
+    class="modal"
+    id="modal"
   >
+
 
     <button
       class="modal-cerrar"
       id="modalCerrar"
-      aria-label="Cerrar galería"
     >
 
       ×
 
     </button>
 
+
     <button
       class="modal-anterior"
       id="modalAnterior"
-      aria-label="Imagen anterior"
     >
 
       ‹
 
     </button>
 
+
     <img
-      class="modal-imagen"
       id="modalImagen"
       src=""
-      alt="Imagen de Alfajor Paceño"
+      alt="Alfajor Paceño"
     >
+
 
     <button
       class="modal-siguiente"
       id="modalSiguiente"
-      aria-label="Imagen siguiente"
     >
 
       ›
 
     </button>
+
 
   </div>
 
@@ -2171,265 +3573,366 @@ html
 
   <script>
 
-    /* =====================================================
+
+    /* ===================================================
        HEADER Y MENÚ
-    ===================================================== */
+    ==================================================== */
 
-    const header = document.getElementById("header");
-
-    const menuBoton = document.getElementById("menuBoton");
-
-    const nav = document.getElementById("nav");
-
-
-    window.addEventListener("scroll", () => {
-
-      header.classList.toggle(
-        "activo",
-        window.scrollY > 40
+    const header =
+      document.getElementById(
+        "header"
       );
 
-    });
+    const menuBoton =
+      document.getElementById(
+        "menuBoton"
+      );
+
+    const nav =
+      document.getElementById(
+        "nav"
+      );
 
 
-    menuBoton.addEventListener("click", () => {
+    window.addEventListener(
+      "scroll",
+      () => {
 
-      nav.classList.toggle("abierta");
+        header.classList.toggle(
+          "activo",
+          window.scrollY > 30
+        );
 
-      document.body.classList.toggle("menu-abierto");
+      }
+    );
 
-      menuBoton.textContent =
-        nav.classList.contains("abierta")
+
+    menuBoton.addEventListener(
+      "click",
+      () => {
+
+        nav.classList.toggle(
+          "abierta"
+        );
+
+        document.body.classList.toggle(
+          "sin-scroll"
+        );
+
+        menuBoton.textContent =
+          nav.classList.contains(
+            "abierta"
+          )
           ? "×"
           : "☰";
 
-    });
+      }
+    );
 
 
     document
-      .querySelectorAll(".nav a")
-      .forEach((enlace) => {
+      .querySelectorAll(
+        ".nav a"
+      )
+      .forEach(
+        enlace => {
 
-        enlace.addEventListener("click", () => {
+          enlace.addEventListener(
+            "click",
+            () => {
 
-          nav.classList.remove("abierta");
+              nav.classList.remove(
+                "abierta"
+              );
 
-          document.body.classList.remove("menu-abierto");
+              document.body.classList.remove(
+                "sin-scroll"
+              );
 
-          menuBoton.textContent = "☰";
+              menuBoton.textContent =
+                "☰";
 
-        });
-
-      });
-
-
-    /* =====================================================
-       CARRUSEL DEL HERO
-    ===================================================== */
-
-    const heroSlides =
-      [...document.querySelectorAll(".hero-slide")];
-
-    const heroIndicadores =
-      document.getElementById("heroIndicadores");
-
-    const heroAnterior =
-      document.getElementById("heroAnterior");
-
-    const heroSiguiente =
-      document.getElementById("heroSiguiente");
-
-    let indiceHero = 0;
-
-    let intervaloHero;
-
-    let inicioTouch = 0;
-
-
-    heroSlides.forEach((slide, indice) => {
-
-      const indicador =
-        document.createElement("button");
-
-      indicador.className =
-        indice === 0
-          ? "indicador activo"
-          : "indicador";
-
-      indicador.setAttribute(
-        "aria-label",
-        `Ir a la imagen ${indice + 1}`
-      );
-
-      indicador.addEventListener(
-        "click",
-        () => {
-
-          mostrarHero(indice);
-
-          reiniciarHero();
+            }
+          );
 
         }
       );
 
-      heroIndicadores.appendChild(
-        indicador
+
+    /* ===================================================
+       CARRUSEL HERO
+    ==================================================== */
+
+    const slides =
+      [
+        ...document.querySelectorAll(
+          ".hero-slide"
+        )
+      ];
+
+    const indicadores =
+      document.getElementById(
+        "heroIndicadores"
       );
 
-    });
+    const anterior =
+      document.getElementById(
+        "heroAnterior"
+      );
+
+    const siguiente =
+      document.getElementById(
+        "heroSiguiente"
+      );
+
+    let indice = 0;
+
+    let intervalo;
+
+    let inicioX = 0;
 
 
-    function mostrarHero(nuevoIndice) {
+    slides.forEach(
+      (
+        slide,
+        posicion
+      ) => {
 
-      heroSlides[indiceHero]
-        .classList.remove("activo");
+        const punto =
+          document.createElement(
+            "button"
+          );
 
-      const indicadores =
-        document.querySelectorAll(".indicador");
+        punto.className =
+          posicion === 0
+          ? "indicador activo"
+          : "indicador";
 
-      indicadores[indiceHero]
-        .classList.remove("activo");
+        punto.addEventListener(
+          "click",
+          () => {
+
+            mostrarSlide(
+              posicion
+            );
+
+            reiniciar();
+
+          }
+        );
+
+        indicadores.appendChild(
+          punto
+        );
+
+      }
+    );
 
 
-      indiceHero =
+    function mostrarSlide(
+      nuevoIndice
+    ) {
+
+      slides[
+        indice
+      ]
+      .classList
+      .remove(
+        "activo"
+      );
+
+
+      document
+        .querySelectorAll(
+          ".indicador"
+        )
+        [
+          indice
+        ]
+        .classList
+        .remove(
+          "activo"
+        );
+
+
+      indice =
         (
           nuevoIndice
-          + heroSlides.length
+          +
+          slides.length
         )
-        % heroSlides.length;
+        %
+        slides.length;
 
 
-      heroSlides[indiceHero]
-        .classList.add("activo");
-
-      indicadores[indiceHero]
-        .classList.add("activo");
-
-    }
-
-
-    function siguienteHero() {
-
-      mostrarHero(
-        indiceHero + 1
+      slides[
+        indice
+      ]
+      .classList
+      .add(
+        "activo"
       );
 
-    }
 
-
-    function anteriorHero() {
-
-      mostrarHero(
-        indiceHero - 1
-      );
-
-    }
-
-
-    function iniciarHero() {
-
-      intervaloHero =
-        setInterval(
-          siguienteHero,
-          4000
+      document
+        .querySelectorAll(
+          ".indicador"
+        )
+        [
+          indice
+        ]
+        .classList
+        .add(
+          "activo"
         );
 
     }
 
 
-    function reiniciarHero() {
+    function siguienteSlide() {
 
-      clearInterval(
-        intervaloHero
+      mostrarSlide(
+        indice + 1
       );
-
-      iniciarHero();
 
     }
 
 
-    heroSiguiente.addEventListener(
+    function anteriorSlide() {
+
+      mostrarSlide(
+        indice - 1
+      );
+
+    }
+
+
+    function iniciar() {
+
+      intervalo =
+        setInterval(
+          siguienteSlide,
+          3800
+        );
+
+    }
+
+
+    function reiniciar() {
+
+      clearInterval(
+        intervalo
+      );
+
+      iniciar();
+
+    }
+
+
+    siguiente.addEventListener(
       "click",
       () => {
 
-        siguienteHero();
+        siguienteSlide();
 
-        reiniciarHero();
+        reiniciar();
 
       }
     );
 
 
-    heroAnterior.addEventListener(
+    anterior.addEventListener(
       "click",
       () => {
 
-        anteriorHero();
+        anteriorSlide();
 
-        reiniciarHero();
+        reiniciar();
 
       }
     );
 
 
-    document
-      .querySelector(".hero")
-      .addEventListener(
-        "touchstart",
-        (evento) => {
-
-          inicioTouch =
-            evento.touches[0].clientX;
-
-        },
-        { passive: true }
+    const carrusel =
+      document.querySelector(
+        ".hero-carrusel"
       );
 
 
-    document
-      .querySelector(".hero")
-      .addEventListener(
-        "touchend",
-        (evento) => {
+    carrusel.addEventListener(
+      "touchstart",
+      evento => {
 
-          const finalTouch =
-            evento.changedTouches[0].clientX;
+        inicioX =
+          evento
+          .touches[0]
+          .clientX;
 
-          const diferencia =
-            inicioTouch - finalTouch;
+      },
+      {
+        passive:
+          true
+      }
+    );
 
+
+    carrusel.addEventListener(
+      "touchend",
+      evento => {
+
+        const finalX =
+          evento
+          .changedTouches[0]
+          .clientX;
+
+        const diferencia =
+          inicioX
+          -
+          finalX;
+
+
+        if (
+          Math.abs(
+            diferencia
+          )
+          >
+          45
+        ) {
 
           if (
-            Math.abs(diferencia) > 50
+            diferencia
+            >
+            0
           ) {
 
-            if (diferencia > 0) {
+            siguienteSlide();
 
-              siguienteHero();
+          } else {
 
-            } else {
-
-              anteriorHero();
-
-            }
-
-            reiniciarHero();
+            anteriorSlide();
 
           }
 
-        },
-        { passive: true }
-      );
+          reiniciar();
+
+        }
+
+      },
+      {
+        passive:
+          true
+      }
+    );
 
 
-    iniciarHero();
+    iniciar();
 
 
-    /* =====================================================
+    /* ===================================================
        ANIMACIONES AL HACER SCROLL
-    ===================================================== */
+    ==================================================== */
 
-    const elementosRevelar =
+    const elementos =
       document.querySelectorAll(
         ".revelar"
       );
@@ -2438,20 +3941,25 @@ html
     const observador =
       new IntersectionObserver(
 
-        (entradas) => {
+        entradas => {
 
           entradas.forEach(
-            (entrada) => {
+            entrada => {
 
               if (
-                entrada.isIntersecting
+                entrada
+                .isIntersecting
               ) {
 
-                entrada.target
-                  .classList
-                  .add("visible");
+                entrada
+                .target
+                .classList
+                .add(
+                  "visible"
+                );
 
-                observador.unobserve(
+                observador
+                .unobserve(
                   entrada.target
                 );
 
@@ -2463,14 +3971,15 @@ html
         },
 
         {
-          threshold: 0.15
+          threshold:
+            0.15
         }
 
       );
 
 
-    elementosRevelar.forEach(
-      (elemento) => {
+    elementos.forEach(
+      elemento => {
 
         observador.observe(
           elemento
@@ -2480,18 +3989,18 @@ html
     );
 
 
-    /* =====================================================
-       BUSCADOR DE PUNTOS
-    ===================================================== */
+    /* ===================================================
+       BUSCADOR
+    ==================================================== */
 
-    const formBuscador =
+    const formulario =
       document.getElementById(
         "formBuscador"
       );
 
-    const inputBuscador =
+    const input =
       document.getElementById(
-        "buscadorPuntos"
+        "inputBuscador"
       );
 
     const puntos =
@@ -2505,63 +4014,73 @@ html
       );
 
 
-    formBuscador.addEventListener(
+    formulario.addEventListener(
       "submit",
-      (evento) => {
+      evento => {
 
         evento.preventDefault();
 
+
         const texto =
-          inputBuscador
-            .value
-            .toLowerCase()
-            .trim();
-
-        let cantidadVisible = 0;
+          input
+          .value
+          .toLowerCase()
+          .trim();
 
 
-        puntos.forEach((punto) => {
+        let visibles = 0;
 
-          const contenido =
-            punto
+
+        puntos.forEach(
+          punto => {
+
+            const datos =
+              punto
               .dataset
               .busqueda
               .toLowerCase();
 
-          const mostrar =
-            texto === ""
-            || contenido.includes(texto);
+
+            const mostrar =
+              texto === ""
+              ||
+              datos.includes(
+                texto
+              );
 
 
-          punto.style.display =
-            mostrar
+            punto.style.display =
+              mostrar
               ? ""
               : "none";
 
 
-          if (mostrar) {
+            if (
+              mostrar
+            ) {
 
-            cantidadVisible++;
+              visibles++;
+
+            }
 
           }
-
-        });
+        );
 
 
         sinResultados.style.display =
-          cantidadVisible === 0
-            ? "block"
-            : "none";
+          visibles === 0
+          ? "block"
+          : "none";
 
       }
     );
 
 
-    /* =====================================================
-       GALERÍA
-    ===================================================== */
+    /* ===================================================
+       GALERÍA Y MODAL
+    ==================================================== */
 
-    const imagenesGaleria = [
+    const imagenes = [
 
       "https://iili.io/C8TGzcN.jpg",
 
@@ -2584,19 +4103,19 @@ html
     ];
 
 
-    const botonesGaleria =
+    const itemsGaleria =
       document.querySelectorAll(
         ".galeria-item"
       );
 
     const botonVerMas =
       document.getElementById(
-        "botonVerMas"
+        "verMas"
       );
 
-    const modalGaleria =
+    const modal =
       document.getElementById(
-        "modalGaleria"
+        "modal"
       );
 
     const modalImagen =
@@ -2604,7 +4123,7 @@ html
         "modalImagen"
       );
 
-    const modalCerrar =
+    const cerrar =
       document.getElementById(
         "modalCerrar"
       );
@@ -2619,21 +4138,23 @@ html
         "modalSiguiente"
       );
 
-    let indiceModal = 0;
+    let imagenActual = 0;
 
-    let galeriaExpandida = false;
+    let expandida = false;
 
 
-    botonesGaleria.forEach(
-      (boton) => {
+    itemsGaleria.forEach(
+      item => {
 
-        boton.addEventListener(
+        item.addEventListener(
           "click",
           () => {
 
-            indiceModal =
+            imagenActual =
               Number(
-                boton.dataset.imagen
+                item
+                .dataset
+                .imagen
               );
 
             abrirModal();
@@ -2649,28 +4170,30 @@ html
       "click",
       () => {
 
-        galeriaExpandida =
-          !galeriaExpandida;
+        expandida =
+          !expandida;
 
 
         document
           .querySelectorAll(
             ".galeria-item.oculta"
           )
-          .forEach((item) => {
+          .forEach(
+            item => {
 
-            item.style.display =
-              galeriaExpandida
+              item.style.display =
+                expandida
                 ? "block"
                 : "none";
 
-          });
+            }
+          );
 
 
         botonVerMas.textContent =
-          galeriaExpandida
-            ? "Ver menos"
-            : "Ver más imágenes";
+          expandida
+          ? "Ver menos"
+          : "Ver más imágenes";
 
       }
     );
@@ -2679,51 +4202,42 @@ html
     function abrirModal() {
 
       modalImagen.src =
-        imagenesGaleria[
-          indiceModal
+        imagenes[
+          imagenActual
         ];
 
-      modalGaleria
-        .classList
-        .add("abierto");
 
-      modalGaleria
-        .setAttribute(
-          "aria-hidden",
-          "false"
-        );
+      modal.classList.add(
+        "abierto"
+      );
 
-      document.body
-        .classList
-        .add("menu-abierto");
+
+      document.body.classList.add(
+        "sin-scroll"
+      );
 
     }
 
 
     function cerrarModal() {
 
-      modalGaleria
-        .classList
-        .remove("abierto");
+      modal.classList.remove(
+        "abierto"
+      );
 
-      modalGaleria
-        .setAttribute(
-          "aria-hidden",
-          "true"
-        );
 
-      document.body
-        .classList
-        .remove("menu-abierto");
+      document.body.classList.remove(
+        "sin-scroll"
+      );
 
     }
 
 
-    function actualizarModal() {
+    function actualizarImagen() {
 
       modalImagen.src =
-        imagenesGaleria[
-          indiceModal
+        imagenes[
+          imagenActual
         ];
 
     }
@@ -2733,13 +4247,17 @@ html
       "click",
       () => {
 
-        indiceModal =
+        imagenActual =
           (
-            indiceModal + 1
+            imagenActual
+            +
+            1
           )
-          % imagenesGaleria.length;
+          %
+          imagenes.length;
 
-        actualizarModal();
+
+        actualizarImagen();
 
       }
     );
@@ -2749,33 +4267,38 @@ html
       "click",
       () => {
 
-        indiceModal =
+        imagenActual =
           (
-            indiceModal
-            - 1
-            + imagenesGaleria.length
+            imagenActual
+            -
+            1
+            +
+            imagenes.length
           )
-          % imagenesGaleria.length;
+          %
+          imagenes.length;
 
-        actualizarModal();
+
+        actualizarImagen();
 
       }
     );
 
 
-    modalCerrar.addEventListener(
+    cerrar.addEventListener(
       "click",
       cerrarModal
     );
 
 
-    modalGaleria.addEventListener(
+    modal.addEventListener(
       "click",
-      (evento) => {
+      evento => {
 
         if (
           evento.target
-          === modalGaleria
+          ===
+          modal
         ) {
 
           cerrarModal();
@@ -2788,12 +4311,14 @@ html
 
     document.addEventListener(
       "keydown",
-      (evento) => {
+      evento => {
 
         if (
-          !modalGaleria
-            .classList
-            .contains("abierto")
+          !modal
+          .classList
+          .contains(
+            "abierto"
+          )
         ) {
 
           return;
@@ -2802,7 +4327,9 @@ html
 
 
         if (
-          evento.key === "Escape"
+          evento.key
+          ===
+          "Escape"
         ) {
 
           cerrarModal();
@@ -2811,7 +4338,9 @@ html
 
 
         if (
-          evento.key === "ArrowRight"
+          evento.key
+          ===
+          "ArrowRight"
         ) {
 
           modalSiguiente.click();
@@ -2820,7 +4349,9 @@ html
 
 
         if (
-          evento.key === "ArrowLeft"
+          evento.key
+          ===
+          "ArrowLeft"
         ) {
 
           modalAnterior.click();
@@ -2830,7 +4361,9 @@ html
       }
     );
 
+
   </script>
 
 </body>
 </html>
+```
