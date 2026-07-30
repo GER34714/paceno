@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -13,26 +14,18 @@
 
   <style>
     /* =====================================================
-       VARIABLES Y CONFIGURACIÓN GENERAL (PALETA PASTEL)
+       VARIABLES Y CONFIGURACIÓN GENERAL
     ===================================================== */
 
     :root {
-      --chocolate: #5c3d2e; /* Marrón más suave */
-      --chocolate-claro: #7a5543;
-      --caramelo: #d9a85b;
-      --dorado: #f7d794;
-      --crema: #fdf6f0; /* Base crema muy suave */
+      --chocolate: #32170f;
+      --chocolate-claro: #5c2d1e;
+      --caramelo: #b87538;
+      --dorado: #d9a85b;
+      --crema: #f7eddf;
       --blanco: #ffffff;
-      --texto: #4a3b35;
-
-      --lila: #d5c6e0;
-      --lila-oscuro: #b8a4c9;
-      --rosa-bebe: #fce4ec;
-      --violeta: #e1bee7;
-      --amarillo-suave: #fff9c4;
-      --celeste: #bbdefb;
-
-      --sombra: 0 20px 60px rgba(90, 60, 50, 0.12);
+      --texto: #3b241b;
+      --sombra: 0 20px 60px rgba(48, 23, 15, 0.18);
       --transicion: 0.4s ease;
     }
 
@@ -47,7 +40,7 @@
     }
 
     body {
-      font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+      font-family: Arial, Helvetica, sans-serif;
       background: var(--crema);
       color: var(--texto);
       overflow-x: hidden;
@@ -87,7 +80,7 @@
       gap: 8px;
       padding: 10px 16px;
       border-radius: 100px;
-      background: rgba(213, 198, 224, 0.35);
+      background: rgba(184, 117, 56, 0.12);
       color: var(--chocolate-claro);
       font-size: 0.8rem;
       font-weight: 800;
@@ -119,7 +112,7 @@
       padding: 14px 25px;
       border: 2px solid transparent;
       border-radius: 100px;
-      background: var(--lila-oscuro);
+      background: var(--chocolate);
       color: var(--blanco);
       font-weight: 800;
       cursor: pointer;
@@ -131,7 +124,7 @@
     .boton:hover {
       transform: translateY(-4px);
       background: var(--chocolate-claro);
-      box-shadow: 0 15px 35px rgba(90, 60, 50, 0.2);
+      box-shadow: 0 15px 35px rgba(50, 23, 15, 0.25);
     }
 
     .boton-claro {
@@ -163,9 +156,9 @@
 
     .header.activo {
       padding: 8px 0;
-      background: rgba(255, 255, 255, 0.92);
+      background: rgba(247, 237, 223, 0.96);
       backdrop-filter: blur(16px);
-      box-shadow: 0 8px 30px rgba(90, 60, 50, 0.08);
+      box-shadow: 0 8px 30px rgba(45, 20, 12, 0.1);
     }
 
     .header-contenido {
@@ -237,7 +230,7 @@
     }
 
     /* =====================================================
-       HERO Y CARRUSEL (Imágenes más pequeñas)
+       HERO Y CARRUSEL
     ===================================================== */
 
     .hero {
@@ -259,9 +252,6 @@
       opacity: 0;
       visibility: hidden;
       transition: opacity 1s ease, visibility 1s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
     }
 
     .hero-slide.activo {
@@ -269,16 +259,12 @@
       visibility: visible;
     }
 
-    /* Imagen del hero más pequeña y centrada */
     .hero-slide img {
-      width: 85%;
-      height: 85%;
-      max-width: 1100px;
-      object-fit: contain;
-      border-radius: 30px;
-      box-shadow: 0 25px 80px rgba(0, 0, 0, 0.5);
-      transform: scale(0.92);
-      transition: transform 1.5s ease;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.08);
+      transition: transform 7s ease;
     }
 
     .hero-slide.activo img {
@@ -291,13 +277,13 @@
       background:
         linear-gradient(
           90deg,
-          rgba(60, 40, 30, 0.75) 0%,
-          rgba(60, 40, 30, 0.30) 45%,
-          rgba(60, 40, 30, 0.10) 100%
+          rgba(25, 10, 5, 0.82) 0%,
+          rgba(25, 10, 5, 0.48) 45%,
+          rgba(25, 10, 5, 0.16) 100%
         ),
         linear-gradient(
           0deg,
-          rgba(40, 25, 18, 0.60) 0%,
+          rgba(20, 8, 4, 0.62) 0%,
           transparent 45%
         );
     }
@@ -431,7 +417,7 @@
       border-radius: 50%;
       background: rgba(255, 255, 255, 0.45);
       cursor: pointer;
-      transition: width var(--transicio,
+      transition: width var(--transicion),
                   background var(--transicion);
     }
 
@@ -465,7 +451,7 @@
     }
 
     /* =====================================================
-       PRESENTACIÓN (con colores pastel)
+       PRESENTACIÓN
     ===================================================== */
 
     .presentacion {
@@ -473,9 +459,10 @@
       background:
         radial-gradient(
           circle at 90% 10%,
-          var(--lila) 0%,
-          var(--crema) 60%
-        );
+          rgba(217, 168, 91, 0.16),
+          transparent 30%
+        ),
+        var(--crema);
     }
 
     .presentacion-grid {
@@ -540,9 +527,9 @@
 
     .dato {
       padding: 22px 16px;
-      border: 1px solid rgba(213, 198, 224, 0.4);
+      border: 1px solid rgba(92, 45, 30, 0.13);
       border-radius: 20px;
-      background: rgba(255, 255, 255, 0.6);
+      background: rgba(255, 255, 255, 0.52);
       text-align: center;
     }
 
@@ -559,26 +546,26 @@
     }
 
     /* =====================================================
-       BANNER (Pastel)
+       BANNER
     ===================================================== */
 
     .banner-promocional {
       position: relative;
       padding: 45px 0;
       overflow: hidden;
-      background: var(--violeta);
-      color: var(--chocolate);
+      background: var(--chocolate);
+      color: var(--blanco);
     }
 
     .banner-promocional::before {
       content: "";
       position: absolute;
       inset: 0;
-      opacity: 0.2;
+      opacity: 0.15;
       background-image:
         radial-gradient(
           circle,
-          var(--lila-oscuro) 2px,
+          var(--dorado) 2px,
           transparent 2px
         );
       background-size: 28px 28px;
@@ -602,22 +589,18 @@
 
     .banner-contenido p {
       margin-top: 12px;
-      color: rgba(60, 40, 30, 0.75);
+      color: rgba(255, 255, 255, 0.75);
       line-height: 1.6;
     }
 
     .banner-contenido .boton {
       flex-shrink: 0;
-      background: var(--chocolate);
-      color: var(--blanco);
-    }
-
-    .banner-contenido .boton:hover {
-      background: var(--chocolate-claro);
+      background: var(--dorado);
+      color: var(--chocolate);
     }
 
     /* =====================================================
-       PUNTOS DE VENTA (Pastel)
+       PUNTOS DE VENTA
     ===================================================== */
 
     .puntos {
@@ -637,7 +620,7 @@
       gap: 10px;
       width: min(470px, 100%);
       padding: 8px;
-      border: 1px solid rgba(213, 198, 224, 0.5);
+      border: 1px solid rgba(50, 23, 15, 0.12);
       border-radius: 100px;
       background: var(--crema);
     }
@@ -656,15 +639,10 @@
       min-width: 115px;
       border: 0;
       border-radius: 100px;
-      background: var(--lila-oscuro);
+      background: var(--chocolate);
       color: var(--blanco);
       font-weight: 800;
       cursor: pointer;
-      transition: background var(--transicion);
-    }
-
-    .buscador button:hover {
-      background: var(--chocolate-claro);
     }
 
     .tarjetas-puntos {
@@ -675,7 +653,7 @@
 
     .punto {
       padding: 30px;
-      border: 1px solid rgba(213, 198, 224, 0.3);
+      border: 1px solid rgba(50, 23, 15, 0.1);
       border-radius: 26px;
       background: var(--crema);
       transition: transform var(--transicion),
@@ -692,8 +670,8 @@
       height: 58px;
       margin-bottom: 22px;
       border-radius: 18px;
-      background: var(--lila-oscuro);
-      color: var(--blanco);
+      background: var(--chocolate);
+      color: var(--dorado);
       display: grid;
       place-items: center;
       font-size: 1.6rem;
@@ -719,16 +697,15 @@
     }
 
     /* =====================================================
-       GALERÍA (Pastel)
+       GALERÍA
     ===================================================== */
 
     .galeria {
       background:
         linear-gradient(
           180deg,
-          var(--rosa-bebe) 0%,
-          var(--crema) 80%,
-          var(--celeste) 100%
+          var(--crema) 0%,
+          #f1dfca 100%
         );
     }
 
@@ -750,11 +727,11 @@
     .galeria-item {
       position: relative;
       overflow: hidden;
-      border: 3px solid rgba(255, 255, 255, 0.6);
+      border: 0;
       border-radius: 24px;
-      background: var(--lila);
+      background: var(--chocolate);
       cursor: pointer;
-      box-shadow: 0 12px 35px rgba(90, 60, 50, 0.08);
+      box-shadow: 0 12px 35px rgba(50, 23, 15, 0.12);
     }
 
     .galeria-item:nth-child(1) {
@@ -773,46 +750,25 @@
       transition: transform 0.65s ease;
     }
 
-    .galeria-item .overlay {
+    .galeria-item::after {
+      content: "Ver imagen";
       position: absolute;
       inset: 0;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 25px;
-      background: linear-gradient(to top, rgba(60,40,30,0.75) 0%, transparent 60%);
+      display: grid;
+      place-items: center;
+      background: rgba(50, 23, 15, 0.58);
       color: var(--blanco);
+      font-weight: 900;
       opacity: 0;
       transition: opacity var(--transicion);
-    }
-
-    .galeria-item .overlay h3 {
-      font-family: Georgia, serif;
-      font-size: 1.4rem;
-      margin-bottom: 6px;
-      transform: translateY(10px);
-      transition: transform var(--transicion);
-    }
-
-    .galeria-item .overlay p {
-      font-size: 0.9rem;
-      opacity: 0.85;
-      max-width: 90%;
-      transform: translateY(10px);
-      transition: transform var(--transicion);
     }
 
     .galeria-item:hover img {
       transform: scale(1.1);
     }
 
-    .galeria-item:hover .overlay {
+    .galeria-item:hover::after {
       opacity: 1;
-    }
-
-    .galeria-item:hover .overlay h3,
-    .galeria-item:hover .overlay p {
-      transform: translateY(0);
     }
 
     .galeria-item.oculta {
@@ -837,48 +793,19 @@
       align-items: center;
       justify-content: center;
       padding: 30px;
-      background: rgba(60, 40, 30, 0.92);
+      background: rgba(12, 5, 3, 0.92);
     }
 
     .modal-galeria.abierto {
       display: flex;
     }
 
-    .modal-contenido {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+    .modal-imagen {
       max-width: min(1000px, 92vw);
       max-height: 84vh;
-    }
-
-    .modal-imagen {
-      width: 100%;
-      max-height: 70vh;
       border-radius: 18px;
       object-fit: contain;
       box-shadow: 0 25px 80px rgba(0, 0, 0, 0.6);
-    }
-
-    .modal-info {
-      width: 100%;
-      padding: 20px 10px 0;
-      color: var(--blanco);
-      text-align: center;
-    }
-
-    .modal-info h3 {
-      font-family: Georgia, serif;
-      font-size: 1.8rem;
-      margin-bottom: 8px;
-    }
-
-    .modal-info p {
-      font-size: 1rem;
-      opacity: 0.85;
-      max-width: 700px;
-      margin: 0 auto;
-      line-height: 1.6;
     }
 
     .modal-cerrar,
@@ -918,12 +845,12 @@
     }
 
     /* =====================================================
-       CONTACTO Y FOOTER (Pastel)
+       CONTACTO Y FOOTER
     ===================================================== */
 
     .contacto {
-      background: var(--amarillo-suave);
-      color: var(--chocolate);
+      background: var(--chocolate);
+      color: var(--blanco);
     }
 
     .contacto-grid {
@@ -934,18 +861,18 @@
     }
 
     .contacto .titulo-seccion {
-      color: var(--chocolate);
+      color: var(--blanco);
     }
 
     .contacto .descripcion-seccion {
-      color: rgba(60, 40, 30, 0.75);
+      color: rgba(255, 255, 255, 0.75);
     }
 
     .contacto-tarjeta {
       padding: 40px;
-      border: 1px solid rgba(213, 198, 224, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.12);
       border-radius: 30px;
-      background: rgba(255, 255, 255, 0.5);
+      background: rgba(255, 255, 255, 0.07);
     }
 
     .contacto-tarjeta h3 {
@@ -956,24 +883,20 @@
 
     .contacto-tarjeta p {
       margin-bottom: 25px;
-      color: rgba(60, 40, 30, 0.7);
+      color: rgba(255, 255, 255, 0.7);
       line-height: 1.7;
     }
 
     .contacto-tarjeta .boton {
       width: 100%;
-      background: var(--lila-oscuro);
-      color: var(--blanco);
-    }
-
-    .contacto-tarjeta .boton:hover {
-      background: var(--chocolate-claro);
+      background: var(--dorado);
+      color: var(--chocolate);
     }
 
     .footer {
       padding: 55px 0 25px;
-      background: var(--violeta);
-      color: var(--chocolate);
+      background: #1e0d08;
+      color: rgba(255, 255, 255, 0.7);
     }
 
     .footer-superior {
@@ -982,7 +905,7 @@
       justify-content: space-between;
       gap: 35px;
       padding-bottom: 35px;
-      border-bottom: 1px solid rgba(90, 60, 50, 0.15);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     .logo-footer {
@@ -999,11 +922,10 @@
       width: 45px;
       height: 45px;
       border-radius: 50%;
-      background: rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.08);
       display: grid;
       place-items: center;
       transition: background var(--transicion);
-      color: var(--chocolate);
     }
 
     .footer-redes a:hover {
@@ -1147,12 +1069,12 @@
         background:
           linear-gradient(
             90deg,
-            rgba(60, 40, 30, 0.78),
-            rgba(60, 40, 30, 0.42)
+            rgba(25, 10, 5, 0.78),
+            rgba(25, 10, 5, 0.42)
           ),
           linear-gradient(
             0deg,
-            rgba(40, 25, 18, 0.72),
+            rgba(20, 8, 4, 0.72),
             transparent 55%
           );
       }
@@ -1293,14 +1215,6 @@
 
       .modal-siguiente {
         right: 25%;
-      }
-
-      .modal-info h3 {
-        font-size: 1.4rem;
-      }
-
-      .modal-info p {
-        font-size: 0.85rem;
       }
 
       .footer-superior,
@@ -1862,7 +1776,7 @@
 
 
     <!-- =====================================================
-         GALERÍA (Título actualizado a "Galería de Delicias")
+         GALERÍA
     ====================================================== -->
 
     <section
@@ -1886,7 +1800,7 @@
 
             <h2 class="titulo-seccion">
 
-              Galería de Delicias
+              Galería Paceña
 
             </h2>
 
@@ -1915,21 +1829,18 @@
           id="galeriaGrid"
         >
 
-          <!-- Cada item ahora tiene un overlay con nombre y descripción -->
           <button
             class="galeria-item"
             data-imagen="0"
             aria-label="Abrir imagen 1"
           >
+
             <img
               src="https://iili.io/C8TGzcN.jpg"
               alt="Alfajor Paceño"
               loading="lazy"
             >
-            <div class="overlay">
-              <h3>Chocolate Negro</h3>
-              <p>Alfa-chocolatoso clásico, con masa y relleno tradicionales bañados en un intenso cobertura de chocolate negro.</p>
-            </div>
+
           </button>
 
           <button
@@ -1937,15 +1848,13 @@
             data-imagen="1"
             aria-label="Abrir imagen 2"
           >
+
             <img
               src="https://iili.io/C8TGxFp.jpg"
               alt="Alfajor Paceño"
               loading="lazy"
             >
-            <div class="overlay">
-              <h3>Choco Blanco y Nuez</h3>
-              <p>Combinación suave de baño de chocolate blanco complementado con pedazos o sabor a nuez en su masa o relleno.</p>
-            </div>
+
           </button>
 
           <button
@@ -1953,15 +1862,13 @@
             data-imagen="2"
             aria-label="Abrir imagen 3"
           >
+
             <img
               src="https://iili.io/C8TGnPR.jpg"
               alt="Alfajor Paceño"
               loading="lazy"
             >
-            <div class="overlay">
-              <h3>Maicena</h3>
-              <p>Típico alfajor suave de fécula de maíz con relleno de dulce de leche y bordes rebozados en coco rallado (presentado en envoltorio plateado).</p>
-            </div>
+
           </button>
 
           <button
@@ -1969,15 +1876,13 @@
             data-imagen="3"
             aria-label="Abrir imagen 4"
           >
+
             <img
               src="https://iili.io/C8TGCMv.jpg"
               alt="Alfajor Paceño"
               loading="lazy"
             >
-            <div class="overlay">
-              <h3>Membrillo</h3>
-              <p>Alternativa frutal rellena con dulce de membrillo agridulce, envuelta en un distintivo empaque rojo.</p>
-            </div>
+
           </button>
 
           <button
@@ -1985,15 +1890,13 @@
             data-imagen="4"
             aria-label="Abrir imagen 5"
           >
+
             <img
               src="https://iili.io/C8TGISI.jpg"
               alt="Alfajor Paceño"
               loading="lazy"
             >
-            <div class="overlay">
-              <h3>Triple de Maní y DDL</h3>
-              <p>Formato triple capa que combina la cremosidad del dulce de leche clásico con el sabor crujiente o pasta de maní.</p>
-            </div>
+
           </button>
 
           <button
@@ -2001,15 +1904,13 @@
             data-imagen="5"
             aria-label="Abrir imagen 6"
           >
+
             <img
               src="https://iili.io/C8TGu9t.jpg"
               alt="Alfajor Paceño"
               loading="lazy"
             >
-            <div class="overlay">
-              <h3>Chocolate Intenso y Frutos Rojos</h3>
-              <p>Perfil de sabor gourmet que contrasta el amargor del chocolate oscuro con notas ácidas y dulces de frutos del bosque.</p>
-            </div>
+
           </button>
 
           <button
@@ -2017,15 +1918,13 @@
             data-imagen="6"
             aria-label="Abrir imagen 7"
           >
+
             <img
               src="https://iili.io/C8TGAAX.jpg"
               alt="Alfajor Paceño"
               loading="lazy"
             >
-            <div class="overlay">
-              <h3>Fernet</h3>
-              <p>Variedad especial inspirada en la popular bebida aperitiva, con notas herbales y alcohólicas combinadas con chocolate.</p>
-            </div>
+
           </button>
 
           <button
@@ -2033,15 +1932,13 @@
             data-imagen="7"
             aria-label="Abrir imagen 8"
           >
+
             <img
               src="https://iili.io/C8TGRNn.jpg"
               alt="Alfajor Paceño"
               loading="lazy"
             >
-            <div class="overlay">
-              <h3>Maní</h3>
-              <p>Opción enfocada puramente en el sabor y textura del maní, ideal para amantes de los frutos secos.</p>
-            </div>
+
           </button>
 
           <button
@@ -2049,15 +1946,13 @@
             data-imagen="8"
             aria-label="Abrir imagen 9"
           >
+
             <img
               src="https://iili.io/C8TGYoG.jpg"
               alt="Alfajor Paceño"
               loading="lazy"
             >
-            <div class="overlay">
-              <h3>Matcha</h3>
-              <p>Propuesta de repostería moderna infusionada con té verde matcha, ofreciendo un sabor herbal y ligeramente amargo único.</p>
-            </div>
+
           </button>
 
         </div>
@@ -2250,18 +2145,12 @@
 
     </button>
 
-    <div class="modal-contenido">
-      <img
-        class="modal-imagen"
-        id="modalImagen"
-        src=""
-        alt="Imagen de Alfajor Paceño"
-      >
-      <div class="modal-info" id="modalInfo">
-        <h3 id="modalTitulo"></h3>
-        <p id="modalDescripcion"></p>
-      </div>
-    </div>
+    <img
+      class="modal-imagen"
+      id="modalImagen"
+      src=""
+      alt="Imagen de Alfajor Paceño"
+    >
 
     <button
       class="modal-siguiente"
@@ -2672,53 +2561,26 @@
        GALERÍA
     ===================================================== */
 
-    // Datos de las imágenes con nombre y descripción
-    const datosGaleria = [
-      {
-        nombre: "Chocolate Negro",
-        descripcion: "Alfa-chocolatoso clásico, con masa y relleno tradicionales bañados en un intenso cobertura de chocolate negro.",
-        imagen: "https://iili.io/C8TGzcN.jpg"
-      },
-      {
-        nombre: "Choco Blanco y Nuez",
-        descripcion: "Combinación suave de baño de chocolate blanco complementado con pedazos o sabor a nuez en su masa o relleno.",
-        imagen: "https://iili.io/C8TGxFp.jpg"
-      },
-      {
-        nombre: "Maicena",
-        descripcion: "Típico alfajor suave de fécula de maíz con relleno de dulce de leche y bordes rebozados en coco rallado (presentado en envoltorio plateado).",
-        imagen: "https://iili.io/C8TGnPR.jpg"
-      },
-      {
-        nombre: "Membrillo",
-        descripcion: "Alternativa frutal rellena con dulce de membrillo agridulce, envuelta en un distintivo empaque rojo.",
-        imagen: "https://iili.io/C8TGCMv.jpg"
-      },
-      {
-        nombre: "Triple de Maní y DDL",
-        descripcion: "Formato triple capa que combina la cremosidad del dulce de leche clásico con el sabor crujiente o pasta de maní.",
-        imagen: "https://iili.io/C8TGISI.jpg"
-      },
-      {
-        nombre: "Chocolate Intenso y Frutos Rojos",
-        descripcion: "Perfil de sabor gourmet que contrasta el amargor del chocolate oscuro con notas ácidas y dulces de frutos del bosque.",
-        imagen: "https://iili.io/C8TGu9t.jpg"
-      },
-      {
-        nombre: "Fernet",
-        descripcion: "Variedad especial inspirada en la popular bebida aperitiva, con notas herbales y alcohólicas combinadas con chocolate.",
-        imagen: "https://iili.io/C8TGAAX.jpg"
-      },
-      {
-        nombre: "Maní",
-        descripcion: "Opción enfocada puramente en el sabor y textura del maní, ideal para amantes de los frutos secos.",
-        imagen: "https://iili.io/C8TGRNn.jpg"
-      },
-      {
-        nombre: "Matcha",
-        descripcion: "Propuesta de repostería moderna infusionada con té verde matcha, ofreciendo un sabor herbal y ligeramente amargo único.",
-        imagen: "https://iili.io/C8TGYoG.jpg"
-      }
+    const imagenesGaleria = [
+
+      "https://iili.io/C8TGzcN.jpg",
+
+      "https://iili.io/C8TGxFp.jpg",
+
+      "https://iili.io/C8TGnPR.jpg",
+
+      "https://iili.io/C8TGCMv.jpg",
+
+      "https://iili.io/C8TGISI.jpg",
+
+      "https://iili.io/C8TGu9t.jpg",
+
+      "https://iili.io/C8TGAAX.jpg",
+
+      "https://iili.io/C8TGRNn.jpg",
+
+      "https://iili.io/C8TGYoG.jpg"
+
     ];
 
 
@@ -2740,16 +2602,6 @@
     const modalImagen =
       document.getElementById(
         "modalImagen"
-      );
-
-    const modalTitulo =
-      document.getElementById(
-        "modalTitulo"
-      );
-
-    const modalDescripcion =
-      document.getElementById(
-        "modalDescripcion"
       );
 
     const modalCerrar =
@@ -2826,10 +2678,10 @@
 
     function abrirModal() {
 
-      const dato = datosGaleria[indiceModal];
-      modalImagen.src = dato.imagen;
-      modalTitulo.textContent = dato.nombre;
-      modalDescripcion.textContent = dato.descripcion;
+      modalImagen.src =
+        imagenesGaleria[
+          indiceModal
+        ];
 
       modalGaleria
         .classList
@@ -2869,10 +2721,10 @@
 
     function actualizarModal() {
 
-      const dato = datosGaleria[indiceModal];
-      modalImagen.src = dato.imagen;
-      modalTitulo.textContent = dato.nombre;
-      modalDescripcion.textContent = dato.descripcion;
+      modalImagen.src =
+        imagenesGaleria[
+          indiceModal
+        ];
 
     }
 
@@ -2885,7 +2737,7 @@
           (
             indiceModal + 1
           )
-          % datosGaleria.length;
+          % imagenesGaleria.length;
 
         actualizarModal();
 
@@ -2901,9 +2753,9 @@
           (
             indiceModal
             - 1
-            + datosGaleria.length
+            + imagenesGaleria.length
           )
-          % datosGaleria.length;
+          % imagenesGaleria.length;
 
         actualizarModal();
 
@@ -2982,3 +2834,4 @@
 
 </body>
 </html>
+```
