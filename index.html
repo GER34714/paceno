@@ -1,0 +1,2836 @@
+html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Alfajor Paceño | Una creación de Yesi Yodra</title>
+
+  <meta
+    name="description"
+    content="Conocé el Alfajor Paceño, una creación de Yesi Yodra, maestra pastelera y campeona nacional."
+  >
+
+  <style>
+    /* =====================================================
+       VARIABLES Y CONFIGURACIÓN GENERAL
+    ===================================================== */
+
+    :root {
+      --chocolate: #32170f;
+      --chocolate-claro: #5c2d1e;
+      --caramelo: #b87538;
+      --dorado: #d9a85b;
+      --crema: #f7eddf;
+      --blanco: #ffffff;
+      --texto: #3b241b;
+      --sombra: 0 20px 60px rgba(48, 23, 15, 0.18);
+      --transicion: 0.4s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--crema);
+      color: var(--texto);
+      overflow-x: hidden;
+    }
+
+    body.menu-abierto {
+      overflow: hidden;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .contenedor {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .seccion {
+      padding: 110px 0;
+      overflow: hidden;
+    }
+
+    .etiqueta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      border-radius: 100px;
+      background: rgba(184, 117, 56, 0.12);
+      color: var(--chocolate-claro);
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .titulo-seccion {
+      margin-top: 18px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.2rem, 5vw, 4.5rem);
+      line-height: 1;
+      color: var(--chocolate);
+    }
+
+    .descripcion-seccion {
+      max-width: 680px;
+      margin-top: 22px;
+      color: #68493d;
+      font-size: 1.05rem;
+      line-height: 1.8;
+    }
+
+    .boton {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 54px;
+      padding: 14px 25px;
+      border: 2px solid transparent;
+      border-radius: 100px;
+      background: var(--chocolate);
+      color: var(--blanco);
+      font-weight: 800;
+      cursor: pointer;
+      transition: transform var(--transicion),
+                  background var(--transicion),
+                  box-shadow var(--transicion);
+    }
+
+    .boton:hover {
+      transform: translateY(-4px);
+      background: var(--chocolate-claro);
+      box-shadow: 0 15px 35px rgba(50, 23, 15, 0.25);
+    }
+
+    .boton-claro {
+      background: transparent;
+      color: var(--blanco);
+      border-color: rgba(255, 255, 255, 0.75);
+    }
+
+    .boton-claro:hover {
+      background: var(--blanco);
+      color: var(--chocolate);
+    }
+
+    /* =====================================================
+       HEADER
+    ===================================================== */
+
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      width: 100%;
+      padding: 14px 0;
+      transition: background var(--transicion),
+                  box-shadow var(--transicion),
+                  padding var(--transicion);
+    }
+
+    .header.activo {
+      padding: 8px 0;
+      background: rgba(247, 237, 223, 0.96);
+      backdrop-filter: blur(16px);
+      box-shadow: 0 8px 30px rgba(45, 20, 12, 0.1);
+    }
+
+    .header-contenido {
+      width: min(1320px, calc(100% - 40px));
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+    }
+
+    .logo-header {
+      width: 145px;
+      filter: brightness(0) invert(1);
+      transition: filter var(--transicion);
+    }
+
+    .header.activo .logo-header {
+      filter: none;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .nav a {
+      color: var(--blanco);
+      font-size: 0.92rem;
+      font-weight: 800;
+      transition: color var(--transicion);
+    }
+
+    .header.activo .nav a {
+      color: var(--chocolate);
+    }
+
+    .nav a:hover {
+      color: var(--dorado);
+    }
+
+    .boton-header {
+      min-height: 44px;
+      padding: 10px 19px;
+      background: var(--dorado);
+      color: var(--chocolate);
+    }
+
+    .boton-header:hover {
+      background: var(--blanco);
+    }
+
+    .menu-boton {
+      display: none;
+      width: 48px;
+      height: 48px;
+      border: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.18);
+      color: var(--blanco);
+      font-size: 1.35rem;
+      cursor: pointer;
+    }
+
+    .header.activo .menu-boton {
+      background: var(--chocolate);
+      color: var(--blanco);
+    }
+
+    /* =====================================================
+       HERO Y CARRUSEL
+    ===================================================== */
+
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      background: var(--chocolate);
+      color: var(--blanco);
+      overflow: hidden;
+    }
+
+    .hero-slides {
+      position: absolute;
+      inset: 0;
+    }
+
+    .hero-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 1s ease, visibility 1s ease;
+    }
+
+    .hero-slide.activo {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .hero-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.08);
+      transition: transform 7s ease;
+    }
+
+    .hero-slide.activo img {
+      transform: scale(1);
+    }
+
+    .hero-capa {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(
+          90deg,
+          rgba(25, 10, 5, 0.82) 0%,
+          rgba(25, 10, 5, 0.48) 45%,
+          rgba(25, 10, 5, 0.16) 100%
+        ),
+        linear-gradient(
+          0deg,
+          rgba(20, 8, 4, 0.62) 0%,
+          transparent 45%
+        );
+    }
+
+    .hero-contenido {
+      position: relative;
+      z-index: 5;
+      width: min(1320px, calc(100% - 40px));
+      min-height: 100svh;
+      margin: 0 auto;
+      padding: 135px 0 120px;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-texto {
+      max-width: 720px;
+    }
+
+    .logo-hero-contenedor {
+      width: min(650px, 88vw);
+      overflow: hidden;
+      margin-bottom: 25px;
+    }
+
+    .logo-hero {
+      width: 100%;
+      max-height: 290px;
+      object-fit: contain;
+      object-position: left center;
+      filter:
+        brightness(0)
+        invert(1)
+        drop-shadow(0 15px 30px rgba(0, 0, 0, 0.35));
+
+      transform: translateX(-105%);
+      animation: revelarLogo 2.1s cubic-bezier(.22,.9,.25,1) 0.5s forwards;
+    }
+
+    @keyframes revelarLogo {
+      to {
+        transform: translateX(0);
+      }
+    }
+
+    .hero-frase {
+      max-width: 590px;
+      margin-bottom: 15px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.8rem, 4vw, 3.4rem);
+      line-height: 1.08;
+      text-shadow: 0 5px 25px rgba(0, 0, 0, 0.35);
+      opacity: 0;
+      transform: translateY(25px);
+      animation: aparecerHero 0.9s ease 1.8s forwards;
+    }
+
+    .hero-descripcion {
+      max-width: 550px;
+      margin-bottom: 30px;
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 1.05rem;
+      line-height: 1.7;
+      opacity: 0;
+      transform: translateY(25px);
+      animation: aparecerHero 0.9s ease 2.05s forwards;
+    }
+
+    .hero-botones {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      opacity: 0;
+      transform: translateY(25px);
+      animation: aparecerHero 0.9s ease 2.3s forwards;
+    }
+
+    @keyframes aparecerHero {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .flecha-hero {
+      position: absolute;
+      z-index: 10;
+      top: 50%;
+      width: 54px;
+      height: 54px;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      border-radius: 50%;
+      background: rgba(20, 8, 4, 0.28);
+      backdrop-filter: blur(8px);
+      color: var(--blanco);
+      font-size: 1.6rem;
+      cursor: pointer;
+      transform: translateY(-50%);
+      transition: background var(--transicion),
+                  transform var(--transicion);
+    }
+
+    .flecha-hero:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .flecha-hero.anterior {
+      left: 25px;
+    }
+
+    .flecha-hero.siguiente {
+      right: 25px;
+    }
+
+    .hero-indicadores {
+      position: absolute;
+      z-index: 10;
+      left: 50%;
+      bottom: 34px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transform: translateX(-50%);
+    }
+
+    .indicador {
+      width: 10px;
+      height: 10px;
+      padding: 0;
+      border: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.45);
+      cursor: pointer;
+      transition: width var(--transicion),
+                  background var(--transicion);
+    }
+
+    .indicador.activo {
+      width: 34px;
+      border-radius: 100px;
+      background: var(--blanco);
+    }
+
+    .hero-scroll {
+      position: absolute;
+      z-index: 10;
+      right: 35px;
+      bottom: 28px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: rgba(255, 255, 255, 0.75);
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      writing-mode: vertical-rl;
+    }
+
+    .hero-scroll::after {
+      content: "";
+      width: 1px;
+      height: 55px;
+      background: rgba(255, 255, 255, 0.65);
+    }
+
+    /* =====================================================
+       PRESENTACIÓN
+    ===================================================== */
+
+    .presentacion {
+      position: relative;
+      background:
+        radial-gradient(
+          circle at 90% 10%,
+          rgba(217, 168, 91, 0.16),
+          transparent 30%
+        ),
+        var(--crema);
+    }
+
+    .presentacion-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 80px;
+    }
+
+    .imagen-presentacion {
+      position: relative;
+    }
+
+    .imagen-presentacion img {
+      width: 100%;
+      min-height: 580px;
+      object-fit: cover;
+      border-radius: 35px;
+      box-shadow: var(--sombra);
+    }
+
+    .sello-premio {
+      position: absolute;
+      right: -25px;
+      bottom: 35px;
+      width: 180px;
+      min-height: 180px;
+      padding: 25px;
+      border: 7px solid var(--crema);
+      border-radius: 50%;
+      background: var(--dorado);
+      color: var(--chocolate);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      box-shadow: var(--sombra);
+      transform: rotate(10deg);
+    }
+
+    .sello-premio strong {
+      font-family: Georgia, serif;
+      font-size: 1.8rem;
+      line-height: 1;
+    }
+
+    .sello-premio span {
+      margin-top: 7px;
+      font-size: 0.72rem;
+      font-weight: 900;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .datos-marca {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 35px;
+    }
+
+    .dato {
+      padding: 22px 16px;
+      border: 1px solid rgba(92, 45, 30, 0.13);
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.52);
+      text-align: center;
+    }
+
+    .dato-icono {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 1.7rem;
+    }
+
+    .dato strong {
+      display: block;
+      color: var(--chocolate);
+      font-size: 0.88rem;
+    }
+
+    /* =====================================================
+       BANNER
+    ===================================================== */
+
+    .banner-promocional {
+      position: relative;
+      padding: 45px 0;
+      overflow: hidden;
+      background: var(--chocolate);
+      color: var(--blanco);
+    }
+
+    .banner-promocional::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: 0.15;
+      background-image:
+        radial-gradient(
+          circle,
+          var(--dorado) 2px,
+          transparent 2px
+        );
+      background-size: 28px 28px;
+    }
+
+    .banner-contenido {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 35px;
+    }
+
+    .banner-contenido h2 {
+      max-width: 760px;
+      font-family: Georgia, serif;
+      font-size: clamp(1.8rem, 4vw, 3.5rem);
+      line-height: 1.08;
+    }
+
+    .banner-contenido p {
+      margin-top: 12px;
+      color: rgba(255, 255, 255, 0.75);
+      line-height: 1.6;
+    }
+
+    .banner-contenido .boton {
+      flex-shrink: 0;
+      background: var(--dorado);
+      color: var(--chocolate);
+    }
+
+    /* =====================================================
+       PUNTOS DE VENTA
+    ===================================================== */
+
+    .puntos {
+      background: var(--blanco);
+    }
+
+    .encabezado-puntos {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 30px;
+      margin-bottom: 50px;
+    }
+
+    .buscador {
+      display: flex;
+      gap: 10px;
+      width: min(470px, 100%);
+      padding: 8px;
+      border: 1px solid rgba(50, 23, 15, 0.12);
+      border-radius: 100px;
+      background: var(--crema);
+    }
+
+    .buscador input {
+      width: 100%;
+      min-width: 0;
+      padding: 10px 14px;
+      border: 0;
+      outline: 0;
+      background: transparent;
+      color: var(--texto);
+    }
+
+    .buscador button {
+      min-width: 115px;
+      border: 0;
+      border-radius: 100px;
+      background: var(--chocolate);
+      color: var(--blanco);
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .tarjetas-puntos {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .punto {
+      padding: 30px;
+      border: 1px solid rgba(50, 23, 15, 0.1);
+      border-radius: 26px;
+      background: var(--crema);
+      transition: transform var(--transicion),
+                  box-shadow var(--transicion);
+    }
+
+    .punto:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--sombra);
+    }
+
+    .punto-icono {
+      width: 58px;
+      height: 58px;
+      margin-bottom: 22px;
+      border-radius: 18px;
+      background: var(--chocolate);
+      color: var(--dorado);
+      display: grid;
+      place-items: center;
+      font-size: 1.6rem;
+    }
+
+    .punto h3 {
+      margin-bottom: 9px;
+      color: var(--chocolate);
+      font-family: Georgia, serif;
+      font-size: 1.5rem;
+    }
+
+    .punto p {
+      color: #73564a;
+      line-height: 1.65;
+    }
+
+    .punto a {
+      display: inline-flex;
+      margin-top: 22px;
+      color: var(--chocolate-claro);
+      font-weight: 900;
+    }
+
+    /* =====================================================
+       GALERÍA
+    ===================================================== */
+
+    .galeria {
+      background:
+        linear-gradient(
+          180deg,
+          var(--crema) 0%,
+          #f1dfca 100%
+        );
+    }
+
+    .galeria-encabezado {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 30px;
+      margin-bottom: 45px;
+    }
+
+    .galeria-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-auto-rows: 220px;
+      gap: 16px;
+    }
+
+    .galeria-item {
+      position: relative;
+      overflow: hidden;
+      border: 0;
+      border-radius: 24px;
+      background: var(--chocolate);
+      cursor: pointer;
+      box-shadow: 0 12px 35px rgba(50, 23, 15, 0.12);
+    }
+
+    .galeria-item:nth-child(1) {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+
+    .galeria-item:nth-child(5) {
+      grid-column: span 2;
+    }
+
+    .galeria-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.65s ease;
+    }
+
+    .galeria-item::after {
+      content: "Ver imagen";
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      background: rgba(50, 23, 15, 0.58);
+      color: var(--blanco);
+      font-weight: 900;
+      opacity: 0;
+      transition: opacity var(--transicion);
+    }
+
+    .galeria-item:hover img {
+      transform: scale(1.1);
+    }
+
+    .galeria-item:hover::after {
+      opacity: 1;
+    }
+
+    .galeria-item.oculta {
+      display: none;
+    }
+
+    .galeria-acciones {
+      display: flex;
+      justify-content: center;
+      margin-top: 40px;
+    }
+
+    /* =====================================================
+       MODAL
+    ===================================================== */
+
+    .modal-galeria {
+      position: fixed;
+      z-index: 3000;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 30px;
+      background: rgba(12, 5, 3, 0.92);
+    }
+
+    .modal-galeria.abierto {
+      display: flex;
+    }
+
+    .modal-imagen {
+      max-width: min(1000px, 92vw);
+      max-height: 84vh;
+      border-radius: 18px;
+      object-fit: contain;
+      box-shadow: 0 25px 80px rgba(0, 0, 0, 0.6);
+    }
+
+    .modal-cerrar,
+    .modal-anterior,
+    .modal-siguiente {
+      position: absolute;
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.12);
+      color: var(--blanco);
+      cursor: pointer;
+    }
+
+    .modal-cerrar {
+      top: 25px;
+      right: 25px;
+      width: 52px;
+      height: 52px;
+      font-size: 1.5rem;
+    }
+
+    .modal-anterior,
+    .modal-siguiente {
+      top: 50%;
+      width: 55px;
+      height: 55px;
+      font-size: 1.7rem;
+      transform: translateY(-50%);
+    }
+
+    .modal-anterior {
+      left: 25px;
+    }
+
+    .modal-siguiente {
+      right: 25px;
+    }
+
+    /* =====================================================
+       CONTACTO Y FOOTER
+    ===================================================== */
+
+    .contacto {
+      background: var(--chocolate);
+      color: var(--blanco);
+    }
+
+    .contacto-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      align-items: center;
+      gap: 70px;
+    }
+
+    .contacto .titulo-seccion {
+      color: var(--blanco);
+    }
+
+    .contacto .descripcion-seccion {
+      color: rgba(255, 255, 255, 0.75);
+    }
+
+    .contacto-tarjeta {
+      padding: 40px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 30px;
+      background: rgba(255, 255, 255, 0.07);
+    }
+
+    .contacto-tarjeta h3 {
+      margin-bottom: 12px;
+      font-family: Georgia, serif;
+      font-size: 2rem;
+    }
+
+    .contacto-tarjeta p {
+      margin-bottom: 25px;
+      color: rgba(255, 255, 255, 0.7);
+      line-height: 1.7;
+    }
+
+    .contacto-tarjeta .boton {
+      width: 100%;
+      background: var(--dorado);
+      color: var(--chocolate);
+    }
+
+    .footer {
+      padding: 55px 0 25px;
+      background: #1e0d08;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .footer-superior {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 35px;
+      padding-bottom: 35px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .logo-footer {
+      width: 180px;
+      filter: brightness(0) invert(1);
+    }
+
+    .footer-redes {
+      display: flex;
+      gap: 12px;
+    }
+
+    .footer-redes a {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+      display: grid;
+      place-items: center;
+      transition: background var(--transicion);
+    }
+
+    .footer-redes a:hover {
+      background: var(--dorado);
+      color: var(--chocolate);
+    }
+
+    .footer-inferior {
+      padding-top: 25px;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      font-size: 0.82rem;
+    }
+
+    /* =====================================================
+       ANIMACIONES AL HACER SCROLL
+    ===================================================== */
+
+    .revelar {
+      opacity: 0;
+      transition:
+        opacity 0.9s ease,
+        transform 0.9s cubic-bezier(.2,.75,.25,1);
+    }
+
+    .desde-izquierda {
+      transform: translateX(-90px);
+    }
+
+    .desde-derecha {
+      transform: translateX(90px);
+    }
+
+    .desde-abajo {
+      transform: translateY(65px);
+    }
+
+    .revelar.visible {
+      opacity: 1;
+      transform: translate(0, 0);
+    }
+
+    /* =====================================================
+       RESPONSIVE
+    ===================================================== */
+
+    @media (max-width: 980px) {
+
+      .nav {
+        position: fixed;
+        z-index: 2000;
+        top: 0;
+        right: -100%;
+        width: min(350px, 88vw);
+        height: 100svh;
+        padding: 110px 35px 35px;
+        flex-direction: column;
+        align-items: flex-start;
+        background: var(--crema);
+        box-shadow: -20px 0 60px rgba(0, 0, 0, 0.2);
+        transition: right 0.45s ease;
+      }
+
+      .nav.abierta {
+        right: 0;
+      }
+
+      .nav a,
+      .header.activo .nav a {
+        color: var(--chocolate);
+        font-size: 1.2rem;
+      }
+
+      .boton-header {
+        width: 100%;
+      }
+
+      .menu-boton {
+        position: relative;
+        z-index: 2100;
+        display: grid;
+        place-items: center;
+      }
+
+      .presentacion-grid,
+      .contacto-grid {
+        grid-template-columns: 1fr;
+        gap: 55px;
+      }
+
+      .imagen-presentacion {
+        max-width: 700px;
+        margin: 0 auto;
+      }
+
+      .tarjetas-puntos {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .encabezado-puntos,
+      .galeria-encabezado {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .buscador {
+        width: 100%;
+      }
+
+      .galeria-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 650px) {
+
+      .contenedor {
+        width: min(100% - 28px, 1180px);
+      }
+
+      .seccion {
+        padding: 80px 0;
+      }
+
+      .header-contenido {
+        width: calc(100% - 28px);
+      }
+
+      .logo-header {
+        width: 125px;
+      }
+
+      .hero-contenido {
+        width: calc(100% - 30px);
+        padding: 125px 0 100px;
+        align-items: center;
+      }
+
+      .hero-capa {
+        background:
+          linear-gradient(
+            90deg,
+            rgba(25, 10, 5, 0.78),
+            rgba(25, 10, 5, 0.42)
+          ),
+          linear-gradient(
+            0deg,
+            rgba(20, 8, 4, 0.72),
+            transparent 55%
+          );
+      }
+
+      .logo-hero-contenedor {
+        width: 100%;
+      }
+
+      .hero-frase {
+        font-size: 2rem;
+      }
+
+      .hero-descripcion {
+        font-size: 0.96rem;
+      }
+
+      .hero-botones {
+        flex-direction: column;
+      }
+
+      .hero-botones .boton {
+        width: 100%;
+      }
+
+      .flecha-hero {
+        top: auto;
+        bottom: 78px;
+        width: 46px;
+        height: 46px;
+        transform: none;
+      }
+
+      .flecha-hero.anterior {
+        left: 20px;
+      }
+
+      .flecha-hero.siguiente {
+        right: 20px;
+      }
+
+      .hero-scroll {
+        display: none;
+      }
+
+      .hero-indicadores {
+        bottom: 27px;
+      }
+
+      .indicador {
+        width: 8px;
+        height: 8px;
+      }
+
+      .indicador.activo {
+        width: 24px;
+      }
+
+      .imagen-presentacion img {
+        min-height: 430px;
+      }
+
+      .sello-premio {
+        right: -5px;
+        bottom: -20px;
+        width: 145px;
+        min-height: 145px;
+      }
+
+      .sello-premio strong {
+        font-size: 1.4rem;
+      }
+
+      .datos-marca {
+        grid-template-columns: 1fr;
+      }
+
+      .banner-contenido {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .banner-contenido .boton {
+        width: 100%;
+      }
+
+      .tarjetas-puntos {
+        grid-template-columns: 1fr;
+      }
+
+      .buscador {
+        flex-direction: column;
+        border-radius: 22px;
+      }
+
+      .buscador input {
+        min-height: 50px;
+      }
+
+      .buscador button {
+        min-height: 50px;
+      }
+
+      .galeria-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-auto-rows: 165px;
+        gap: 10px;
+      }
+
+      .galeria-item {
+        border-radius: 15px;
+      }
+
+      .galeria-item:nth-child(1),
+      .galeria-item:nth-child(5) {
+        grid-column: span 2;
+      }
+
+      .galeria-item:nth-child(1) {
+        grid-row: span 1;
+      }
+
+      .modal-galeria {
+        padding: 15px;
+      }
+
+      .modal-anterior,
+      .modal-siguiente {
+        top: auto;
+        bottom: 20px;
+        transform: none;
+        width: 48px;
+        height: 48px;
+      }
+
+      .modal-anterior {
+        left: 25%;
+      }
+
+      .modal-siguiente {
+        right: 25%;
+      }
+
+      .footer-superior,
+      .footer-inferior {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- =====================================================
+       HEADER
+  ====================================================== -->
+
+  <header class="header" id="header">
+
+    <div class="header-contenido">
+
+      <a href="#inicio" aria-label="Ir al inicio">
+
+        <img
+          class="logo-header"
+          src="logo-alfajor-paceno.svg"
+          alt="Alfajor Paceño"
+        >
+
+      </a>
+
+      <nav class="nav" id="nav">
+
+        <a href="#inicio">Inicio</a>
+
+        <a href="#historia">Nuestra historia</a>
+
+        <a href="#puntos">Puntos de venta</a>
+
+        <a href="#galeria">Galería</a>
+
+        <a href="#contacto">Contacto</a>
+
+        <a
+          class="boton boton-header"
+          href="#puntos"
+        >
+          ¿Dónde comprar?
+        </a>
+
+      </nav>
+
+      <button
+        class="menu-boton"
+        id="menuBoton"
+        aria-label="Abrir menú"
+      >
+        ☰
+      </button>
+
+    </div>
+
+  </header>
+
+
+  <!-- =====================================================
+       HERO
+  ====================================================== -->
+
+  <main>
+
+    <section class="hero" id="inicio">
+
+      <div class="hero-slides" id="heroSlides">
+
+        <article class="hero-slide activo">
+
+          <img
+            src="https://iili.io/C8TGzcN.jpg"
+            alt="Alfajor Paceño"
+          >
+
+        </article>
+
+        <article class="hero-slide">
+
+          <img
+            src="https://iili.io/C8TGxFp.jpg"
+            alt="Alfajor Paceño"
+          >
+
+        </article>
+
+        <article class="hero-slide">
+
+          <img
+            src="https://iili.io/C8TGnPR.jpg"
+            alt="Alfajor Paceño"
+          >
+
+        </article>
+
+        <article class="hero-slide">
+
+          <img
+            src="https://iili.io/C8TGCMv.jpg"
+            alt="Alfajor Paceño"
+          >
+
+        </article>
+
+        <article class="hero-slide">
+
+          <img
+            src="https://iili.io/C8TGISI.jpg"
+            alt="Alfajor Paceño"
+          >
+
+        </article>
+
+        <article class="hero-slide">
+
+          <img
+            src="https://iili.io/C8TGu9t.jpg"
+            alt="Alfajor Paceño"
+          >
+
+        </article>
+
+        <article class="hero-slide">
+
+          <img
+            src="https://iili.io/C8TGAAX.jpg"
+            alt="Alfajor Paceño"
+          >
+
+        </article>
+
+        <article class="hero-slide">
+
+          <img
+            src="https://iili.io/C8TGRNn.jpg"
+            alt="Alfajor Paceño"
+          >
+
+        </article>
+
+        <article class="hero-slide">
+
+          <img
+            src="https://iili.io/C8TGYoG.jpg"
+            alt="Alfajor Paceño"
+          >
+
+        </article>
+
+      </div>
+
+      <div class="hero-capa"></div>
+
+      <div class="hero-contenido">
+
+        <div class="hero-texto">
+
+          <div class="logo-hero-contenedor">
+
+            <img
+              class="logo-hero"
+              src="logo-alfajor-paceno.svg"
+              alt="Alfajor Paceño"
+            >
+
+          </div>
+
+          <h1 class="hero-frase">
+
+            Una historia hecha de pasión, sabor y tradición.
+
+          </h1>
+
+          <p class="hero-descripcion">
+
+            Conocé el Alfajor Paceño, una creación de
+            Yesi Yodra, maestra pastelera y campeona nacional.
+
+          </p>
+
+          <div class="hero-botones">
+
+            <a
+              class="boton"
+              href="#puntos"
+            >
+              Encontrá dónde comprar
+            </a>
+
+            <a
+              class="boton boton-claro"
+              href="#historia"
+            >
+              Conocé nuestra historia
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <button
+        class="flecha-hero anterior"
+        id="heroAnterior"
+        aria-label="Imagen anterior"
+      >
+        ‹
+      </button>
+
+      <button
+        class="flecha-hero siguiente"
+        id="heroSiguiente"
+        aria-label="Imagen siguiente"
+      >
+        ›
+      </button>
+
+      <div
+        class="hero-indicadores"
+        id="heroIndicadores"
+      ></div>
+
+      <div class="hero-scroll">
+
+        Deslizá
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         HISTORIA
+    ====================================================== -->
+
+    <section
+      class="seccion presentacion"
+      id="historia"
+    >
+
+      <div class="contenedor">
+
+        <div class="presentacion-grid">
+
+          <div
+            class="imagen-presentacion revelar desde-izquierda"
+          >
+
+            <img
+              src="https://iili.io/C8TGxFp.jpg"
+              alt="Creación artesanal de Alfajor Paceño"
+            >
+
+            <div class="sello-premio">
+
+              <strong>🏆</strong>
+
+              <span>
+                Campeona Nacional
+              </span>
+
+            </div>
+
+          </div>
+
+          <div
+            class="revelar desde-derecha"
+          >
+
+            <span class="etiqueta">
+
+              Una creación con identidad
+
+            </span>
+
+            <h2 class="titulo-seccion">
+
+              Mucho más que un alfajor.
+
+            </h2>
+
+            <p class="descripcion-seccion">
+
+              Detrás de cada Alfajor Paceño hay una historia
+              de pasión, aprendizaje y dedicación. Una receta
+              creada para compartir sabores, recuerdos y una
+              identidad que sigue creciendo.
+
+            </p>
+
+            <p class="descripcion-seccion">
+
+              Soy Yesi Yodra, maestra pastelera y creadora del
+              Alfajor Paceño. Este proyecto nació del amor por
+              la pastelería y del deseo de crear un producto
+              único, auténtico y lleno de personalidad.
+
+            </p>
+
+            <div class="datos-marca">
+
+              <article class="dato">
+
+                <span class="dato-icono">🧑‍🍳</span>
+
+                <strong>
+                  Maestra pastelera
+                </strong>
+
+              </article>
+
+              <article class="dato">
+
+                <span class="dato-icono">🏆</span>
+
+                <strong>
+                  Campeona nacional
+                </strong>
+
+              </article>
+
+              <article class="dato">
+
+                <span class="dato-icono">🇦🇷</span>
+
+                <strong>
+                  Creación argentina
+                </strong>
+
+              </article>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         BANNER PROMOCIONAL
+    ====================================================== -->
+
+    <section class="banner-promocional">
+
+      <div class="contenedor">
+
+        <div
+          class="banner-contenido revelar desde-abajo"
+        >
+
+          <div>
+
+            <h2>
+
+              ¿Todavía no probaste el Alfajor Paceño?
+
+            </h2>
+
+            <p>
+
+              Encontrá el punto de venta más cercano y descubrí
+              un sabor creado para compartir.
+
+            </p>
+
+          </div>
+
+          <a
+            class="boton"
+            href="#puntos"
+          >
+
+            Encontrar un punto
+
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         PUNTOS DE VENTA
+    ====================================================== -->
+
+    <section
+      class="seccion puntos"
+      id="puntos"
+    >
+
+      <div class="contenedor">
+
+        <div class="encabezado-puntos">
+
+          <div
+            class="revelar desde-izquierda"
+          >
+
+            <span class="etiqueta">
+
+              Encontranos cerca tuyo
+
+            </span>
+
+            <h2 class="titulo-seccion">
+
+              Puntos de venta
+
+            </h2>
+
+            <p class="descripcion-seccion">
+
+              Buscá tu localidad y descubrí dónde podés
+              encontrar Alfajor Paceño.
+
+            </p>
+
+          </div>
+
+          <form
+            class="buscador revelar desde-derecha"
+            id="formBuscador"
+          >
+
+            <input
+              type="search"
+              id="buscadorPuntos"
+              placeholder="Escribí una ciudad o localidad..."
+              aria-label="Buscar punto de venta"
+            >
+
+            <button type="submit">
+
+              Buscar
+
+            </button>
+
+          </form>
+
+        </div>
+
+        <!--
+          ESTOS SON EJEMPLOS.
+          DESPUÉS SE REEMPLAZAN POR LOS PUNTOS
+          REALES QUE VENGAN DEL PANEL ADMINISTRADOR.
+        -->
+
+        <div
+          class="tarjetas-puntos"
+          id="tarjetasPuntos"
+        >
+
+          <article
+            class="punto revelar desde-abajo"
+            data-busqueda="buenos aires palermo"
+          >
+
+            <div class="punto-icono">📍</div>
+
+            <h3>
+              Próximamente
+            </h3>
+
+            <p>
+              Acá se mostrará el nombre del comercio,
+              dirección, localidad y horarios.
+            </p>
+
+            <a href="#contacto">
+
+              Consultar disponibilidad →
+
+            </a>
+
+          </article>
+
+          <article
+            class="punto revelar desde-abajo"
+            data-busqueda="la plata buenos aires"
+          >
+
+            <div class="punto-icono">🏪</div>
+
+            <h3>
+              Próximamente
+            </h3>
+
+            <p>
+              Los puntos de venta podrán cargarse y
+              actualizarse desde el panel administrador.
+            </p>
+
+            <a href="#contacto">
+
+              Consultar disponibilidad →
+
+            </a>
+
+          </article>
+
+          <article
+            class="punto revelar desde-abajo"
+            data-busqueda="argentina distribuidor"
+          >
+
+            <div class="punto-icono">🗺️</div>
+
+            <h3>
+              ¿Querés vender?
+            </h3>
+
+            <p>
+              Si tenés un comercio y querés incorporar
+              Alfajor Paceño, ponete en contacto.
+            </p>
+
+            <a href="#contacto">
+
+              Quiero ser punto de venta →
+
+            </a>
+
+          </article>
+
+        </div>
+
+        <p
+          id="sinResultados"
+          style="
+            display:none;
+            margin-top:30px;
+            text-align:center;
+            color:#68493d;
+          "
+        >
+
+          No encontramos puntos de venta para esa búsqueda.
+
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         GALERÍA
+    ====================================================== -->
+
+    <section
+      class="seccion galeria"
+      id="galeria"
+    >
+
+      <div class="contenedor">
+
+        <div class="galeria-encabezado">
+
+          <div
+            class="revelar desde-izquierda"
+          >
+
+            <span class="etiqueta">
+
+              Conocé nuestros sabores
+
+            </span>
+
+            <h2 class="titulo-seccion">
+
+              Galería Paceña
+
+            </h2>
+
+            <p class="descripcion-seccion">
+
+              Una selección de imágenes para conocer
+              el producto, sus detalles y su identidad.
+
+            </p>
+
+          </div>
+
+          <a
+            class="boton revelar desde-derecha"
+            href="#contacto"
+          >
+
+            Seguinos en Instagram
+
+          </a>
+
+        </div>
+
+        <div
+          class="galeria-grid"
+          id="galeriaGrid"
+        >
+
+          <button
+            class="galeria-item"
+            data-imagen="0"
+            aria-label="Abrir imagen 1"
+          >
+
+            <img
+              src="https://iili.io/C8TGzcN.jpg"
+              alt="Alfajor Paceño"
+              loading="lazy"
+            >
+
+          </button>
+
+          <button
+            class="galeria-item"
+            data-imagen="1"
+            aria-label="Abrir imagen 2"
+          >
+
+            <img
+              src="https://iili.io/C8TGxFp.jpg"
+              alt="Alfajor Paceño"
+              loading="lazy"
+            >
+
+          </button>
+
+          <button
+            class="galeria-item"
+            data-imagen="2"
+            aria-label="Abrir imagen 3"
+          >
+
+            <img
+              src="https://iili.io/C8TGnPR.jpg"
+              alt="Alfajor Paceño"
+              loading="lazy"
+            >
+
+          </button>
+
+          <button
+            class="galeria-item"
+            data-imagen="3"
+            aria-label="Abrir imagen 4"
+          >
+
+            <img
+              src="https://iili.io/C8TGCMv.jpg"
+              alt="Alfajor Paceño"
+              loading="lazy"
+            >
+
+          </button>
+
+          <button
+            class="galeria-item"
+            data-imagen="4"
+            aria-label="Abrir imagen 5"
+          >
+
+            <img
+              src="https://iili.io/C8TGISI.jpg"
+              alt="Alfajor Paceño"
+              loading="lazy"
+            >
+
+          </button>
+
+          <button
+            class="galeria-item"
+            data-imagen="5"
+            aria-label="Abrir imagen 6"
+          >
+
+            <img
+              src="https://iili.io/C8TGu9t.jpg"
+              alt="Alfajor Paceño"
+              loading="lazy"
+            >
+
+          </button>
+
+          <button
+            class="galeria-item oculta"
+            data-imagen="6"
+            aria-label="Abrir imagen 7"
+          >
+
+            <img
+              src="https://iili.io/C8TGAAX.jpg"
+              alt="Alfajor Paceño"
+              loading="lazy"
+            >
+
+          </button>
+
+          <button
+            class="galeria-item oculta"
+            data-imagen="7"
+            aria-label="Abrir imagen 8"
+          >
+
+            <img
+              src="https://iili.io/C8TGRNn.jpg"
+              alt="Alfajor Paceño"
+              loading="lazy"
+            >
+
+          </button>
+
+          <button
+            class="galeria-item oculta"
+            data-imagen="8"
+            aria-label="Abrir imagen 9"
+          >
+
+            <img
+              src="https://iili.io/C8TGYoG.jpg"
+              alt="Alfajor Paceño"
+              loading="lazy"
+            >
+
+          </button>
+
+        </div>
+
+        <div class="galeria-acciones">
+
+          <button
+            class="boton"
+            id="botonVerMas"
+          >
+
+            Ver más imágenes
+
+          </button>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         CONTACTO
+    ====================================================== -->
+
+    <section
+      class="seccion contacto"
+      id="contacto"
+    >
+
+      <div class="contenedor">
+
+        <div class="contacto-grid">
+
+          <div
+            class="revelar desde-izquierda"
+          >
+
+            <span class="etiqueta">
+
+              ¿Querés saber más?
+
+            </span>
+
+            <h2 class="titulo-seccion">
+
+              Sumate a la historia del Alfajor Paceño.
+
+            </h2>
+
+            <p class="descripcion-seccion">
+
+              Consultanos por puntos de venta, disponibilidad
+              o la posibilidad de incorporar nuestros productos
+              a tu comercio.
+
+            </p>
+
+          </div>
+
+          <div
+            class="contacto-tarjeta revelar desde-derecha"
+          >
+
+            <h3>
+
+              Hablemos
+
+            </h3>
+
+            <p>
+
+              Próximamente este botón podrá abrir el
+              WhatsApp oficial de la marca.
+
+            </p>
+
+            <a
+              class="boton"
+              href="#"
+              onclick="return false;"
+            >
+
+              Contactar por WhatsApp
+
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- =====================================================
+       FOOTER
+  ====================================================== -->
+
+  <footer class="footer">
+
+    <div class="contenedor">
+
+      <div class="footer-superior">
+
+        <img
+          class="logo-footer"
+          src="logo-alfajor-paceno.svg"
+          alt="Alfajor Paceño"
+        >
+
+        <div class="footer-redes">
+
+          <a
+            href="#"
+            aria-label="Instagram"
+            onclick="return false;"
+          >
+
+            ◎
+
+          </a>
+
+          <a
+            href="#"
+            aria-label="WhatsApp"
+            onclick="return false;"
+          >
+
+            ☏
+
+          </a>
+
+        </div>
+
+      </div>
+
+      <div class="footer-inferior">
+
+        <p>
+
+          © 2026 Alfajor Paceño. Todos los derechos reservados.
+
+        </p>
+
+        <p>
+
+          Una creación de Yesi Yodra.
+
+        </p>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+
+  <!-- =====================================================
+       MODAL DE GALERÍA
+  ====================================================== -->
+
+  <div
+    class="modal-galeria"
+    id="modalGaleria"
+    aria-hidden="true"
+  >
+
+    <button
+      class="modal-cerrar"
+      id="modalCerrar"
+      aria-label="Cerrar galería"
+    >
+
+      ×
+
+    </button>
+
+    <button
+      class="modal-anterior"
+      id="modalAnterior"
+      aria-label="Imagen anterior"
+    >
+
+      ‹
+
+    </button>
+
+    <img
+      class="modal-imagen"
+      id="modalImagen"
+      src=""
+      alt="Imagen de Alfajor Paceño"
+    >
+
+    <button
+      class="modal-siguiente"
+      id="modalSiguiente"
+      aria-label="Imagen siguiente"
+    >
+
+      ›
+
+    </button>
+
+  </div>
+
+
+  <!-- =====================================================
+       JAVASCRIPT
+  ====================================================== -->
+
+  <script>
+
+    /* =====================================================
+       HEADER Y MENÚ
+    ===================================================== */
+
+    const header = document.getElementById("header");
+
+    const menuBoton = document.getElementById("menuBoton");
+
+    const nav = document.getElementById("nav");
+
+
+    window.addEventListener("scroll", () => {
+
+      header.classList.toggle(
+        "activo",
+        window.scrollY > 40
+      );
+
+    });
+
+
+    menuBoton.addEventListener("click", () => {
+
+      nav.classList.toggle("abierta");
+
+      document.body.classList.toggle("menu-abierto");
+
+      menuBoton.textContent =
+        nav.classList.contains("abierta")
+          ? "×"
+          : "☰";
+
+    });
+
+
+    document
+      .querySelectorAll(".nav a")
+      .forEach((enlace) => {
+
+        enlace.addEventListener("click", () => {
+
+          nav.classList.remove("abierta");
+
+          document.body.classList.remove("menu-abierto");
+
+          menuBoton.textContent = "☰";
+
+        });
+
+      });
+
+
+    /* =====================================================
+       CARRUSEL DEL HERO
+    ===================================================== */
+
+    const heroSlides =
+      [...document.querySelectorAll(".hero-slide")];
+
+    const heroIndicadores =
+      document.getElementById("heroIndicadores");
+
+    const heroAnterior =
+      document.getElementById("heroAnterior");
+
+    const heroSiguiente =
+      document.getElementById("heroSiguiente");
+
+    let indiceHero = 0;
+
+    let intervaloHero;
+
+    let inicioTouch = 0;
+
+
+    heroSlides.forEach((slide, indice) => {
+
+      const indicador =
+        document.createElement("button");
+
+      indicador.className =
+        indice === 0
+          ? "indicador activo"
+          : "indicador";
+
+      indicador.setAttribute(
+        "aria-label",
+        `Ir a la imagen ${indice + 1}`
+      );
+
+      indicador.addEventListener(
+        "click",
+        () => {
+
+          mostrarHero(indice);
+
+          reiniciarHero();
+
+        }
+      );
+
+      heroIndicadores.appendChild(
+        indicador
+      );
+
+    });
+
+
+    function mostrarHero(nuevoIndice) {
+
+      heroSlides[indiceHero]
+        .classList.remove("activo");
+
+      const indicadores =
+        document.querySelectorAll(".indicador");
+
+      indicadores[indiceHero]
+        .classList.remove("activo");
+
+
+      indiceHero =
+        (
+          nuevoIndice
+          + heroSlides.length
+        )
+        % heroSlides.length;
+
+
+      heroSlides[indiceHero]
+        .classList.add("activo");
+
+      indicadores[indiceHero]
+        .classList.add("activo");
+
+    }
+
+
+    function siguienteHero() {
+
+      mostrarHero(
+        indiceHero + 1
+      );
+
+    }
+
+
+    function anteriorHero() {
+
+      mostrarHero(
+        indiceHero - 1
+      );
+
+    }
+
+
+    function iniciarHero() {
+
+      intervaloHero =
+        setInterval(
+          siguienteHero,
+          4000
+        );
+
+    }
+
+
+    function reiniciarHero() {
+
+      clearInterval(
+        intervaloHero
+      );
+
+      iniciarHero();
+
+    }
+
+
+    heroSiguiente.addEventListener(
+      "click",
+      () => {
+
+        siguienteHero();
+
+        reiniciarHero();
+
+      }
+    );
+
+
+    heroAnterior.addEventListener(
+      "click",
+      () => {
+
+        anteriorHero();
+
+        reiniciarHero();
+
+      }
+    );
+
+
+    document
+      .querySelector(".hero")
+      .addEventListener(
+        "touchstart",
+        (evento) => {
+
+          inicioTouch =
+            evento.touches[0].clientX;
+
+        },
+        { passive: true }
+      );
+
+
+    document
+      .querySelector(".hero")
+      .addEventListener(
+        "touchend",
+        (evento) => {
+
+          const finalTouch =
+            evento.changedTouches[0].clientX;
+
+          const diferencia =
+            inicioTouch - finalTouch;
+
+
+          if (
+            Math.abs(diferencia) > 50
+          ) {
+
+            if (diferencia > 0) {
+
+              siguienteHero();
+
+            } else {
+
+              anteriorHero();
+
+            }
+
+            reiniciarHero();
+
+          }
+
+        },
+        { passive: true }
+      );
+
+
+    iniciarHero();
+
+
+    /* =====================================================
+       ANIMACIONES AL HACER SCROLL
+    ===================================================== */
+
+    const elementosRevelar =
+      document.querySelectorAll(
+        ".revelar"
+      );
+
+
+    const observador =
+      new IntersectionObserver(
+
+        (entradas) => {
+
+          entradas.forEach(
+            (entrada) => {
+
+              if (
+                entrada.isIntersecting
+              ) {
+
+                entrada.target
+                  .classList
+                  .add("visible");
+
+                observador.unobserve(
+                  entrada.target
+                );
+
+              }
+
+            }
+          );
+
+        },
+
+        {
+          threshold: 0.15
+        }
+
+      );
+
+
+    elementosRevelar.forEach(
+      (elemento) => {
+
+        observador.observe(
+          elemento
+        );
+
+      }
+    );
+
+
+    /* =====================================================
+       BUSCADOR DE PUNTOS
+    ===================================================== */
+
+    const formBuscador =
+      document.getElementById(
+        "formBuscador"
+      );
+
+    const inputBuscador =
+      document.getElementById(
+        "buscadorPuntos"
+      );
+
+    const puntos =
+      document.querySelectorAll(
+        ".punto"
+      );
+
+    const sinResultados =
+      document.getElementById(
+        "sinResultados"
+      );
+
+
+    formBuscador.addEventListener(
+      "submit",
+      (evento) => {
+
+        evento.preventDefault();
+
+        const texto =
+          inputBuscador
+            .value
+            .toLowerCase()
+            .trim();
+
+        let cantidadVisible = 0;
+
+
+        puntos.forEach((punto) => {
+
+          const contenido =
+            punto
+              .dataset
+              .busqueda
+              .toLowerCase();
+
+          const mostrar =
+            texto === ""
+            || contenido.includes(texto);
+
+
+          punto.style.display =
+            mostrar
+              ? ""
+              : "none";
+
+
+          if (mostrar) {
+
+            cantidadVisible++;
+
+          }
+
+        });
+
+
+        sinResultados.style.display =
+          cantidadVisible === 0
+            ? "block"
+            : "none";
+
+      }
+    );
+
+
+    /* =====================================================
+       GALERÍA
+    ===================================================== */
+
+    const imagenesGaleria = [
+
+      "https://iili.io/C8TGzcN.jpg",
+
+      "https://iili.io/C8TGxFp.jpg",
+
+      "https://iili.io/C8TGnPR.jpg",
+
+      "https://iili.io/C8TGCMv.jpg",
+
+      "https://iili.io/C8TGISI.jpg",
+
+      "https://iili.io/C8TGu9t.jpg",
+
+      "https://iili.io/C8TGAAX.jpg",
+
+      "https://iili.io/C8TGRNn.jpg",
+
+      "https://iili.io/C8TGYoG.jpg"
+
+    ];
+
+
+    const botonesGaleria =
+      document.querySelectorAll(
+        ".galeria-item"
+      );
+
+    const botonVerMas =
+      document.getElementById(
+        "botonVerMas"
+      );
+
+    const modalGaleria =
+      document.getElementById(
+        "modalGaleria"
+      );
+
+    const modalImagen =
+      document.getElementById(
+        "modalImagen"
+      );
+
+    const modalCerrar =
+      document.getElementById(
+        "modalCerrar"
+      );
+
+    const modalAnterior =
+      document.getElementById(
+        "modalAnterior"
+      );
+
+    const modalSiguiente =
+      document.getElementById(
+        "modalSiguiente"
+      );
+
+    let indiceModal = 0;
+
+    let galeriaExpandida = false;
+
+
+    botonesGaleria.forEach(
+      (boton) => {
+
+        boton.addEventListener(
+          "click",
+          () => {
+
+            indiceModal =
+              Number(
+                boton.dataset.imagen
+              );
+
+            abrirModal();
+
+          }
+        );
+
+      }
+    );
+
+
+    botonVerMas.addEventListener(
+      "click",
+      () => {
+
+        galeriaExpandida =
+          !galeriaExpandida;
+
+
+        document
+          .querySelectorAll(
+            ".galeria-item.oculta"
+          )
+          .forEach((item) => {
+
+            item.style.display =
+              galeriaExpandida
+                ? "block"
+                : "none";
+
+          });
+
+
+        botonVerMas.textContent =
+          galeriaExpandida
+            ? "Ver menos"
+            : "Ver más imágenes";
+
+      }
+    );
+
+
+    function abrirModal() {
+
+      modalImagen.src =
+        imagenesGaleria[
+          indiceModal
+        ];
+
+      modalGaleria
+        .classList
+        .add("abierto");
+
+      modalGaleria
+        .setAttribute(
+          "aria-hidden",
+          "false"
+        );
+
+      document.body
+        .classList
+        .add("menu-abierto");
+
+    }
+
+
+    function cerrarModal() {
+
+      modalGaleria
+        .classList
+        .remove("abierto");
+
+      modalGaleria
+        .setAttribute(
+          "aria-hidden",
+          "true"
+        );
+
+      document.body
+        .classList
+        .remove("menu-abierto");
+
+    }
+
+
+    function actualizarModal() {
+
+      modalImagen.src =
+        imagenesGaleria[
+          indiceModal
+        ];
+
+    }
+
+
+    modalSiguiente.addEventListener(
+      "click",
+      () => {
+
+        indiceModal =
+          (
+            indiceModal + 1
+          )
+          % imagenesGaleria.length;
+
+        actualizarModal();
+
+      }
+    );
+
+
+    modalAnterior.addEventListener(
+      "click",
+      () => {
+
+        indiceModal =
+          (
+            indiceModal
+            - 1
+            + imagenesGaleria.length
+          )
+          % imagenesGaleria.length;
+
+        actualizarModal();
+
+      }
+    );
+
+
+    modalCerrar.addEventListener(
+      "click",
+      cerrarModal
+    );
+
+
+    modalGaleria.addEventListener(
+      "click",
+      (evento) => {
+
+        if (
+          evento.target
+          === modalGaleria
+        ) {
+
+          cerrarModal();
+
+        }
+
+      }
+    );
+
+
+    document.addEventListener(
+      "keydown",
+      (evento) => {
+
+        if (
+          !modalGaleria
+            .classList
+            .contains("abierto")
+        ) {
+
+          return;
+
+        }
+
+
+        if (
+          evento.key === "Escape"
+        ) {
+
+          cerrarModal();
+
+        }
+
+
+        if (
+          evento.key === "ArrowRight"
+        ) {
+
+          modalSiguiente.click();
+
+        }
+
+
+        if (
+          evento.key === "ArrowLeft"
+        ) {
+
+          modalAnterior.click();
+
+        }
+
+      }
+    );
+
+  </script>
+
+</body>
+</html>
