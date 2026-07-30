@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -230,7 +229,7 @@
     }
 
     /* =====================================================
-       HERO Y CARRUSEL
+       HERO - AHORA CON UNA SOLA IMAGEN
     ===================================================== */
 
     .hero {
@@ -241,34 +240,14 @@
       overflow: hidden;
     }
 
-    .hero-slides {
+    .hero-imagen {
       position: absolute;
       inset: 0;
-    }
-
-    .hero-slide {
-      position: absolute;
-      inset: 0;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 1s ease, visibility 1s ease;
-    }
-
-    .hero-slide.activo {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .hero-slide img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transform: scale(1.08);
+      transform: scale(1.02);
       transition: transform 7s ease;
-    }
-
-    .hero-slide.activo img {
-      transform: scale(1);
     }
 
     .hero-capa {
@@ -366,65 +345,6 @@
         opacity: 1;
         transform: translateY(0);
       }
-    }
-
-    .flecha-hero {
-      position: absolute;
-      z-index: 10;
-      top: 50%;
-      width: 54px;
-      height: 54px;
-      border: 1px solid rgba(255, 255, 255, 0.35);
-      border-radius: 50%;
-      background: rgba(20, 8, 4, 0.28);
-      backdrop-filter: blur(8px);
-      color: var(--blanco);
-      font-size: 1.6rem;
-      cursor: pointer;
-      transform: translateY(-50%);
-      transition: background var(--transicion),
-                  transform var(--transicion);
-    }
-
-    .flecha-hero:hover {
-      background: rgba(255, 255, 255, 0.2);
-    }
-
-    .flecha-hero.anterior {
-      left: 25px;
-    }
-
-    .flecha-hero.siguiente {
-      right: 25px;
-    }
-
-    .hero-indicadores {
-      position: absolute;
-      z-index: 10;
-      left: 50%;
-      bottom: 34px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      transform: translateX(-50%);
-    }
-
-    .indicador {
-      width: 10px;
-      height: 10px;
-      padding: 0;
-      border: 0;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.45);
-      cursor: pointer;
-      transition: width var(--transicion),
-                  background var(--transicion);
-    }
-
-    .indicador.activo {
-      width: 34px;
-      border-radius: 100px;
-      background: var(--blanco);
     }
 
     .hero-scroll {
@@ -1099,37 +1019,8 @@
         width: 100%;
       }
 
-      .flecha-hero {
-        top: auto;
-        bottom: 78px;
-        width: 46px;
-        height: 46px;
-        transform: none;
-      }
-
-      .flecha-hero.anterior {
-        left: 20px;
-      }
-
-      .flecha-hero.siguiente {
-        right: 20px;
-      }
-
       .hero-scroll {
         display: none;
-      }
-
-      .hero-indicadores {
-        bottom: 27px;
-      }
-
-      .indicador {
-        width: 8px;
-        height: 8px;
-      }
-
-      .indicador.activo {
-        width: 24px;
       }
 
       .imagen-presentacion img {
@@ -1282,97 +1173,19 @@
 
 
   <!-- =====================================================
-       HERO
+       HERO - AHORA CON UNA SOLA IMAGEN
   ====================================================== -->
 
   <main>
 
     <section class="hero" id="inicio">
 
-      <div class="hero-slides" id="heroSlides">
-
-        <article class="hero-slide activo">
-
-          <img
-            src="https://iili.io/C8TGzcN.jpg"
-            alt="Alfajor Paceño"
-          >
-
-        </article>
-
-        <article class="hero-slide">
-
-          <img
-            src="https://iili.io/C8TGxFp.jpg"
-            alt="Alfajor Paceño"
-          >
-
-        </article>
-
-        <article class="hero-slide">
-
-          <img
-            src="https://iili.io/C8TGnPR.jpg"
-            alt="Alfajor Paceño"
-          >
-
-        </article>
-
-        <article class="hero-slide">
-
-          <img
-            src="https://iili.io/C8TGCMv.jpg"
-            alt="Alfajor Paceño"
-          >
-
-        </article>
-
-        <article class="hero-slide">
-
-          <img
-            src="https://iili.io/C8TGISI.jpg"
-            alt="Alfajor Paceño"
-          >
-
-        </article>
-
-        <article class="hero-slide">
-
-          <img
-            src="https://iili.io/C8TGu9t.jpg"
-            alt="Alfajor Paceño"
-          >
-
-        </article>
-
-        <article class="hero-slide">
-
-          <img
-            src="https://iili.io/C8TGAAX.jpg"
-            alt="Alfajor Paceño"
-          >
-
-        </article>
-
-        <article class="hero-slide">
-
-          <img
-            src="https://iili.io/C8TGRNn.jpg"
-            alt="Alfajor Paceño"
-          >
-
-        </article>
-
-        <article class="hero-slide">
-
-          <img
-            src="https://iili.io/C8TGYoG.jpg"
-            alt="Alfajor Paceño"
-          >
-
-        </article>
-
-      </div>
+      <!-- Imagen fija -->
+      <img
+        class="hero-imagen"
+        src="https://iili.io/C8SiA22.md.png"
+        alt="Alfajor Paceño - Imagen principal"
+      >
 
       <div class="hero-capa"></div>
 
@@ -1424,27 +1237,6 @@
         </div>
 
       </div>
-
-      <button
-        class="flecha-hero anterior"
-        id="heroAnterior"
-        aria-label="Imagen anterior"
-      >
-        ‹
-      </button>
-
-      <button
-        class="flecha-hero siguiente"
-        id="heroSiguiente"
-        aria-label="Imagen siguiente"
-      >
-        ›
-      </button>
-
-      <div
-        class="hero-indicadores"
-        id="heroIndicadores"
-      ></div>
 
       <div class="hero-scroll">
 
@@ -2224,208 +2016,6 @@
 
 
     /* =====================================================
-       CARRUSEL DEL HERO
-    ===================================================== */
-
-    const heroSlides =
-      [...document.querySelectorAll(".hero-slide")];
-
-    const heroIndicadores =
-      document.getElementById("heroIndicadores");
-
-    const heroAnterior =
-      document.getElementById("heroAnterior");
-
-    const heroSiguiente =
-      document.getElementById("heroSiguiente");
-
-    let indiceHero = 0;
-
-    let intervaloHero;
-
-    let inicioTouch = 0;
-
-
-    heroSlides.forEach((slide, indice) => {
-
-      const indicador =
-        document.createElement("button");
-
-      indicador.className =
-        indice === 0
-          ? "indicador activo"
-          : "indicador";
-
-      indicador.setAttribute(
-        "aria-label",
-        `Ir a la imagen ${indice + 1}`
-      );
-
-      indicador.addEventListener(
-        "click",
-        () => {
-
-          mostrarHero(indice);
-
-          reiniciarHero();
-
-        }
-      );
-
-      heroIndicadores.appendChild(
-        indicador
-      );
-
-    });
-
-
-    function mostrarHero(nuevoIndice) {
-
-      heroSlides[indiceHero]
-        .classList.remove("activo");
-
-      const indicadores =
-        document.querySelectorAll(".indicador");
-
-      indicadores[indiceHero]
-        .classList.remove("activo");
-
-
-      indiceHero =
-        (
-          nuevoIndice
-          + heroSlides.length
-        )
-        % heroSlides.length;
-
-
-      heroSlides[indiceHero]
-        .classList.add("activo");
-
-      indicadores[indiceHero]
-        .classList.add("activo");
-
-    }
-
-
-    function siguienteHero() {
-
-      mostrarHero(
-        indiceHero + 1
-      );
-
-    }
-
-
-    function anteriorHero() {
-
-      mostrarHero(
-        indiceHero - 1
-      );
-
-    }
-
-
-    function iniciarHero() {
-
-      intervaloHero =
-        setInterval(
-          siguienteHero,
-          4000
-        );
-
-    }
-
-
-    function reiniciarHero() {
-
-      clearInterval(
-        intervaloHero
-      );
-
-      iniciarHero();
-
-    }
-
-
-    heroSiguiente.addEventListener(
-      "click",
-      () => {
-
-        siguienteHero();
-
-        reiniciarHero();
-
-      }
-    );
-
-
-    heroAnterior.addEventListener(
-      "click",
-      () => {
-
-        anteriorHero();
-
-        reiniciarHero();
-
-      }
-    );
-
-
-    document
-      .querySelector(".hero")
-      .addEventListener(
-        "touchstart",
-        (evento) => {
-
-          inicioTouch =
-            evento.touches[0].clientX;
-
-        },
-        { passive: true }
-      );
-
-
-    document
-      .querySelector(".hero")
-      .addEventListener(
-        "touchend",
-        (evento) => {
-
-          const finalTouch =
-            evento.changedTouches[0].clientX;
-
-          const diferencia =
-            inicioTouch - finalTouch;
-
-
-          if (
-            Math.abs(diferencia) > 50
-          ) {
-
-            if (diferencia > 0) {
-
-              siguienteHero();
-
-            } else {
-
-              anteriorHero();
-
-            }
-
-            reiniciarHero();
-
-          }
-
-        },
-        { passive: true }
-      );
-
-
-    iniciarHero();
-
-
-    /* =====================================================
        ANIMACIONES AL HACER SCROLL
     ===================================================== */
 
@@ -2834,4 +2424,3 @@
 
 </body>
 </html>
-```
