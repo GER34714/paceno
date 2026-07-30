@@ -239,7 +239,7 @@
     }
 
     /* =====================================================
-       HERO - IMAGEN COMPLETA SIN BORDES
+       HERO
     ===================================================== */
 
     .hero {
@@ -519,157 +519,271 @@
     }
 
     /* =====================================================
-       ENCONTRÁ PACEÑO CERCA TUYO
+       PUNTOS DE VENTA - CÍRCULOS Y MODAL
     ===================================================== */
 
-    .encontrar-paceno {
+    .puntos {
       background: var(--blanco);
     }
 
-    .encontrar-paceno .encabezado {
-      margin-bottom: 45px;
+    .encabezado-puntos {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 30px;
+      margin-bottom: 50px;
     }
 
-    .puntos-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 25px;
-    }
-
-    .tarjeta-punto {
+    .buscador {
+      display: flex;
+      gap: 10px;
+      width: min(470px, 100%);
+      padding: 8px;
+      border: 1px solid rgba(50, 23, 15, 0.12);
+      border-radius: 100px;
       background: var(--crema);
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 8px 30px rgba(48, 23, 15, 0.12);
-      transition: transform var(--transicion), box-shadow var(--transicion);
     }
 
-    .tarjeta-punto:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 20px 45px rgba(48, 23, 15, 0.18);
-    }
-
-    .tarjeta-punto-imagen {
+    .buscador input {
       width: 100%;
-      height: 160px;
-      overflow: hidden;
-      background: var(--chocolate-claro);
-      position: relative;
+      min-width: 0;
+      padding: 10px 14px;
+      border: 0;
+      outline: 0;
+      background: transparent;
+      color: var(--texto);
     }
 
-    .tarjeta-punto-imagen img {
+    .buscador button {
+      min-width: 115px;
+      border: 0;
+      border-radius: 100px;
+      background: var(--chocolate);
+      color: var(--blanco);
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    /* Grid de círculos */
+    .tarjetas-puntos {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 30px 20px;
+      justify-items: center;
+    }
+
+    .punto-circulo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      transition: transform var(--transicion);
+      background: none;
+      border: none;
+      font: inherit;
+      color: var(--texto);
+      width: 100%;
+    }
+
+    .punto-circulo:hover {
+      transform: translateY(-6px);
+    }
+
+    .punto-circulo .circulo {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: var(--crema);
+      border: 3px solid var(--dorado);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.4rem;
+      box-shadow: 0 8px 25px rgba(48, 23, 15, 0.12);
+      transition: box-shadow var(--transicion), border-color var(--transicion);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .punto-circulo:hover .circulo {
+      box-shadow: 0 12px 35px rgba(48, 23, 15, 0.2);
+      border-color: var(--chocolate);
+    }
+
+    .punto-circulo .circulo img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.6s ease;
     }
 
-    .tarjeta-punto:hover .tarjeta-punto-imagen img {
-      transform: scale(1.05);
+    .punto-circulo .circulo .emoji {
+      font-size: 2.8rem;
+      line-height: 1;
     }
 
-    .tarjeta-punto-contenido {
-      padding: 18px 20px 22px;
-    }
-
-    .tarjeta-punto-nombre {
+    .punto-circulo .nombre {
       font-family: Georgia, "Times New Roman", serif;
-      font-size: 1.2rem;
+      font-size: 0.9rem;
       color: var(--chocolate);
-      margin-bottom: 4px;
+      text-align: center;
+      line-height: 1.2;
+      max-width: 140px;
     }
 
-    .tarjeta-punto-direccion {
+    .punto-circulo .localidad {
+      font-size: 0.75rem;
       color: #68493d;
-      font-size: 0.85rem;
-      line-height: 1.5;
-      margin-bottom: 14px;
+      text-align: center;
     }
 
-    .tarjeta-punto-acciones {
+    /* =====================================================
+       MODAL DE PUNTO DE VENTA
+    ===================================================== */
+
+    .modal-punto {
+      position: fixed;
+      z-index: 3000;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 30px;
+      background: rgba(12, 5, 3, 0.85);
+      backdrop-filter: blur(8px);
+    }
+
+    .modal-punto.abierto {
       display: flex;
-      gap: 10px;
+    }
+
+    .modal-punto-contenido {
+      max-width: 560px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      background: var(--crema);
+      border-radius: 28px;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+      animation: modalAparecer 0.4s ease;
+    }
+
+    @keyframes modalAparecer {
+      from {
+        opacity: 0;
+        transform: scale(0.92) translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+
+    .modal-punto-imagen {
+      width: 100%;
+      height: 220px;
+      overflow: hidden;
+      border-radius: 28px 28px 0 0;
+      background: var(--chocolate-claro);
+    }
+
+    .modal-punto-imagen img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .modal-punto-body {
+      padding: 28px 30px 32px;
+    }
+
+    .modal-punto-body .nombre {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.6rem;
+      color: var(--chocolate);
+      margin-bottom: 6px;
+    }
+
+    .modal-punto-body .direccion {
+      color: #68493d;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 6px;
+    }
+
+    .modal-punto-body .localidad {
+      color: #68493d;
+      font-size: 0.9rem;
+      margin-bottom: 20px;
+    }
+
+    .modal-punto-acciones {
+      display: flex;
+      gap: 12px;
       flex-wrap: wrap;
     }
 
-    .tarjeta-punto-acciones .boton {
+    .modal-punto-acciones .boton {
       flex: 1;
-      min-height: 38px;
-      padding: 8px 16px;
-      font-size: 0.8rem;
-      min-width: 100px;
+      min-height: 46px;
+      padding: 10px 20px;
+      font-size: 0.9rem;
+      min-width: 120px;
     }
 
-    .boton-maps {
+    .modal-punto-acciones .boton-maps {
       background: var(--chocolate);
       color: var(--blanco);
     }
 
-    .boton-maps:hover {
+    .modal-punto-acciones .boton-maps:hover {
       background: var(--chocolate-claro);
     }
 
-    .boton-instagram {
+    .modal-punto-acciones .boton-instagram-modal {
       background: transparent;
       color: var(--chocolate);
       border: 2px solid var(--chocolate);
       flex: 0 0 auto;
-      min-width: 44px;
-      width: 44px;
-      padding: 8px;
+      min-width: 50px;
+      width: 50px;
+      padding: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
-      min-height: 38px;
     }
 
-    .boton-instagram:hover {
+    .modal-punto-acciones .boton-instagram-modal:hover {
       background: var(--chocolate);
       color: var(--blanco);
     }
 
-    .boton-instagram svg {
-      width: 18px;
-      height: 18px;
+    .modal-punto-acciones .boton-instagram-modal svg {
+      width: 22px;
+      height: 22px;
       fill: currentColor;
     }
 
-    @media (max-width: 650px) {
-      .puntos-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-      }
+    .modal-punto-cerrar {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(255, 255, 255, 0.2);
+      color: var(--blanco);
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: background var(--transicion);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-      .tarjeta-punto-imagen {
-        height: 140px;
-      }
-
-      .tarjeta-punto-contenido {
-        padding: 16px 18px 20px;
-      }
-
-      .tarjeta-punto-nombre {
-        font-size: 1.1rem;
-      }
-
-      .tarjeta-punto-acciones .boton {
-        min-width: 80px;
-        font-size: 0.75rem;
-        padding: 6px 12px;
-        min-height: 34px;
-      }
-
-      .boton-instagram {
-        min-width: 38px;
-        width: 38px;
-        min-height: 34px;
-        padding: 6px;
-      }
-
-      .boton-instagram svg {
-        width: 16px;
-        height: 16px;
-      }
+    .modal-punto-cerrar:hover {
+      background: rgba(255, 255, 255, 0.35);
     }
 
     /* =====================================================
@@ -724,103 +838,6 @@
       flex-shrink: 0;
       background: var(--dorado);
       color: var(--chocolate);
-    }
-
-    /* =====================================================
-       PUNTOS DE VENTA (SECCIÓN ORIGINAL)
-    ===================================================== */
-
-    .puntos {
-      background: var(--blanco);
-    }
-
-    .encabezado-puntos {
-      display: flex;
-      justify-content: space-between;
-      align-items: end;
-      gap: 30px;
-      margin-bottom: 50px;
-    }
-
-    .buscador {
-      display: flex;
-      gap: 10px;
-      width: min(470px, 100%);
-      padding: 8px;
-      border: 1px solid rgba(50, 23, 15, 0.12);
-      border-radius: 100px;
-      background: var(--crema);
-    }
-
-    .buscador input {
-      width: 100%;
-      min-width: 0;
-      padding: 10px 14px;
-      border: 0;
-      outline: 0;
-      background: transparent;
-      color: var(--texto);
-    }
-
-    .buscador button {
-      min-width: 115px;
-      border: 0;
-      border-radius: 100px;
-      background: var(--chocolate);
-      color: var(--blanco);
-      font-weight: 800;
-      cursor: pointer;
-    }
-
-    .tarjetas-puntos {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
-    }
-
-    .punto {
-      padding: 30px;
-      border: 1px solid rgba(50, 23, 15, 0.1);
-      border-radius: 26px;
-      background: var(--crema);
-      transition: transform var(--transicion),
-                  box-shadow var(--transicion);
-    }
-
-    .punto:hover {
-      transform: translateY(-8px);
-      box-shadow: var(--sombra);
-    }
-
-    .punto-icono {
-      width: 58px;
-      height: 58px;
-      margin-bottom: 22px;
-      border-radius: 18px;
-      background: var(--chocolate);
-      color: var(--dorado);
-      display: grid;
-      place-items: center;
-      font-size: 1.6rem;
-    }
-
-    .punto h3 {
-      margin-bottom: 9px;
-      color: var(--chocolate);
-      font-family: Georgia, serif;
-      font-size: 1.5rem;
-    }
-
-    .punto p {
-      color: #73564a;
-      line-height: 1.65;
-    }
-
-    .punto a {
-      display: inline-flex;
-      margin-top: 22px;
-      color: var(--chocolate-claro);
-      font-weight: 900;
     }
 
     /* =====================================================
@@ -909,7 +926,7 @@
     }
 
     /* =====================================================
-       MODAL
+       MODAL GALERÍA
     ===================================================== */
 
     .modal-galeria {
@@ -1164,10 +1181,6 @@
         margin: 0 auto;
       }
 
-      .tarjetas-puntos {
-        grid-template-columns: 1fr 1fr;
-      }
-
       .encabezado-puntos,
       .galeria-encabezado {
         align-items: flex-start;
@@ -1180,6 +1193,21 @@
 
       .galeria-grid {
         grid-template-columns: repeat(2, 1fr);
+      }
+
+      .tarjetas-puntos {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 20px;
+      }
+
+      .punto-circulo .circulo {
+        width: 80px;
+        height: 80px;
+        font-size: 2rem;
+      }
+
+      .punto-circulo .nombre {
+        font-size: 0.8rem;
       }
     }
 
@@ -1273,10 +1301,6 @@
         width: 100%;
       }
 
-      .tarjetas-puntos {
-        grid-template-columns: 1fr;
-      }
-
       .buscador {
         flex-direction: column;
         border-radius: 22px;
@@ -1348,6 +1372,58 @@
         width: 30px;
         height: 30px;
       }
+
+      .tarjetas-puntos {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 15px;
+      }
+
+      .punto-circulo .circulo {
+        width: 70px;
+        height: 70px;
+        font-size: 1.8rem;
+      }
+
+      .punto-circulo .nombre {
+        font-size: 0.7rem;
+      }
+
+      .punto-circulo .localidad {
+        font-size: 0.65rem;
+      }
+
+      .modal-punto-contenido {
+        margin: 10px;
+        border-radius: 20px;
+      }
+
+      .modal-punto-imagen {
+        height: 160px;
+        border-radius: 20px 20px 0 0;
+      }
+
+      .modal-punto-body {
+        padding: 20px;
+      }
+
+      .modal-punto-body .nombre {
+        font-size: 1.3rem;
+      }
+
+      .modal-punto-acciones .boton {
+        min-width: 80px;
+        font-size: 0.8rem;
+        padding: 8px 14px;
+        min-height: 40px;
+      }
+
+      .modal-punto-cerrar {
+        top: 10px;
+        right: 10px;
+        width: 38px;
+        height: 38px;
+        font-size: 1.2rem;
+      }
     }
 
   </style>
@@ -1378,8 +1454,6 @@
         <a href="#inicio">Inicio</a>
 
         <a href="#historia">Nuestra historia</a>
-
-        <a href="#encontrar">¿Dónde encontrar?</a>
 
         <a href="#puntos">Puntos de venta</a>
 
@@ -1428,7 +1502,7 @@
 
 
   <!-- =====================================================
-       HERO - IMAGEN COMPLETA SIN BORDES
+       HERO
   ====================================================== -->
 
   <main>
@@ -1615,37 +1689,87 @@
 
 
     <!-- =====================================================
-         ENCONTRÁ PACEÑO CERCA TUYO
+         PUNTOS DE VENTA - CÍRCULOS
     ====================================================== -->
 
     <section
-      class="seccion encontrar-paceno"
-      id="encontrar"
+      class="seccion puntos"
+      id="puntos"
     >
 
       <div class="contenedor">
 
-        <div class="encabezado revelar desde-izquierda">
+        <div class="encabezado-puntos">
 
-          <span class="etiqueta">
-            📍 Encontranos cerca tuyo
-          </span>
+          <div
+            class="revelar desde-izquierda"
+          >
 
-          <h2 class="titulo-seccion">
-            Encontrá Paceño cerca tuyo
-          </h2>
+            <span class="etiqueta">
 
-          <p class="descripcion-seccion">
-            Descubrí los comercios donde podés encontrar nuestros alfajores artesanales.
-          </p>
+              📍 Encontranos cerca tuyo
+
+            </span>
+
+            <h2 class="titulo-seccion">
+
+              Puntos de venta
+
+            </h2>
+
+            <p class="descripcion-seccion">
+
+              Hacé clic en cada punto para ver la ubicación
+              y los detalles del comercio.
+
+            </p>
+
+          </div>
+
+          <form
+            class="buscador revelar desde-derecha"
+            id="formBuscador"
+          >
+
+            <input
+              type="search"
+              id="buscadorPuntos"
+              placeholder="Escribí una ciudad o localidad..."
+              aria-label="Buscar punto de venta"
+            >
+
+            <button type="submit">
+
+              Buscar
+
+            </button>
+
+          </form>
 
         </div>
 
-        <div class="puntos-grid" id="puntosEncontrar">
+        <div
+          class="tarjetas-puntos"
+          id="tarjetasPuntos"
+        >
 
-          <!-- Las tarjetas se generarán con JavaScript desde el arreglo puntosDeVenta -->
+          <!-- Los círculos se generarán con JavaScript -->
 
         </div>
+
+        <p
+          id="sinResultados"
+          style="
+            display:none;
+            margin-top:30px;
+            text-align:center;
+            color:#68493d;
+          "
+        >
+
+          No encontramos puntos de venta para esa búsqueda.
+
+        </p>
 
       </div>
 
@@ -1691,164 +1815,6 @@
           </a>
 
         </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =====================================================
-         PUNTOS DE VENTA (SECCIÓN ORIGINAL)
-    ====================================================== -->
-
-    <section
-      class="seccion puntos"
-      id="puntos"
-    >
-
-      <div class="contenedor">
-
-        <div class="encabezado-puntos">
-
-          <div
-            class="revelar desde-izquierda"
-          >
-
-            <span class="etiqueta">
-
-              Encontranos cerca tuyo
-
-            </span>
-
-            <h2 class="titulo-seccion">
-
-              Puntos de venta
-
-            </h2>
-
-            <p class="descripcion-seccion">
-
-              Buscá tu localidad y descubrí dónde podés
-              encontrar Alfajor Paceño.
-
-            </p>
-
-          </div>
-
-          <form
-            class="buscador revelar desde-derecha"
-            id="formBuscador"
-          >
-
-            <input
-              type="search"
-              id="buscadorPuntos"
-              placeholder="Escribí una ciudad o localidad..."
-              aria-label="Buscar punto de venta"
-            >
-
-            <button type="submit">
-
-              Buscar
-
-            </button>
-
-          </form>
-
-        </div>
-
-        <div
-          class="tarjetas-puntos"
-          id="tarjetasPuntos"
-        >
-
-          <article
-            class="punto revelar desde-abajo"
-            data-busqueda="buenos aires palermo"
-          >
-
-            <div class="punto-icono">📍</div>
-
-            <h3>
-              Próximamente
-            </h3>
-
-            <p>
-              Acá se mostrará el nombre del comercio,
-              dirección, localidad y horarios.
-            </p>
-
-            <a href="#contacto">
-
-              Consultar disponibilidad →
-
-            </a>
-
-          </article>
-
-          <article
-            class="punto revelar desde-abajo"
-            data-busqueda="la plata buenos aires"
-          >
-
-            <div class="punto-icono">🏪</div>
-
-            <h3>
-              Próximamente
-            </h3>
-
-            <p>
-              Los puntos de venta podrán cargarse y
-              actualizarse desde el panel administrador.
-            </p>
-
-            <a href="#contacto">
-
-              Consultar disponibilidad →
-
-            </a>
-
-          </article>
-
-          <article
-            class="punto revelar desde-abajo"
-            data-busqueda="argentina distribuidor"
-          >
-
-            <div class="punto-icono">🗺️</div>
-
-            <h3>
-              ¿Querés vender?
-            </h3>
-
-            <p>
-              Si tenés un comercio y querés incorporar
-              Alfajor Paceño, ponete en contacto.
-            </p>
-
-            <a href="#contacto">
-
-              Quiero ser punto de venta →
-
-            </a>
-
-          </article>
-
-        </div>
-
-        <p
-          id="sinResultados"
-          style="
-            display:none;
-            margin-top:30px;
-            text-align:center;
-            color:#68493d;
-          "
-        >
-
-          No encontramos puntos de venta para esa búsqueda.
-
-        </p>
 
       </div>
 
@@ -2201,6 +2167,74 @@
 
 
   <!-- =====================================================
+       MODAL DE PUNTO DE VENTA
+  ====================================================== -->
+
+  <div
+    class="modal-punto"
+    id="modalPunto"
+    aria-hidden="true"
+  >
+
+    <button
+      class="modal-punto-cerrar"
+      id="modalPuntoCerrar"
+      aria-label="Cerrar"
+    >
+      ×
+    </button>
+
+    <div class="modal-punto-contenido">
+
+      <div class="modal-punto-imagen">
+        <img
+          id="modalPuntoImagen"
+          src=""
+          alt=""
+        >
+      </div>
+
+      <div class="modal-punto-body">
+
+        <h3 class="nombre" id="modalPuntoNombre"></h3>
+
+        <p class="direccion" id="modalPuntoDireccion"></p>
+
+        <p class="localidad" id="modalPuntoLocalidad"></p>
+
+        <div class="modal-punto-acciones">
+
+          <a
+            id="modalPuntoMaps"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="boton boton-maps"
+          >
+            🗺️ Cómo llegar
+          </a>
+
+          <a
+            id="modalPuntoInstagram"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="boton boton-instagram-modal"
+            aria-label="Instagram"
+          >
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+            </svg>
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- =====================================================
        MODAL DE GALERÍA
   ====================================================== -->
 
@@ -2268,6 +2302,7 @@
         direccion: "Primera Junta 1391",
         localidad: "San Miguel, Buenos Aires",
         codigoPostal: "1663",
+        emoji: "📚",
         imagen: "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=800&h=600&fit=crop&crop=center",
         instagram: "https://www.instagram.com/libre.collage/",
         maps: "https://maps.google.com/?q=Primera+Junta+1391+San+Miguel+Buenos+Aires+Argentina"
@@ -2278,6 +2313,7 @@
         direccion: "Belgrano 842",
         localidad: "José C. Paz, Buenos Aires",
         codigoPostal: "1665",
+        emoji: "☕",
         imagen: "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=800&h=600&fit=crop&crop=center",
         instagram: "https://www.instagram.com/deliciasdepaz",
         maps: "https://maps.google.com/?q=Belgrano+842+Jose+C+Paz+Buenos+Aires+Argentina"
@@ -2288,6 +2324,7 @@
         direccion: "Av. San Martín 2150",
         localidad: "San Miguel, Buenos Aires",
         codigoPostal: "1663",
+        emoji: "🥖",
         imagen: "https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=800&h=600&fit=crop&crop=center",
         instagram: "https://www.instagram.com/eltrigalpanaderia",
         maps: "https://maps.google.com/?q=Av+San+Martin+2150+San+Miguel+Buenos+Aires+Argentina"
@@ -2298,6 +2335,7 @@
         direccion: "Rivadavia 565",
         localidad: "José C. Paz, Buenos Aires",
         codigoPostal: "1665",
+        emoji: "🛒",
         imagen: "https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=800&h=600&fit=crop&crop=center",
         instagram: "https://www.instagram.com/almacencriollo",
         maps: "https://maps.google.com/?q=Rivadavia+565+Jose+C+Paz+Buenos+Aires+Argentina"
@@ -2306,58 +2344,91 @@
 
 
     /* =====================================================
-       RENDERIZAR TARJETAS DE PUNTOS DE VENTA
+       RENDERIZAR CÍRCULOS DE PUNTOS DE VENTA
     ===================================================== */
 
-    function renderizarPuntosDeVenta() {
-      const contenedor = document.getElementById("puntosEncontrar");
+    function renderizarPuntos() {
+      const contenedor = document.getElementById("tarjetasPuntos");
       if (!contenedor) return;
 
-      contenedor.innerHTML = puntosDeVenta.map(punto => `
-        <article class="tarjeta-punto revelar desde-abajo">
-          <div class="tarjeta-punto-imagen">
-            <img
-              src="${punto.imagen}"
-              alt="${punto.nombre}"
-              loading="lazy"
-            >
+      contenedor.innerHTML = puntosDeVenta.map((punto, index) => `
+        <button
+          class="punto-circulo revelar desde-abajo"
+          data-index="${index}"
+          aria-label="Ver detalles de ${punto.nombre}"
+        >
+          <div class="circulo">
+            <span class="emoji">${punto.emoji}</span>
           </div>
-          <div class="tarjeta-punto-contenido">
-            <h3 class="tarjeta-punto-nombre">${punto.nombre}</h3>
-            <p class="tarjeta-punto-direccion">
-              ${punto.direccion}, ${punto.localidad} ${punto.codigoPostal}
-            </p>
-            <div class="tarjeta-punto-acciones">
-              <a
-                href="${punto.maps}"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="boton boton-maps"
-              >
-                🗺️ Cómo llegar
-              </a>
-              <a
-                href="${punto.instagram}"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="boton boton-instagram"
-                aria-label="Instagram de ${punto.nombre}"
-              >
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
-                </svg>
-              </a>
-            </div>
-          </div>
-        </article>
+          <span class="nombre">${punto.nombre}</span>
+          <span class="localidad">${punto.localidad.split(',')[0]}</span>
+        </button>
       `).join("");
 
-      // Aplicar animación de revelado a las nuevas tarjetas
+      // Agregar event listeners a cada círculo
+      document.querySelectorAll(".punto-circulo").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const index = parseInt(btn.dataset.index);
+          abrirModalPunto(index);
+        });
+      });
+
+      // Aplicar animación de revelado
       const nuevosElementos = contenedor.querySelectorAll(".revelar");
       nuevosElementos.forEach((el) => {
         observador.observe(el);
       });
     }
+
+
+    /* =====================================================
+       MODAL DE PUNTO DE VENTA
+    ===================================================== */
+
+    const modalPunto = document.getElementById("modalPunto");
+    const modalPuntoCerrar = document.getElementById("modalPuntoCerrar");
+    const modalPuntoImagen = document.getElementById("modalPuntoImagen");
+    const modalPuntoNombre = document.getElementById("modalPuntoNombre");
+    const modalPuntoDireccion = document.getElementById("modalPuntoDireccion");
+    const modalPuntoLocalidad = document.getElementById("modalPuntoLocalidad");
+    const modalPuntoMaps = document.getElementById("modalPuntoMaps");
+    const modalPuntoInstagram = document.getElementById("modalPuntoInstagram");
+
+    let puntoActual = null;
+
+    function abrirModalPunto(index) {
+      puntoActual = puntosDeVenta[index];
+      if (!puntoActual) return;
+
+      modalPuntoImagen.src = puntoActual.imagen;
+      modalPuntoImagen.alt = puntoActual.nombre;
+      modalPuntoNombre.textContent = puntoActual.nombre;
+      modalPuntoDireccion.textContent = puntoActual.direccion;
+      modalPuntoLocalidad.textContent = `${puntoActual.localidad} ${puntoActual.codigoPostal}`;
+      modalPuntoMaps.href = puntoActual.maps;
+      modalPuntoInstagram.href = puntoActual.instagram;
+
+      modalPunto.classList.add("abierto");
+      modalPunto.setAttribute("aria-hidden", "false");
+      document.body.classList.add("menu-abierto");
+    }
+
+    function cerrarModalPunto() {
+      modalPunto.classList.remove("abierto");
+      modalPunto.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("menu-abierto");
+    }
+
+    modalPuntoCerrar.addEventListener("click", cerrarModalPunto);
+
+    modalPunto.addEventListener("click", (evento) => {
+      if (evento.target === modalPunto) cerrarModalPunto();
+    });
+
+    document.addEventListener("keydown", (evento) => {
+      if (!modalPunto.classList.contains("abierto")) return;
+      if (evento.key === "Escape") cerrarModalPunto();
+    });
 
 
     /* =====================================================
@@ -2441,23 +2512,24 @@
 
 
     /* =====================================================
-       BUSCADOR DE PUNTOS (SECCIÓN ORIGINAL)
+       BUSCADOR DE PUNTOS
     ===================================================== */
 
     const formBuscador = document.getElementById("formBuscador");
     const inputBuscador = document.getElementById("buscadorPuntos");
-    const puntos = document.querySelectorAll(".punto");
     const sinResultados = document.getElementById("sinResultados");
 
     formBuscador.addEventListener("submit", (evento) => {
       evento.preventDefault();
       const texto = inputBuscador.value.toLowerCase().trim();
+      const circulos = document.querySelectorAll(".punto-circulo");
       let cantidadVisible = 0;
 
-      puntos.forEach((punto) => {
-        const contenido = punto.dataset.busqueda.toLowerCase();
-        const mostrar = texto === "" || contenido.includes(texto);
-        punto.style.display = mostrar ? "" : "none";
+      circulos.forEach((circulo) => {
+        const nombre = circulo.querySelector(".nombre").textContent.toLowerCase();
+        const localidad = circulo.querySelector(".localidad").textContent.toLowerCase();
+        const mostrar = texto === "" || nombre.includes(texto) || localidad.includes(texto);
+        circulo.style.display = mostrar ? "flex" : "none";
         if (mostrar) cantidadVisible++;
       });
 
@@ -2495,7 +2567,7 @@
     botonesGaleria.forEach((boton) => {
       boton.addEventListener("click", () => {
         indiceModal = Number(boton.dataset.imagen);
-        abrirModal();
+        abrirModalGaleria();
       });
     });
 
@@ -2507,52 +2579,52 @@
       botonVerMas.textContent = galeriaExpandida ? "Ver menos" : "Ver más imágenes";
     });
 
-    function abrirModal() {
+    function abrirModalGaleria() {
       modalImagen.src = imagenesGaleria[indiceModal];
       modalGaleria.classList.add("abierto");
       modalGaleria.setAttribute("aria-hidden", "false");
       document.body.classList.add("menu-abierto");
     }
 
-    function cerrarModal() {
+    function cerrarModalGaleria() {
       modalGaleria.classList.remove("abierto");
       modalGaleria.setAttribute("aria-hidden", "true");
       document.body.classList.remove("menu-abierto");
     }
 
-    function actualizarModal() {
+    function actualizarModalGaleria() {
       modalImagen.src = imagenesGaleria[indiceModal];
     }
 
     modalSiguiente.addEventListener("click", () => {
       indiceModal = (indiceModal + 1) % imagenesGaleria.length;
-      actualizarModal();
+      actualizarModalGaleria();
     });
 
     modalAnterior.addEventListener("click", () => {
       indiceModal = (indiceModal - 1 + imagenesGaleria.length) % imagenesGaleria.length;
-      actualizarModal();
+      actualizarModalGaleria();
     });
 
-    modalCerrar.addEventListener("click", cerrarModal);
+    modalCerrar.addEventListener("click", cerrarModalGaleria);
 
     modalGaleria.addEventListener("click", (evento) => {
-      if (evento.target === modalGaleria) cerrarModal();
+      if (evento.target === modalGaleria) cerrarModalGaleria();
     });
 
     document.addEventListener("keydown", (evento) => {
       if (!modalGaleria.classList.contains("abierto")) return;
-      if (evento.key === "Escape") cerrarModal();
+      if (evento.key === "Escape") cerrarModalGaleria();
       if (evento.key === "ArrowRight") modalSiguiente.click();
       if (evento.key === "ArrowLeft") modalAnterior.click();
     });
 
 
     /* =====================================================
-       INICIALIZAR RENDERIZADO DE PUNTOS DE VENTA
+       INICIALIZAR RENDERIZADO
     ===================================================== */
 
-    document.addEventListener("DOMContentLoaded", renderizarPuntosDeVenta);
+    document.addEventListener("DOMContentLoaded", renderizarPuntos);
 
   </script>
 
