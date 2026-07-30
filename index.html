@@ -1045,7 +1045,7 @@
     }
 
     /* =====================================================
-       GALERÍA
+       GALERÍA - TEXTO SOLO EN MODAL
     ===================================================== */
 
     .galeria {
@@ -1080,6 +1080,11 @@
       background: var(--chocolate);
       cursor: pointer;
       box-shadow: 0 12px 35px rgba(50, 23, 15, 0.12);
+      transition: transform 0.3s ease;
+    }
+
+    .galeria-item:hover {
+      transform: scale(1.02);
     }
 
     .galeria-item:nth-child(1) {
@@ -1098,48 +1103,8 @@
       transition: transform 0.65s ease;
     }
 
-    .galeria-item .galeria-texto {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      padding: 30px 20px 20px;
-      background: linear-gradient(transparent, rgba(50, 23, 15, 0.85));
-      color: var(--blanco);
-      transform: translateY(100%);
-      transition: transform 0.5s ease;
-      pointer-events: none;
-    }
-
-    .galeria-item .galeria-texto h4 {
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 1rem;
-      font-weight: 700;
-      margin-bottom: 4px;
-    }
-
-    .galeria-item .galeria-texto p {
-      font-size: 0.8rem;
-      opacity: 0.9;
-      line-height: 1.4;
-    }
-
-    .galeria-item:hover .galeria-texto {
-      transform: translateY(0);
-    }
-
-    .galeria-item::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(50, 23, 15, 0.3);
-      opacity: 0;
-      transition: opacity var(--transicion);
-      pointer-events: none;
-    }
-
-    .galeria-item:hover::after {
-      opacity: 1;
+    .galeria-item:hover img {
+      transform: scale(1.05);
     }
 
     .galeria-item.oculta {
@@ -1266,25 +1231,6 @@
 
     .modal-siguiente {
       right: 25px;
-    }
-
-    /* Contador de imágenes en el modal */
-    .modal-contador {
-      position: fixed;
-      bottom: 25px;
-      left: 50%;
-      transform: translateX(-50%);
-      color: rgba(255, 255, 255, 0.6);
-      font-size: 0.85rem;
-      font-weight: 600;
-      letter-spacing: 1px;
-      background: rgba(0, 0, 0, 0.4);
-      backdrop-filter: blur(8px);
-      padding: 8px 20px;
-      border-radius: 100px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      z-index: 10;
-      font-family: Arial, sans-serif;
     }
 
     /* =====================================================
@@ -1547,20 +1493,6 @@
         grid-auto-rows: 200px;
       }
 
-      .galeria-item .galeria-texto {
-        transform: translateY(0);
-        padding: 15px 15px 12px;
-        background: linear-gradient(transparent, rgba(50, 23, 15, 0.85));
-      }
-
-      .galeria-item .galeria-texto h4 {
-        font-size: 0.85rem;
-      }
-
-      .galeria-item .galeria-texto p {
-        font-size: 0.7rem;
-      }
-
       .tarjetas-puntos {
         grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
         gap: 20px;
@@ -1745,18 +1677,6 @@
         grid-row: span 1;
       }
 
-      .galeria-item .galeria-texto {
-        padding: 12px 12px 10px;
-      }
-
-      .galeria-item .galeria-texto h4 {
-        font-size: 0.75rem;
-      }
-
-      .galeria-item .galeria-texto p {
-        font-size: 0.6rem;
-      }
-
       .modal-contenedor-imagen {
         max-width: 98vw;
         max-height: 80vh;
@@ -1807,12 +1727,6 @@
         width: 42px;
         height: 42px;
         font-size: 1.2rem;
-      }
-
-      .modal-contador {
-        bottom: 80px;
-        font-size: 0.7rem;
-        padding: 5px 14px;
       }
 
       .footer-superior,
@@ -2218,6 +2132,14 @@
               >
             </div>
 
+            <div class="carrusel-slide">
+              <img
+                src="https://iili.io/C8PRaAF.md.png"
+                alt="Banner promocional 3"
+                loading="lazy"
+              >
+            </div>
+
           </div>
 
           <button class="carrusel-boton izquierda" id="carruselAnterior" aria-label="Anterior">
@@ -2371,7 +2293,7 @@
 
 
     <!-- =====================================================
-         GALERÍA
+         GALERÍA - TEXTO SOLO EN MODAL
     ====================================================== -->
 
     <section
@@ -2387,23 +2309,12 @@
             class="revelar desde-izquierda"
           >
 
-            <span class="etiqueta">
+            <span class="etiqueta">📸 Un vistazo a nuestra creación</span>
 
-              Conocé nuestros sabores
-
-            </span>
-
-            <h2 class="titulo-seccion">
-
-              Galería Paceña
-
-            </h2>
+            <h2 class="titulo-seccion">Un vistazo a nuestra creación</h2>
 
             <p class="descripcion-seccion">
-
-              Una selección de imágenes para conocer
-              el producto, sus detalles y su identidad.
-
+              Sumergite en las texturas, los colores y la esencia de nuestro alfajor a través de estas imágenes.
             </p>
 
           </div>
@@ -2429,18 +2340,11 @@
             data-imagen="0"
             aria-label="Abrir imagen 1"
           >
-
             <img
               src="https://iili.io/C8TGzcN.jpg"
               alt="Alfajor Paceño"
               loading="lazy"
             >
-
-            <div class="galeria-texto">
-              <h4>Textura perfecta</h4>
-              <p>La combinación ideal entre lo crujiente y lo suave.</p>
-            </div>
-
           </button>
 
           <button
@@ -2448,18 +2352,11 @@
             data-imagen="1"
             aria-label="Abrir imagen 2"
           >
-
             <img
               src="https://iili.io/C8TGxFp.jpg"
               alt="Alfajor Paceño"
               loading="lazy"
             >
-
-            <div class="galeria-texto">
-              <h4>Untuosidad artesanal</h4>
-              <p>Una textura cremosa que se siente en cada bocado.</p>
-            </div>
-
           </button>
 
           <button
@@ -2467,18 +2364,11 @@
             data-imagen="2"
             aria-label="Abrir imagen 3"
           >
-
             <img
               src="https://iili.io/C8TGnPR.jpg"
               alt="Alfajor Paceño"
               loading="lazy"
             >
-
-            <div class="galeria-texto">
-              <h4>Equilibrio sensorial</h4>
-              <p>El contraste perfecto entre firmeza y suavidad.</p>
-            </div>
-
           </button>
 
           <button
@@ -2486,18 +2376,11 @@
             data-imagen="3"
             aria-label="Abrir imagen 4"
           >
-
             <img
               src="https://iili.io/C8TGCMv.jpg"
               alt="Alfajor Paceño"
               loading="lazy"
             >
-
-            <div class="galeria-texto">
-              <h4>Dedicación en cada detalle</h4>
-              <p>Texturas logradas con esmero y paciencia.</p>
-            </div>
-
           </button>
 
           <button
@@ -2505,18 +2388,11 @@
             data-imagen="4"
             aria-label="Abrir imagen 5"
           >
-
             <img
               src="https://iili.io/C8TGISI.jpg"
               alt="Alfajor Paceño"
               loading="lazy"
             >
-
-            <div class="galeria-texto">
-              <h4>Experiencia única</h4>
-              <p>Cada mordida es una exploración de texturas.</p>
-            </div>
-
           </button>
 
           <button
@@ -2524,18 +2400,11 @@
             data-imagen="5"
             aria-label="Abrir imagen 6"
           >
-
             <img
               src="https://iili.io/C8TGu9t.jpg"
               alt="Alfajor Paceño"
               loading="lazy"
             >
-
-            <div class="galeria-texto">
-              <h4>Cremoso y envolvente</h4>
-              <p>Una textura que abraza el paladar suavemente.</p>
-            </div>
-
           </button>
 
           <button
@@ -2543,18 +2412,11 @@
             data-imagen="6"
             aria-label="Abrir imagen 7"
           >
-
             <img
               src="https://iili.io/C8TGAAX.jpg"
               alt="Alfajor Paceño"
               loading="lazy"
             >
-
-            <div class="galeria-texto">
-              <h4>Artesanía en cada capa</h4>
-              <p>Texturas construidas con técnica y pasión.</p>
-            </div>
-
           </button>
 
           <button
@@ -2562,18 +2424,11 @@
             data-imagen="7"
             aria-label="Abrir imagen 8"
           >
-
             <img
               src="https://iili.io/C8TGRNn.jpg"
               alt="Alfajor Paceño"
               loading="lazy"
             >
-
-            <div class="galeria-texto">
-              <h4>Suavidad inconfundible</h4>
-              <p>Una textura que invita a repetir la experiencia.</p>
-            </div>
-
           </button>
 
           <button
@@ -2581,18 +2436,11 @@
             data-imagen="8"
             aria-label="Abrir imagen 9"
           >
-
             <img
               src="https://iili.io/C8TGYoG.jpg"
               alt="Alfajor Paceño"
               loading="lazy"
             >
-
-            <div class="galeria-texto">
-              <h4>Placer textural</h4>
-              <p>Un viaje de sensaciones en cada bocado.</p>
-            </div>
-
           </button>
 
         </div>
@@ -2604,7 +2452,7 @@
             id="botonVerMas"
           >
 
-            Ver más imágenes
+            Explorar más
 
           </button>
 
@@ -2840,7 +2688,7 @@
 
 
   <!-- =====================================================
-       MODAL DE GALERÍA - CON TEXTO DENTRO
+       MODAL DE GALERÍA
   ====================================================== -->
 
   <div
@@ -2872,7 +2720,6 @@
         src=""
         alt="Imagen de Alfajor Paceño"
       >
-      <!-- Texto superpuesto DENTRO de la imagen -->
       <div class="modal-texto-imagen" id="modalTextoImagen">
         <h3 id="modalTitulo"></h3>
         <p id="modalDescripcion"></p>
@@ -2886,8 +2733,6 @@
     >
       ›
     </button>
-
-    <div class="modal-contador" id="modalContador">1 / 9</div>
 
   </div>
 
@@ -3203,7 +3048,6 @@
        GALERÍA - MODAL CON TEXTO DENTRO DE LA IMAGEN
     ===================================================== */
 
-    // Datos de la galería con títulos y descripciones
     const datosGaleria = [
       { titulo: "Textura perfecta", descripcion: "La combinación ideal entre lo crujiente y lo suave." },
       { titulo: "Untuosidad artesanal", descripcion: "Una textura cremosa que se siente en cada bocado." },
@@ -3234,7 +3078,6 @@
     const modalImagen = document.getElementById("modalImagen");
     const modalTitulo = document.getElementById("modalTitulo");
     const modalDescripcion = document.getElementById("modalDescripcion");
-    const modalContador = document.getElementById("modalContador");
     const modalCerrar = document.getElementById("modalCerrar");
     const modalAnterior = document.getElementById("modalAnterior");
     const modalSiguiente = document.getElementById("modalSiguiente");
@@ -3261,7 +3104,6 @@
       modalImagen.alt = datosGaleria[indiceModal].titulo;
       modalTitulo.textContent = datosGaleria[indiceModal].titulo;
       modalDescripcion.textContent = datosGaleria[indiceModal].descripcion;
-      modalContador.textContent = `${indiceModal + 1} / ${imagenesGaleria.length}`;
     }
 
     function irAnterior() {
@@ -3274,7 +3116,6 @@
       actualizarModalGaleria();
     }
 
-    // Event listeners para los botones de la galería
     botonesGaleria.forEach((boton) => {
       boton.addEventListener("click", () => {
         const index = Number(boton.dataset.imagen);
@@ -3282,16 +3123,14 @@
       });
     });
 
-    // Ver más / Ver menos
     botonVerMas.addEventListener("click", () => {
       galeriaExpandida = !galeriaExpandida;
       document.querySelectorAll(".galeria-item.oculta").forEach((item) => {
         item.style.display = galeriaExpandida ? "block" : "none";
       });
-      botonVerMas.textContent = galeriaExpandida ? "Ver menos" : "Ver más imágenes";
+      botonVerMas.textContent = galeriaExpandida ? "Ver menos" : "Explorar más";
     });
 
-    // Controles del modal
     modalCerrar.addEventListener("click", cerrarModalGaleria);
     modalAnterior.addEventListener("click", irAnterior);
     modalSiguiente.addEventListener("click", irSiguiente);
@@ -3300,7 +3139,6 @@
       if (evento.target === modalGaleria) cerrarModalGaleria();
     });
 
-    // Teclado
     document.addEventListener("keydown", (evento) => {
       if (!modalGaleria.classList.contains("abierto")) return;
       if (evento.key === "Escape") cerrarModalGaleria();
