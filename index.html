@@ -239,12 +239,13 @@
     }
 
     /* =====================================================
-       HERO - CON NUEVA IMAGEN
+       HERO - IMAGEN COMPLETA SIN BORDES
     ===================================================== */
 
     .hero {
       position: relative;
       min-height: 100svh;
+      width: 100vw;
       background: var(--chocolate);
       color: var(--blanco);
       overflow: hidden;
@@ -518,6 +519,160 @@
     }
 
     /* =====================================================
+       ENCONTRÁ PACEÑO CERCA TUYO
+    ===================================================== */
+
+    .encontrar-paceno {
+      background: var(--blanco);
+    }
+
+    .encontrar-paceno .encabezado {
+      margin-bottom: 45px;
+    }
+
+    .puntos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 25px;
+    }
+
+    .tarjeta-punto {
+      background: var(--crema);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 30px rgba(48, 23, 15, 0.12);
+      transition: transform var(--transicion), box-shadow var(--transicion);
+    }
+
+    .tarjeta-punto:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 45px rgba(48, 23, 15, 0.18);
+    }
+
+    .tarjeta-punto-imagen {
+      width: 100%;
+      height: 160px;
+      overflow: hidden;
+      background: var(--chocolate-claro);
+      position: relative;
+    }
+
+    .tarjeta-punto-imagen img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .tarjeta-punto:hover .tarjeta-punto-imagen img {
+      transform: scale(1.05);
+    }
+
+    .tarjeta-punto-contenido {
+      padding: 18px 20px 22px;
+    }
+
+    .tarjeta-punto-nombre {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.2rem;
+      color: var(--chocolate);
+      margin-bottom: 4px;
+    }
+
+    .tarjeta-punto-direccion {
+      color: #68493d;
+      font-size: 0.85rem;
+      line-height: 1.5;
+      margin-bottom: 14px;
+    }
+
+    .tarjeta-punto-acciones {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .tarjeta-punto-acciones .boton {
+      flex: 1;
+      min-height: 38px;
+      padding: 8px 16px;
+      font-size: 0.8rem;
+      min-width: 100px;
+    }
+
+    .boton-maps {
+      background: var(--chocolate);
+      color: var(--blanco);
+    }
+
+    .boton-maps:hover {
+      background: var(--chocolate-claro);
+    }
+
+    .boton-instagram {
+      background: transparent;
+      color: var(--chocolate);
+      border: 2px solid var(--chocolate);
+      flex: 0 0 auto;
+      min-width: 44px;
+      width: 44px;
+      padding: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 38px;
+    }
+
+    .boton-instagram:hover {
+      background: var(--chocolate);
+      color: var(--blanco);
+    }
+
+    .boton-instagram svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+    }
+
+    @media (max-width: 650px) {
+      .puntos-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .tarjeta-punto-imagen {
+        height: 140px;
+      }
+
+      .tarjeta-punto-contenido {
+        padding: 16px 18px 20px;
+      }
+
+      .tarjeta-punto-nombre {
+        font-size: 1.1rem;
+      }
+
+      .tarjeta-punto-acciones .boton {
+        min-width: 80px;
+        font-size: 0.75rem;
+        padding: 6px 12px;
+        min-height: 34px;
+      }
+
+      .boton-instagram {
+        min-width: 38px;
+        width: 38px;
+        min-height: 34px;
+        padding: 6px;
+      }
+
+      .boton-instagram svg {
+        width: 16px;
+        height: 16px;
+      }
+    }
+
+    /* =====================================================
        BANNER
     ===================================================== */
 
@@ -572,7 +727,7 @@
     }
 
     /* =====================================================
-       PUNTOS DE VENTA
+       PUNTOS DE VENTA (SECCIÓN ORIGINAL)
     ===================================================== */
 
     .puntos {
@@ -1224,6 +1379,8 @@
 
         <a href="#historia">Nuestra historia</a>
 
+        <a href="#encontrar">¿Dónde encontrar?</a>
+
         <a href="#puntos">Puntos de venta</a>
 
         <a href="#galeria">Galería</a>
@@ -1271,14 +1428,13 @@
 
 
   <!-- =====================================================
-       HERO - CON NUEVA IMAGEN
+       HERO - IMAGEN COMPLETA SIN BORDES
   ====================================================== -->
 
   <main>
 
     <section class="hero" id="inicio">
 
-      <!-- NUEVA IMAGEN DE HERO -->
       <img
         class="hero-imagen"
         src="https://wrgvhnlhpkvendjhbtpm.supabase.co/storage/v1/object/public/imagenes%20kn%20relojes/d6fe8566-4dc3-4191-b194-990414d342fd%20(1).png"
@@ -1459,6 +1615,44 @@
 
 
     <!-- =====================================================
+         ENCONTRÁ PACEÑO CERCA TUYO
+    ====================================================== -->
+
+    <section
+      class="seccion encontrar-paceno"
+      id="encontrar"
+    >
+
+      <div class="contenedor">
+
+        <div class="encabezado revelar desde-izquierda">
+
+          <span class="etiqueta">
+            📍 Encontranos cerca tuyo
+          </span>
+
+          <h2 class="titulo-seccion">
+            Encontrá Paceño cerca tuyo
+          </h2>
+
+          <p class="descripcion-seccion">
+            Descubrí los comercios donde podés encontrar nuestros alfajores artesanales.
+          </p>
+
+        </div>
+
+        <div class="puntos-grid" id="puntosEncontrar">
+
+          <!-- Las tarjetas se generarán con JavaScript desde el arreglo puntosDeVenta -->
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
          BANNER PROMOCIONAL
     ====================================================== -->
 
@@ -1504,7 +1698,7 @@
 
 
     <!-- =====================================================
-         PUNTOS DE VENTA
+         PUNTOS DE VENTA (SECCIÓN ORIGINAL)
     ====================================================== -->
 
     <section
@@ -1562,12 +1756,6 @@
           </form>
 
         </div>
-
-        <!--
-          ESTOS SON EJEMPLOS.
-          DESPUÉS SE REEMPLAZAN POR LOS PUNTOS
-          REALES QUE VENGAN DEL PANEL ADMINISTRADOR.
-        -->
 
         <div
           class="tarjetas-puntos"
@@ -1962,7 +2150,6 @@
 
         <div class="footer-redes">
 
-          <!-- INSTAGRAM - by.yodra -->
           <a
             href="https://instagram.com/by.yodra"
             target="_blank"
@@ -1974,7 +2161,6 @@
             </svg>
           </a>
 
-          <!-- WHATSAPP -->
           <a
             href="https://wa.me/5491123456789"
             target="_blank"
@@ -2071,55 +2257,134 @@
   <script>
 
     /* =====================================================
+       DATOS DE EJEMPLO - PUNTOS DE VENTA
+       (Reemplazar con conexión a Supabase más adelante)
+    ===================================================== */
+
+    const puntosDeVenta = [
+      {
+        id: 1,
+        nombre: "Librería Collage 🎨",
+        direccion: "Primera Junta 1391",
+        localidad: "San Miguel, Buenos Aires",
+        codigoPostal: "1663",
+        imagen: "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=800&h=600&fit=crop&crop=center",
+        instagram: "https://www.instagram.com/libre.collage/",
+        maps: "https://maps.google.com/?q=Primera+Junta+1391+San+Miguel+Buenos+Aires+Argentina"
+      },
+      {
+        id: 2,
+        nombre: "Delicias de Paz ☕",
+        direccion: "Belgrano 842",
+        localidad: "José C. Paz, Buenos Aires",
+        codigoPostal: "1665",
+        imagen: "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=800&h=600&fit=crop&crop=center",
+        instagram: "https://www.instagram.com/deliciasdepaz",
+        maps: "https://maps.google.com/?q=Belgrano+842+Jose+C+Paz+Buenos+Aires+Argentina"
+      },
+      {
+        id: 3,
+        nombre: "Panadería El Trigal 🌾",
+        direccion: "Av. San Martín 2150",
+        localidad: "San Miguel, Buenos Aires",
+        codigoPostal: "1663",
+        imagen: "https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=800&h=600&fit=crop&crop=center",
+        instagram: "https://www.instagram.com/eltrigalpanaderia",
+        maps: "https://maps.google.com/?q=Av+San+Martin+2150+San+Miguel+Buenos+Aires+Argentina"
+      },
+      {
+        id: 4,
+        nombre: "Almacén Criollo 🛒",
+        direccion: "Rivadavia 565",
+        localidad: "José C. Paz, Buenos Aires",
+        codigoPostal: "1665",
+        imagen: "https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=800&h=600&fit=crop&crop=center",
+        instagram: "https://www.instagram.com/almacencriollo",
+        maps: "https://maps.google.com/?q=Rivadavia+565+Jose+C+Paz+Buenos+Aires+Argentina"
+      }
+    ];
+
+
+    /* =====================================================
+       RENDERIZAR TARJETAS DE PUNTOS DE VENTA
+    ===================================================== */
+
+    function renderizarPuntosDeVenta() {
+      const contenedor = document.getElementById("puntosEncontrar");
+      if (!contenedor) return;
+
+      contenedor.innerHTML = puntosDeVenta.map(punto => `
+        <article class="tarjeta-punto revelar desde-abajo">
+          <div class="tarjeta-punto-imagen">
+            <img
+              src="${punto.imagen}"
+              alt="${punto.nombre}"
+              loading="lazy"
+            >
+          </div>
+          <div class="tarjeta-punto-contenido">
+            <h3 class="tarjeta-punto-nombre">${punto.nombre}</h3>
+            <p class="tarjeta-punto-direccion">
+              ${punto.direccion}, ${punto.localidad} ${punto.codigoPostal}
+            </p>
+            <div class="tarjeta-punto-acciones">
+              <a
+                href="${punto.maps}"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="boton boton-maps"
+              >
+                🗺️ Cómo llegar
+              </a>
+              <a
+                href="${punto.instagram}"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="boton boton-instagram"
+                aria-label="Instagram de ${punto.nombre}"
+              >
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </article>
+      `).join("");
+
+      // Aplicar animación de revelado a las nuevas tarjetas
+      const nuevosElementos = contenedor.querySelectorAll(".revelar");
+      nuevosElementos.forEach((el) => {
+        observador.observe(el);
+      });
+    }
+
+
+    /* =====================================================
        HEADER Y MENÚ
     ===================================================== */
 
     const header = document.getElementById("header");
-
     const menuBoton = document.getElementById("menuBoton");
-
     const nav = document.getElementById("nav");
 
-
     window.addEventListener("scroll", () => {
-
-      header.classList.toggle(
-        "activo",
-        window.scrollY > 40
-      );
-
+      header.classList.toggle("activo", window.scrollY > 40);
     });
-
 
     menuBoton.addEventListener("click", () => {
-
       nav.classList.toggle("abierta");
-
       document.body.classList.toggle("menu-abierto");
-
-      menuBoton.textContent =
-        nav.classList.contains("abierta")
-          ? "×"
-          : "☰";
-
+      menuBoton.textContent = nav.classList.contains("abierta") ? "×" : "☰";
     });
 
-
-    document
-      .querySelectorAll(".nav a")
-      .forEach((enlace) => {
-
-        enlace.addEventListener("click", () => {
-
-          nav.classList.remove("abierta");
-
-          document.body.classList.remove("menu-abierto");
-
-          menuBoton.textContent = "☰";
-
-        });
-
+    document.querySelectorAll(".nav a").forEach((enlace) => {
+      enlace.addEventListener("click", () => {
+        nav.classList.remove("abierta");
+        document.body.classList.remove("menu-abierto");
+        menuBoton.textContent = "☰";
       });
+    });
 
 
     /* =====================================================
@@ -2154,132 +2419,50 @@
        ANIMACIONES AL HACER SCROLL
     ===================================================== */
 
-    const elementosRevelar =
-      document.querySelectorAll(
-        ".revelar"
-      );
+    const elementosRevelar = document.querySelectorAll(".revelar");
 
-
-    const observador =
-      new IntersectionObserver(
-
-        (entradas) => {
-
-          entradas.forEach(
-            (entrada) => {
-
-              if (
-                entrada.isIntersecting
-              ) {
-
-                entrada.target
-                  .classList
-                  .add("visible");
-
-                observador.unobserve(
-                  entrada.target
-                );
-
-              }
-
-            }
-          );
-
-        },
-
-        {
-          threshold: 0.15
-        }
-
-      );
-
-
-    elementosRevelar.forEach(
-      (elemento) => {
-
-        observador.observe(
-          elemento
-        );
-
+    const observador = new IntersectionObserver(
+      (entradas) => {
+        entradas.forEach((entrada) => {
+          if (entrada.isIntersecting) {
+            entrada.target.classList.add("visible");
+            observador.unobserve(entrada.target);
+          }
+        });
+      },
+      {
+        threshold: 0.15
       }
     );
+
+    elementosRevelar.forEach((elemento) => {
+      observador.observe(elemento);
+    });
 
 
     /* =====================================================
-       BUSCADOR DE PUNTOS
+       BUSCADOR DE PUNTOS (SECCIÓN ORIGINAL)
     ===================================================== */
 
-    const formBuscador =
-      document.getElementById(
-        "formBuscador"
-      );
+    const formBuscador = document.getElementById("formBuscador");
+    const inputBuscador = document.getElementById("buscadorPuntos");
+    const puntos = document.querySelectorAll(".punto");
+    const sinResultados = document.getElementById("sinResultados");
 
-    const inputBuscador =
-      document.getElementById(
-        "buscadorPuntos"
-      );
+    formBuscador.addEventListener("submit", (evento) => {
+      evento.preventDefault();
+      const texto = inputBuscador.value.toLowerCase().trim();
+      let cantidadVisible = 0;
 
-    const puntos =
-      document.querySelectorAll(
-        ".punto"
-      );
+      puntos.forEach((punto) => {
+        const contenido = punto.dataset.busqueda.toLowerCase();
+        const mostrar = texto === "" || contenido.includes(texto);
+        punto.style.display = mostrar ? "" : "none";
+        if (mostrar) cantidadVisible++;
+      });
 
-    const sinResultados =
-      document.getElementById(
-        "sinResultados"
-      );
-
-
-    formBuscador.addEventListener(
-      "submit",
-      (evento) => {
-
-        evento.preventDefault();
-
-        const texto =
-          inputBuscador
-            .value
-            .toLowerCase()
-            .trim();
-
-        let cantidadVisible = 0;
-
-
-        puntos.forEach((punto) => {
-
-          const contenido =
-            punto
-              .dataset
-              .busqueda
-              .toLowerCase();
-
-          const mostrar =
-            texto === ""
-            || contenido.includes(texto);
-
-
-          punto.style.display =
-            mostrar
-              ? ""
-              : "none";
-
-
-          if (mostrar) {
-
-            cantidadVisible++;
-
-          }
-
-        });
-
-
-        sinResultados.style.display =
-          cantidadVisible === 0
-            ? "block"
-            : "none";
-
-      }
-    );
+      sinResultados.style.display = cantidadVisible === 0 ? "block" : "none";
+    });
 
 
     /* =====================================================
@@ -2287,273 +2470,89 @@
     ===================================================== */
 
     const imagenesGaleria = [
-
       "https://iili.io/C8TGzcN.jpg",
-
       "https://iili.io/C8TGxFp.jpg",
-
       "https://iili.io/C8TGnPR.jpg",
-
       "https://iili.io/C8TGCMv.jpg",
-
       "https://iili.io/C8TGISI.jpg",
-
       "https://iili.io/C8TGu9t.jpg",
-
       "https://iili.io/C8TGAAX.jpg",
-
       "https://iili.io/C8TGRNn.jpg",
-
       "https://iili.io/C8TGYoG.jpg"
-
     ];
 
-
-    const botonesGaleria =
-      document.querySelectorAll(
-        ".galeria-item"
-      );
-
-    const botonVerMas =
-      document.getElementById(
-        "botonVerMas"
-      );
-
-    const modalGaleria =
-      document.getElementById(
-        "modalGaleria"
-      );
-
-    const modalImagen =
-      document.getElementById(
-        "modalImagen"
-      );
-
-    const modalCerrar =
-      document.getElementById(
-        "modalCerrar"
-      );
-
-    const modalAnterior =
-      document.getElementById(
-        "modalAnterior"
-      );
-
-    const modalSiguiente =
-      document.getElementById(
-        "modalSiguiente"
-      );
+    const botonesGaleria = document.querySelectorAll(".galeria-item");
+    const botonVerMas = document.getElementById("botonVerMas");
+    const modalGaleria = document.getElementById("modalGaleria");
+    const modalImagen = document.getElementById("modalImagen");
+    const modalCerrar = document.getElementById("modalCerrar");
+    const modalAnterior = document.getElementById("modalAnterior");
+    const modalSiguiente = document.getElementById("modalSiguiente");
 
     let indiceModal = 0;
-
     let galeriaExpandida = false;
 
+    botonesGaleria.forEach((boton) => {
+      boton.addEventListener("click", () => {
+        indiceModal = Number(boton.dataset.imagen);
+        abrirModal();
+      });
+    });
 
-    botonesGaleria.forEach(
-      (boton) => {
-
-        boton.addEventListener(
-          "click",
-          () => {
-
-            indiceModal =
-              Number(
-                boton.dataset.imagen
-              );
-
-            abrirModal();
-
-          }
-        );
-
-      }
-    );
-
-
-    botonVerMas.addEventListener(
-      "click",
-      () => {
-
-        galeriaExpandida =
-          !galeriaExpandida;
-
-
-        document
-          .querySelectorAll(
-            ".galeria-item.oculta"
-          )
-          .forEach((item) => {
-
-            item.style.display =
-              galeriaExpandida
-                ? "block"
-                : "none";
-
-          });
-
-
-        botonVerMas.textContent =
-          galeriaExpandida
-            ? "Ver menos"
-            : "Ver más imágenes";
-
-      }
-    );
-
+    botonVerMas.addEventListener("click", () => {
+      galeriaExpandida = !galeriaExpandida;
+      document.querySelectorAll(".galeria-item.oculta").forEach((item) => {
+        item.style.display = galeriaExpandida ? "block" : "none";
+      });
+      botonVerMas.textContent = galeriaExpandida ? "Ver menos" : "Ver más imágenes";
+    });
 
     function abrirModal() {
-
-      modalImagen.src =
-        imagenesGaleria[
-          indiceModal
-        ];
-
-      modalGaleria
-        .classList
-        .add("abierto");
-
-      modalGaleria
-        .setAttribute(
-          "aria-hidden",
-          "false"
-        );
-
-      document.body
-        .classList
-        .add("menu-abierto");
-
+      modalImagen.src = imagenesGaleria[indiceModal];
+      modalGaleria.classList.add("abierto");
+      modalGaleria.setAttribute("aria-hidden", "false");
+      document.body.classList.add("menu-abierto");
     }
-
 
     function cerrarModal() {
-
-      modalGaleria
-        .classList
-        .remove("abierto");
-
-      modalGaleria
-        .setAttribute(
-          "aria-hidden",
-          "true"
-        );
-
-      document.body
-        .classList
-        .remove("menu-abierto");
-
+      modalGaleria.classList.remove("abierto");
+      modalGaleria.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("menu-abierto");
     }
-
 
     function actualizarModal() {
-
-      modalImagen.src =
-        imagenesGaleria[
-          indiceModal
-        ];
-
+      modalImagen.src = imagenesGaleria[indiceModal];
     }
 
+    modalSiguiente.addEventListener("click", () => {
+      indiceModal = (indiceModal + 1) % imagenesGaleria.length;
+      actualizarModal();
+    });
 
-    modalSiguiente.addEventListener(
-      "click",
-      () => {
+    modalAnterior.addEventListener("click", () => {
+      indiceModal = (indiceModal - 1 + imagenesGaleria.length) % imagenesGaleria.length;
+      actualizarModal();
+    });
 
-        indiceModal =
-          (
-            indiceModal + 1
-          )
-          % imagenesGaleria.length;
+    modalCerrar.addEventListener("click", cerrarModal);
 
-        actualizarModal();
+    modalGaleria.addEventListener("click", (evento) => {
+      if (evento.target === modalGaleria) cerrarModal();
+    });
 
-      }
-    );
-
-
-    modalAnterior.addEventListener(
-      "click",
-      () => {
-
-        indiceModal =
-          (
-            indiceModal
-            - 1
-            + imagenesGaleria.length
-          )
-          % imagenesGaleria.length;
-
-        actualizarModal();
-
-      }
-    );
+    document.addEventListener("keydown", (evento) => {
+      if (!modalGaleria.classList.contains("abierto")) return;
+      if (evento.key === "Escape") cerrarModal();
+      if (evento.key === "ArrowRight") modalSiguiente.click();
+      if (evento.key === "ArrowLeft") modalAnterior.click();
+    });
 
 
-    modalCerrar.addEventListener(
-      "click",
-      cerrarModal
-    );
+    /* =====================================================
+       INICIALIZAR RENDERIZADO DE PUNTOS DE VENTA
+    ===================================================== */
 
-
-    modalGaleria.addEventListener(
-      "click",
-      (evento) => {
-
-        if (
-          evento.target
-          === modalGaleria
-        ) {
-
-          cerrarModal();
-
-        }
-
-      }
-    );
-
-
-    document.addEventListener(
-      "keydown",
-      (evento) => {
-
-        if (
-          !modalGaleria
-            .classList
-            .contains("abierto")
-        ) {
-
-          return;
-
-        }
-
-
-        if (
-          evento.key === "Escape"
-        ) {
-
-          cerrarModal();
-
-        }
-
-
-        if (
-          evento.key === "ArrowRight"
-        ) {
-
-          modalSiguiente.click();
-
-        }
-
-
-        if (
-          evento.key === "ArrowLeft"
-        ) {
-
-          modalAnterior.click();
-
-        }
-
-      }
-    );
+    document.addEventListener("DOMContentLoaded", renderizarPuntosDeVenta);
 
   </script>
 
