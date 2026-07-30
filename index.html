@@ -13,18 +13,26 @@
 
   <style>
     /* =====================================================
-       VARIABLES Y CONFIGURACIÓN GENERAL
+       VARIABLES Y CONFIGURACIÓN GENERAL (PALETA PASTEL)
     ===================================================== */
 
     :root {
-      --chocolate: #32170f;
-      --chocolate-claro: #5c2d1e;
-      --caramelo: #b87538;
-      --dorado: #d9a85b;
-      --crema: #f7eddf;
+      --chocolate: #5c3d2e; /* Marrón más suave */
+      --chocolate-claro: #7a5543;
+      --caramelo: #d9a85b;
+      --dorado: #f7d794;
+      --crema: #fdf6f0; /* Base crema muy suave */
       --blanco: #ffffff;
-      --texto: #3b241b;
-      --sombra: 0 20px 60px rgba(48, 23, 15, 0.18);
+      --texto: #4a3b35;
+
+      --lila: #d5c6e0;
+      --lila-oscuro: #b8a4c9;
+      --rosa-bebe: #fce4ec;
+      --violeta: #e1bee7;
+      --amarillo-suave: #fff9c4;
+      --celeste: #bbdefb;
+
+      --sombra: 0 20px 60px rgba(90, 60, 50, 0.12);
       --transicion: 0.4s ease;
     }
 
@@ -39,7 +47,7 @@
     }
 
     body {
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
       background: var(--crema);
       color: var(--texto);
       overflow-x: hidden;
@@ -79,7 +87,7 @@
       gap: 8px;
       padding: 10px 16px;
       border-radius: 100px;
-      background: rgba(184, 117, 56, 0.12);
+      background: rgba(213, 198, 224, 0.35);
       color: var(--chocolate-claro);
       font-size: 0.8rem;
       font-weight: 800;
@@ -111,7 +119,7 @@
       padding: 14px 25px;
       border: 2px solid transparent;
       border-radius: 100px;
-      background: var(--chocolate);
+      background: var(--lila-oscuro);
       color: var(--blanco);
       font-weight: 800;
       cursor: pointer;
@@ -123,7 +131,7 @@
     .boton:hover {
       transform: translateY(-4px);
       background: var(--chocolate-claro);
-      box-shadow: 0 15px 35px rgba(50, 23, 15, 0.25);
+      box-shadow: 0 15px 35px rgba(90, 60, 50, 0.2);
     }
 
     .boton-claro {
@@ -155,9 +163,9 @@
 
     .header.activo {
       padding: 8px 0;
-      background: rgba(247, 237, 223, 0.96);
+      background: rgba(255, 255, 255, 0.92);
       backdrop-filter: blur(16px);
-      box-shadow: 0 8px 30px rgba(45, 20, 12, 0.1);
+      box-shadow: 0 8px 30px rgba(90, 60, 50, 0.08);
     }
 
     .header-contenido {
@@ -229,7 +237,7 @@
     }
 
     /* =====================================================
-       HERO Y CARRUSEL
+       HERO Y CARRUSEL (Imágenes más pequeñas)
     ===================================================== */
 
     .hero {
@@ -251,6 +259,9 @@
       opacity: 0;
       visibility: hidden;
       transition: opacity 1s ease, visibility 1s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .hero-slide.activo {
@@ -258,12 +269,16 @@
       visibility: visible;
     }
 
+    /* Imagen del hero más pequeña y centrada */
     .hero-slide img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transform: scale(1.08);
-      transition: transform 7s ease;
+      width: 85%;
+      height: 85%;
+      max-width: 1100px;
+      object-fit: contain;
+      border-radius: 30px;
+      box-shadow: 0 25px 80px rgba(0, 0, 0, 0.5);
+      transform: scale(0.92);
+      transition: transform 1.5s ease;
     }
 
     .hero-slide.activo img {
@@ -276,13 +291,13 @@
       background:
         linear-gradient(
           90deg,
-          rgba(25, 10, 5, 0.82) 0%,
-          rgba(25, 10, 5, 0.48) 45%,
-          rgba(25, 10, 5, 0.16) 100%
+          rgba(60, 40, 30, 0.75) 0%,
+          rgba(60, 40, 30, 0.30) 45%,
+          rgba(60, 40, 30, 0.10) 100%
         ),
         linear-gradient(
           0deg,
-          rgba(20, 8, 4, 0.62) 0%,
+          rgba(40, 25, 18, 0.60) 0%,
           transparent 45%
         );
     }
@@ -416,7 +431,7 @@
       border-radius: 50%;
       background: rgba(255, 255, 255, 0.45);
       cursor: pointer;
-      transition: width var(--transicion),
+      transition: width var(--transicio,
                   background var(--transicion);
     }
 
@@ -450,7 +465,7 @@
     }
 
     /* =====================================================
-       PRESENTACIÓN
+       PRESENTACIÓN (con colores pastel)
     ===================================================== */
 
     .presentacion {
@@ -458,10 +473,9 @@
       background:
         radial-gradient(
           circle at 90% 10%,
-          rgba(217, 168, 91, 0.16),
-          transparent 30%
-        ),
-        var(--crema);
+          var(--lila) 0%,
+          var(--crema) 60%
+        );
     }
 
     .presentacion-grid {
@@ -526,9 +540,9 @@
 
     .dato {
       padding: 22px 16px;
-      border: 1px solid rgba(92, 45, 30, 0.13);
+      border: 1px solid rgba(213, 198, 224, 0.4);
       border-radius: 20px;
-      background: rgba(255, 255, 255, 0.52);
+      background: rgba(255, 255, 255, 0.6);
       text-align: center;
     }
 
@@ -545,26 +559,26 @@
     }
 
     /* =====================================================
-       BANNER
+       BANNER (Pastel)
     ===================================================== */
 
     .banner-promocional {
       position: relative;
       padding: 45px 0;
       overflow: hidden;
-      background: var(--chocolate);
-      color: var(--blanco);
+      background: var(--violeta);
+      color: var(--chocolate);
     }
 
     .banner-promocional::before {
       content: "";
       position: absolute;
       inset: 0;
-      opacity: 0.15;
+      opacity: 0.2;
       background-image:
         radial-gradient(
           circle,
-          var(--dorado) 2px,
+          var(--lila-oscuro) 2px,
           transparent 2px
         );
       background-size: 28px 28px;
@@ -588,18 +602,22 @@
 
     .banner-contenido p {
       margin-top: 12px;
-      color: rgba(255, 255, 255, 0.75);
+      color: rgba(60, 40, 30, 0.75);
       line-height: 1.6;
     }
 
     .banner-contenido .boton {
       flex-shrink: 0;
-      background: var(--dorado);
-      color: var(--chocolate);
+      background: var(--chocolate);
+      color: var(--blanco);
+    }
+
+    .banner-contenido .boton:hover {
+      background: var(--chocolate-claro);
     }
 
     /* =====================================================
-       PUNTOS DE VENTA
+       PUNTOS DE VENTA (Pastel)
     ===================================================== */
 
     .puntos {
@@ -619,7 +637,7 @@
       gap: 10px;
       width: min(470px, 100%);
       padding: 8px;
-      border: 1px solid rgba(50, 23, 15, 0.12);
+      border: 1px solid rgba(213, 198, 224, 0.5);
       border-radius: 100px;
       background: var(--crema);
     }
@@ -638,10 +656,15 @@
       min-width: 115px;
       border: 0;
       border-radius: 100px;
-      background: var(--chocolate);
+      background: var(--lila-oscuro);
       color: var(--blanco);
       font-weight: 800;
       cursor: pointer;
+      transition: background var(--transicion);
+    }
+
+    .buscador button:hover {
+      background: var(--chocolate-claro);
     }
 
     .tarjetas-puntos {
@@ -652,7 +675,7 @@
 
     .punto {
       padding: 30px;
-      border: 1px solid rgba(50, 23, 15, 0.1);
+      border: 1px solid rgba(213, 198, 224, 0.3);
       border-radius: 26px;
       background: var(--crema);
       transition: transform var(--transicion),
@@ -669,8 +692,8 @@
       height: 58px;
       margin-bottom: 22px;
       border-radius: 18px;
-      background: var(--chocolate);
-      color: var(--dorado);
+      background: var(--lila-oscuro);
+      color: var(--blanco);
       display: grid;
       place-items: center;
       font-size: 1.6rem;
@@ -696,15 +719,16 @@
     }
 
     /* =====================================================
-       GALERÍA
+       GALERÍA (Pastel)
     ===================================================== */
 
     .galeria {
       background:
         linear-gradient(
           180deg,
-          var(--crema) 0%,
-          #f1dfca 100%
+          var(--rosa-bebe) 0%,
+          var(--crema) 80%,
+          var(--celeste) 100%
         );
     }
 
@@ -726,11 +750,11 @@
     .galeria-item {
       position: relative;
       overflow: hidden;
-      border: 0;
+      border: 3px solid rgba(255, 255, 255, 0.6);
       border-radius: 24px;
-      background: var(--chocolate);
+      background: var(--lila);
       cursor: pointer;
-      box-shadow: 0 12px 35px rgba(50, 23, 15, 0.12);
+      box-shadow: 0 12px 35px rgba(90, 60, 50, 0.08);
     }
 
     .galeria-item:nth-child(1) {
@@ -756,7 +780,7 @@
       flex-direction: column;
       justify-content: flex-end;
       padding: 25px;
-      background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 60%);
+      background: linear-gradient(to top, rgba(60,40,30,0.75) 0%, transparent 60%);
       color: var(--blanco);
       opacity: 0;
       transition: opacity var(--transicion);
@@ -813,7 +837,7 @@
       align-items: center;
       justify-content: center;
       padding: 30px;
-      background: rgba(12, 5, 3, 0.92);
+      background: rgba(60, 40, 30, 0.92);
     }
 
     .modal-galeria.abierto {
@@ -894,12 +918,12 @@
     }
 
     /* =====================================================
-       CONTACTO Y FOOTER
+       CONTACTO Y FOOTER (Pastel)
     ===================================================== */
 
     .contacto {
-      background: var(--chocolate);
-      color: var(--blanco);
+      background: var(--amarillo-suave);
+      color: var(--chocolate);
     }
 
     .contacto-grid {
@@ -910,18 +934,18 @@
     }
 
     .contacto .titulo-seccion {
-      color: var(--blanco);
+      color: var(--chocolate);
     }
 
     .contacto .descripcion-seccion {
-      color: rgba(255, 255, 255, 0.75);
+      color: rgba(60, 40, 30, 0.75);
     }
 
     .contacto-tarjeta {
       padding: 40px;
-      border: 1px solid rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(213, 198, 224, 0.3);
       border-radius: 30px;
-      background: rgba(255, 255, 255, 0.07);
+      background: rgba(255, 255, 255, 0.5);
     }
 
     .contacto-tarjeta h3 {
@@ -932,20 +956,24 @@
 
     .contacto-tarjeta p {
       margin-bottom: 25px;
-      color: rgba(255, 255, 255, 0.7);
+      color: rgba(60, 40, 30, 0.7);
       line-height: 1.7;
     }
 
     .contacto-tarjeta .boton {
       width: 100%;
-      background: var(--dorado);
-      color: var(--chocolate);
+      background: var(--lila-oscuro);
+      color: var(--blanco);
+    }
+
+    .contacto-tarjeta .boton:hover {
+      background: var(--chocolate-claro);
     }
 
     .footer {
       padding: 55px 0 25px;
-      background: #1e0d08;
-      color: rgba(255, 255, 255, 0.7);
+      background: var(--violeta);
+      color: var(--chocolate);
     }
 
     .footer-superior {
@@ -954,7 +982,7 @@
       justify-content: space-between;
       gap: 35px;
       padding-bottom: 35px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      border-bottom: 1px solid rgba(90, 60, 50, 0.15);
     }
 
     .logo-footer {
@@ -971,10 +999,11 @@
       width: 45px;
       height: 45px;
       border-radius: 50%;
-      background: rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.2);
       display: grid;
       place-items: center;
       transition: background var(--transicion);
+      color: var(--chocolate);
     }
 
     .footer-redes a:hover {
@@ -1118,12 +1147,12 @@
         background:
           linear-gradient(
             90deg,
-            rgba(25, 10, 5, 0.78),
-            rgba(25, 10, 5, 0.42)
+            rgba(60, 40, 30, 0.78),
+            rgba(60, 40, 30, 0.42)
           ),
           linear-gradient(
             0deg,
-            rgba(20, 8, 4, 0.72),
+            rgba(40, 25, 18, 0.72),
             transparent 55%
           );
       }
@@ -1833,7 +1862,7 @@
 
 
     <!-- =====================================================
-         GALERÍA
+         GALERÍA (Título actualizado a "Galería de Delicias")
     ====================================================== -->
 
     <section
@@ -1857,7 +1886,7 @@
 
             <h2 class="titulo-seccion">
 
-              Galería Paceña
+              Galería de Delicias
 
             </h2>
 
