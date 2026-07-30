@@ -71,6 +71,7 @@
 
     button {
       font: inherit;
+      cursor: pointer;
     }
 
     .contenedor {
@@ -128,6 +129,7 @@
       transition: transform var(--transicion),
                   background var(--transicion),
                   box-shadow var(--transicion);
+      text-align: center;
     }
 
     .boton:hover {
@@ -143,6 +145,16 @@
     }
 
     .boton-claro:hover {
+      background: var(--blanco);
+      color: var(--chocolate);
+    }
+
+    .boton-dorado {
+      background: var(--dorado);
+      color: var(--chocolate);
+    }
+
+    .boton-dorado:hover {
       background: var(--blanco);
       color: var(--chocolate);
     }
@@ -424,7 +436,7 @@
     }
 
     /* =====================================================
-       PRESENTACIÓN
+       PRESENTACIÓN - CARRUSEL DE IMÁGENES CON SELLO FLOTANTE
     ===================================================== */
 
     .presentacion {
@@ -442,29 +454,79 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       align-items: center;
-      gap: 80px;
+      gap: 60px;
     }
 
-    .imagen-presentacion {
+    .columna-carrusel {
+      position: relative;
+      border-radius: 35px;
+      overflow: hidden;
+      box-shadow: var(--sombra);
+      background: var(--chocolate);
+    }
+
+    .carrusel-imagenes {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .carrusel-track-imagenes {
+      display: flex;
+      transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .carrusel-slide-imagen {
+      min-width: 100%;
       position: relative;
     }
 
-    .imagen-presentacion img {
+    .carrusel-slide-imagen img {
       width: 100%;
-      min-height: 580px;
-      object-fit: cover;
-      border-radius: 35px;
-      box-shadow: var(--sombra);
+      height: auto;
+      display: block;
     }
 
-    .sello-premio {
+    .texto-sobre-slide {
       position: absolute;
-      right: -25px;
-      bottom: 35px;
-      width: 180px;
-      min-height: 180px;
-      padding: 25px;
-      border: 7px solid var(--crema);
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 40px 35px 35px;
+      background: linear-gradient(transparent, rgba(50, 23, 15, 0.85) 40%);
+      color: var(--blanco);
+      pointer-events: none;
+    }
+
+    .texto-sobre-slide .etiqueta {
+      background: rgba(255, 255, 255, 0.15);
+      color: var(--dorado);
+      backdrop-filter: blur(4px);
+      margin-bottom: 8px;
+    }
+
+    .texto-sobre-slide .titulo-seccion {
+      color: var(--blanco);
+      margin-top: 4px;
+      font-size: clamp(1.8rem, 3.5vw, 3.2rem);
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .texto-sobre-slide .descripcion-seccion {
+      color: rgba(255, 255, 255, 0.9);
+      margin-top: 8px;
+      max-width: 100%;
+      font-size: 0.95rem;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .sello-flotante {
+      position: absolute;
+      top: 25px;
+      right: 25px;
+      z-index: 20;
+      width: 130px;
+      height: 130px;
       border-radius: 50%;
       background: var(--dorado);
       color: var(--chocolate);
@@ -473,22 +535,69 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      box-shadow: var(--sombra);
-      transform: rotate(10deg);
+      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.35);
+      border: 5px solid rgba(255, 255, 255, 0.6);
+      padding: 15px;
+      animation: flotar 3s ease-in-out infinite;
     }
 
-    .sello-premio strong {
+    @keyframes flotar {
+      0%, 100% { transform: translateY(0) rotate(3deg); }
+      50% { transform: translateY(-10px) rotate(5deg); }
+    }
+
+    .sello-flotante strong {
       font-family: Georgia, serif;
       font-size: 1.8rem;
       line-height: 1;
     }
 
-    .sello-premio span {
-      margin-top: 7px;
-      font-size: 0.72rem;
+    .sello-flotante span {
+      margin-top: 4px;
+      font-size: 0.65rem;
       font-weight: 900;
       letter-spacing: 1px;
       text-transform: uppercase;
+    }
+
+    .controles-carrusel-historia {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 15;
+      display: flex;
+      gap: 12px;
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(8px);
+      padding: 8px 16px;
+      border-radius: 100px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .control-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      border: 2px solid rgba(255, 255, 255, 0.6);
+      background: transparent;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      padding: 0;
+    }
+
+    .control-dot.activo {
+      background: var(--dorado);
+      border-color: var(--dorado);
+      transform: scale(1.2);
+    }
+
+    .control-dot:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    .columna-info {
+      padding-top: 10px;
     }
 
     .datos-marca {
@@ -564,7 +673,6 @@
       cursor: pointer;
     }
 
-    /* Grid de círculos */
     .tarjetas-puntos {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
@@ -787,7 +895,103 @@
     }
 
     /* =====================================================
-       BANNER
+       BANNER CARRUSEL
+    ===================================================== */
+
+    .banner-carrusel {
+      background: var(--blanco);
+      padding: 60px 0;
+    }
+
+    .carrusel-contenedor {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      border-radius: 28px;
+      box-shadow: var(--sombra);
+      background: var(--chocolate);
+    }
+
+    .carrusel-track {
+      display: flex;
+      transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .carrusel-slide {
+      min-width: 100%;
+      position: relative;
+    }
+
+    .carrusel-slide img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 16 / 5;
+      object-fit: contain;
+      background: var(--chocolate);
+      display: block;
+    }
+
+    .carrusel-boton {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 10;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(4px);
+      color: var(--blanco);
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background var(--transicion), transform var(--transicion);
+    }
+
+    .carrusel-boton:hover {
+      background: rgba(0, 0, 0, 0.7);
+      transform: translateY(-50%) scale(1.05);
+    }
+
+    .carrusel-boton.izquierda {
+      left: 20px;
+    }
+
+    .carrusel-boton.derecha {
+      right: 20px;
+    }
+
+    .carrusel-indicadores {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .carrusel-indicador {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(50, 23, 15, 0.2);
+      cursor: pointer;
+      transition: background var(--transicion), transform var(--transicion);
+    }
+
+    .carrusel-indicador.activo {
+      background: var(--dorado);
+      transform: scale(1.2);
+    }
+
+    .carrusel-indicador:hover {
+      background: var(--chocolate-claro);
+    }
+
+    /* =====================================================
+       BANNER PROMOCIONAL
     ===================================================== */
 
     .banner-promocional {
@@ -894,21 +1098,44 @@
       transition: transform 0.65s ease;
     }
 
-    .galeria-item::after {
-      content: "Ver imagen";
+    .galeria-item .galeria-texto {
       position: absolute;
-      inset: 0;
-      display: grid;
-      place-items: center;
-      background: rgba(50, 23, 15, 0.58);
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 30px 20px 20px;
+      background: linear-gradient(transparent, rgba(50, 23, 15, 0.85));
       color: var(--blanco);
-      font-weight: 900;
-      opacity: 0;
-      transition: opacity var(--transicion);
+      transform: translateY(100%);
+      transition: transform 0.5s ease;
+      pointer-events: none;
     }
 
-    .galeria-item:hover img {
-      transform: scale(1.1);
+    .galeria-item .galeria-texto h4 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .galeria-item .galeria-texto p {
+      font-size: 0.8rem;
+      opacity: 0.9;
+      line-height: 1.4;
+    }
+
+    .galeria-item:hover .galeria-texto {
+      transform: translateY(0);
+    }
+
+    .galeria-item::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(50, 23, 15, 0.3);
+      opacity: 0;
+      transition: opacity var(--transicion);
+      pointer-events: none;
     }
 
     .galeria-item:hover::after {
@@ -926,7 +1153,7 @@
     }
 
     /* =====================================================
-       MODAL GALERÍA
+       MODAL GALERÍA - CON TEXTO DENTRO DE LA IMAGEN
     ===================================================== */
 
     .modal-galeria {
@@ -938,29 +1165,71 @@
       justify-content: center;
       padding: 30px;
       background: rgba(12, 5, 3, 0.92);
+      backdrop-filter: blur(8px);
     }
 
     .modal-galeria.abierto {
       display: flex;
     }
 
-    .modal-imagen {
+    .modal-contenedor-imagen {
+      position: relative;
       max-width: min(1000px, 92vw);
       max-height: 84vh;
       border-radius: 18px;
-      object-fit: contain;
+      overflow: hidden;
       box-shadow: 0 25px 80px rgba(0, 0, 0, 0.6);
+      background: var(--chocolate);
+    }
+
+    .modal-contenedor-imagen img {
+      width: 100%;
+      height: auto;
+      max-height: 84vh;
+      object-fit: contain;
+      display: block;
+    }
+
+    /* TEXTO SUPERPUESTO DENTRO DE LA IMAGEN EN EL MODAL */
+    .modal-texto-imagen {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 40px 35px 30px;
+      background: linear-gradient(transparent, rgba(50, 23, 15, 0.9) 50%);
+      color: var(--blanco);
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .modal-texto-imagen h3 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+      text-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .modal-texto-imagen p {
+      font-size: 1rem;
+      opacity: 0.9;
+      line-height: 1.5;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
     }
 
     .modal-cerrar,
     .modal-anterior,
     .modal-siguiente {
-      position: absolute;
+      position: fixed;
       border: 1px solid rgba(255, 255, 255, 0.28);
       border-radius: 50%;
       background: rgba(255, 255, 255, 0.12);
       color: var(--blanco);
       cursor: pointer;
+      transition: background var(--transicion), transform var(--transicion);
+      backdrop-filter: blur(4px);
+      z-index: 10;
     }
 
     .modal-cerrar {
@@ -969,6 +1238,11 @@
       width: 52px;
       height: 52px;
       font-size: 1.5rem;
+    }
+
+    .modal-cerrar:hover {
+      background: rgba(255, 255, 255, 0.25);
+      transform: scale(1.05);
     }
 
     .modal-anterior,
@@ -980,12 +1254,37 @@
       transform: translateY(-50%);
     }
 
+    .modal-anterior:hover,
+    .modal-siguiente:hover {
+      background: rgba(255, 255, 255, 0.25);
+      transform: translateY(-50%) scale(1.05);
+    }
+
     .modal-anterior {
       left: 25px;
     }
 
     .modal-siguiente {
       right: 25px;
+    }
+
+    /* Contador de imágenes en el modal */
+    .modal-contador {
+      position: fixed;
+      bottom: 25px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(8px);
+      padding: 8px 20px;
+      border-radius: 100px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      z-index: 10;
+      font-family: Arial, sans-serif;
     }
 
     /* =====================================================
@@ -1031,9 +1330,34 @@
       line-height: 1.7;
     }
 
+    .contacto-tarjeta .botones-contacto {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
     .contacto-tarjeta .boton {
       width: 100%;
+      justify-content: center;
+    }
+
+    .contacto-tarjeta .boton-whatsapp {
+      background: #25d366;
+      color: var(--blanco);
+    }
+
+    .contacto-tarjeta .boton-whatsapp:hover {
+      background: #1da851;
+      color: var(--blanco);
+    }
+
+    .contacto-tarjeta .boton-revendedor {
       background: var(--dorado);
+      color: var(--chocolate);
+    }
+
+    .contacto-tarjeta .boton-revendedor:hover {
+      background: var(--blanco);
       color: var(--chocolate);
     }
 
@@ -1176,9 +1500,36 @@
         gap: 55px;
       }
 
-      .imagen-presentacion {
+      .columna-carrusel {
         max-width: 700px;
         margin: 0 auto;
+        width: 100%;
+        border-radius: 25px;
+      }
+
+      .texto-sobre-slide {
+        padding: 25px 20px 20px;
+      }
+
+      .texto-sobre-slide .titulo-seccion {
+        font-size: clamp(1.6rem, 4vw, 2.8rem);
+      }
+
+      .sello-flotante {
+        width: 100px;
+        height: 100px;
+        top: 15px;
+        right: 15px;
+        padding: 10px;
+        border-width: 4px;
+      }
+
+      .sello-flotante strong {
+        font-size: 1.4rem;
+      }
+
+      .sello-flotante span {
+        font-size: 0.55rem;
       }
 
       .encabezado-puntos,
@@ -1193,6 +1544,21 @@
 
       .galeria-grid {
         grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 200px;
+      }
+
+      .galeria-item .galeria-texto {
+        transform: translateY(0);
+        padding: 15px 15px 12px;
+        background: linear-gradient(transparent, rgba(50, 23, 15, 0.85));
+      }
+
+      .galeria-item .galeria-texto h4 {
+        font-size: 0.85rem;
+      }
+
+      .galeria-item .galeria-texto p {
+        font-size: 0.7rem;
       }
 
       .tarjetas-puntos {
@@ -1208,6 +1574,33 @@
 
       .punto-circulo .nombre {
         font-size: 0.8rem;
+      }
+
+      .carrusel-slide img {
+        aspect-ratio: 16 / 6;
+      }
+
+      .controles-carrusel-historia {
+        bottom: 12px;
+        padding: 6px 12px;
+        gap: 8px;
+      }
+
+      .control-dot {
+        width: 10px;
+        height: 10px;
+      }
+
+      .modal-texto-imagen {
+        padding: 25px 20px 20px;
+      }
+
+      .modal-texto-imagen h3 {
+        font-size: 1.3rem;
+      }
+
+      .modal-texto-imagen p {
+        font-size: 0.85rem;
       }
     }
 
@@ -1273,19 +1666,38 @@
         display: none;
       }
 
-      .imagen-presentacion img {
-        min-height: 430px;
+      .columna-carrusel {
+        border-radius: 20px;
       }
 
-      .sello-premio {
-        right: -5px;
-        bottom: -20px;
-        width: 145px;
-        min-height: 145px;
+      .texto-sobre-slide {
+        padding: 20px 16px 16px;
       }
 
-      .sello-premio strong {
+      .texto-sobre-slide .titulo-seccion {
         font-size: 1.4rem;
+      }
+
+      .texto-sobre-slide .descripcion-seccion {
+        font-size: 0.85rem;
+      }
+
+      .sello-flotante {
+        width: 80px;
+        height: 80px;
+        top: 10px;
+        right: 10px;
+        padding: 8px;
+        border-width: 3px;
+      }
+
+      .sello-flotante strong {
+        font-size: 1.1rem;
+      }
+
+      .sello-flotante span {
+        font-size: 0.5rem;
+        letter-spacing: 0.5px;
       }
 
       .datos-marca {
@@ -1316,7 +1728,7 @@
 
       .galeria-grid {
         grid-template-columns: 1fr 1fr;
-        grid-auto-rows: 165px;
+        grid-auto-rows: 150px;
         gap: 10px;
       }
 
@@ -1333,8 +1745,38 @@
         grid-row: span 1;
       }
 
-      .modal-galeria {
-        padding: 15px;
+      .galeria-item .galeria-texto {
+        padding: 12px 12px 10px;
+      }
+
+      .galeria-item .galeria-texto h4 {
+        font-size: 0.75rem;
+      }
+
+      .galeria-item .galeria-texto p {
+        font-size: 0.6rem;
+      }
+
+      .modal-contenedor-imagen {
+        max-width: 98vw;
+        max-height: 80vh;
+        border-radius: 12px;
+      }
+
+      .modal-contenedor-imagen img {
+        max-height: 80vh;
+      }
+
+      .modal-texto-imagen {
+        padding: 18px 15px 15px;
+      }
+
+      .modal-texto-imagen h3 {
+        font-size: 1rem;
+      }
+
+      .modal-texto-imagen p {
+        font-size: 0.75rem;
       }
 
       .modal-anterior,
@@ -1347,11 +1789,30 @@
       }
 
       .modal-anterior {
-        left: 25%;
+        left: 15px;
       }
 
       .modal-siguiente {
-        right: 25%;
+        right: 15px;
+      }
+
+      .modal-anterior:hover,
+      .modal-siguiente:hover {
+        transform: scale(1.05);
+      }
+
+      .modal-cerrar {
+        top: 12px;
+        right: 12px;
+        width: 42px;
+        height: 42px;
+        font-size: 1.2rem;
+      }
+
+      .modal-contador {
+        bottom: 80px;
+        font-size: 0.7rem;
+        padding: 5px 14px;
       }
 
       .footer-superior,
@@ -1423,6 +1884,53 @@
         width: 38px;
         height: 38px;
         font-size: 1.2rem;
+      }
+
+      .carrusel-slide img {
+        aspect-ratio: 16 / 7;
+      }
+
+      .carrusel-boton {
+        width: 36px;
+        height: 36px;
+        font-size: 1.1rem;
+      }
+
+      .carrusel-boton.izquierda {
+        left: 10px;
+      }
+
+      .carrusel-boton.derecha {
+        right: 10px;
+      }
+
+      .contacto-tarjeta {
+        padding: 25px;
+      }
+
+      .contacto-tarjeta h3 {
+        font-size: 1.5rem;
+      }
+
+      .controles-carrusel-historia {
+        bottom: 8px;
+        padding: 4px 10px;
+        gap: 6px;
+      }
+
+      .control-dot {
+        width: 8px;
+        height: 8px;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .carrusel-slide img {
+        aspect-ratio: 16 / 9;
+      }
+
+      .galeria-grid {
+        grid-auto-rows: 120px;
       }
     }
 
@@ -1578,7 +2086,7 @@
 
 
     <!-- =====================================================
-         HISTORIA
+         HISTORIA - CARRUSEL CON SELLO FLOTANTE
     ====================================================== -->
 
     <section
@@ -1590,91 +2098,85 @@
 
         <div class="presentacion-grid">
 
-          <div
-            class="imagen-presentacion revelar desde-izquierda"
-          >
+          <div class="columna-carrusel revelar desde-izquierda">
 
-            <img
-              src="https://iili.io/C8TGxFp.jpg"
-              alt="Creación artesanal de Alfajor Paceño"
-            >
-
-            <div class="sello-premio">
-
+            <div class="sello-flotante">
               <strong>🏆</strong>
+              <span>Campeona Nacional</span>
+            </div>
 
-              <span>
-                Campeona Nacional
-              </span>
+            <div class="carrusel-imagenes">
 
+              <div class="carrusel-track-imagenes" id="carruselHistoriaTrack">
+
+                <div class="carrusel-slide-imagen">
+                  <img
+                    src="https://iili.io/C86ZWYu.md.png"
+                    alt="Alfajor Paceño - Una creación con identidad"
+                    loading="lazy"
+                  >
+                  <div class="texto-sobre-slide">
+                    <span class="etiqueta">✨ Una creación con identidad</span>
+                    <h2 class="titulo-seccion">Mucho más que un alfajor.</h2>
+                    <p class="descripcion-seccion">
+                      Detrás de cada Alfajor Paceño hay una historia
+                      de pasión, aprendizaje y dedicación.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="carrusel-slide-imagen">
+                  <img
+                    src="https://iili.io/C8TGxFp.jpg"
+                    alt="Creación artesanal de Alfajor Paceño"
+                    loading="lazy"
+                  >
+                </div>
+
+              </div>
+
+            </div>
+
+            <div class="controles-carrusel-historia">
+              <button class="control-dot activo" data-index="0" aria-label="Ver imagen 1"></button>
+              <button class="control-dot" data-index="1" aria-label="Ver imagen 2"></button>
             </div>
 
           </div>
 
-          <div
-            class="revelar desde-derecha"
-          >
+          <div class="columna-info revelar desde-derecha">
 
-            <span class="etiqueta">
+            <span class="etiqueta">🍫 Nuestra creadora</span>
 
-              Una creación con identidad
-
-            </span>
-
-            <h2 class="titulo-seccion">
-
-              Mucho más que un alfajor.
-
-            </h2>
+            <h2 class="titulo-seccion">Yesi Yodra</h2>
 
             <p class="descripcion-seccion">
-
-              Detrás de cada Alfajor Paceño hay una historia
-              de pasión, aprendizaje y dedicación. Una receta
-              creada para compartir sabores, recuerdos y una
-              identidad que sigue creciendo.
-
+              Soy maestra pastelera y creadora del Alfajor Paceño.
+              Este proyecto nació del amor por la pastelería y del
+              deseo de crear un producto único, auténtico y lleno
+              de personalidad.
             </p>
 
             <p class="descripcion-seccion">
-
-              Soy Yesi Yodra, maestra pastelera y creadora del
-              Alfajor Paceño. Este proyecto nació del amor por
-              la pastelería y del deseo de crear un producto
-              único, auténtico y lleno de personalidad.
-
+              Cada receta está pensada para compartir sabores,
+              recuerdos y una identidad que sigue creciendo.
             </p>
 
             <div class="datos-marca">
 
               <article class="dato">
-
                 <span class="dato-icono">🧑‍🍳</span>
-
-                <strong>
-                  Maestra pastelera
-                </strong>
-
+                <strong>Maestra pastelera</strong>
               </article>
 
               <article class="dato">
-
                 <span class="dato-icono">🏆</span>
-
-                <strong>
-                  Campeona nacional
-                </strong>
-
+                <strong>Campeona nacional</strong>
               </article>
 
               <article class="dato">
-
                 <span class="dato-icono">🇦🇷</span>
-
-                <strong>
-                  Creación argentina
-                </strong>
-
+                <strong>Creación argentina</strong>
               </article>
 
             </div>
@@ -1682,6 +2184,53 @@
           </div>
 
         </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         BANNER CARRUSEL
+    ====================================================== -->
+
+    <section class="banner-carrusel" id="banners">
+
+      <div class="contenedor">
+
+        <div class="carrusel-contenedor">
+
+          <div class="carrusel-track" id="carruselTrack">
+
+            <div class="carrusel-slide">
+              <img
+                src="https://iili.io/C86CPe4.md.png"
+                alt="Banner promocional 1"
+                loading="lazy"
+              >
+            </div>
+
+            <div class="carrusel-slide">
+              <img
+                src="https://iili.io/C86WTu4.md.png"
+                alt="Banner promocional 2"
+                loading="lazy"
+              >
+            </div>
+
+          </div>
+
+          <button class="carrusel-boton izquierda" id="carruselAnterior" aria-label="Anterior">
+            ‹
+          </button>
+
+          <button class="carrusel-boton derecha" id="carruselSiguiente" aria-label="Siguiente">
+            ›
+          </button>
+
+        </div>
+
+        <div class="carrusel-indicadores" id="carruselIndicadores"></div>
 
       </div>
 
@@ -1887,6 +2436,11 @@
               loading="lazy"
             >
 
+            <div class="galeria-texto">
+              <h4>Textura perfecta</h4>
+              <p>La combinación ideal entre lo crujiente y lo suave.</p>
+            </div>
+
           </button>
 
           <button
@@ -1900,6 +2454,11 @@
               alt="Alfajor Paceño"
               loading="lazy"
             >
+
+            <div class="galeria-texto">
+              <h4>Untuosidad artesanal</h4>
+              <p>Una textura cremosa que se siente en cada bocado.</p>
+            </div>
 
           </button>
 
@@ -1915,6 +2474,11 @@
               loading="lazy"
             >
 
+            <div class="galeria-texto">
+              <h4>Equilibrio sensorial</h4>
+              <p>El contraste perfecto entre firmeza y suavidad.</p>
+            </div>
+
           </button>
 
           <button
@@ -1928,6 +2492,11 @@
               alt="Alfajor Paceño"
               loading="lazy"
             >
+
+            <div class="galeria-texto">
+              <h4>Dedicación en cada detalle</h4>
+              <p>Texturas logradas con esmero y paciencia.</p>
+            </div>
 
           </button>
 
@@ -1943,6 +2512,11 @@
               loading="lazy"
             >
 
+            <div class="galeria-texto">
+              <h4>Experiencia única</h4>
+              <p>Cada mordida es una exploración de texturas.</p>
+            </div>
+
           </button>
 
           <button
@@ -1956,6 +2530,11 @@
               alt="Alfajor Paceño"
               loading="lazy"
             >
+
+            <div class="galeria-texto">
+              <h4>Cremoso y envolvente</h4>
+              <p>Una textura que abraza el paladar suavemente.</p>
+            </div>
 
           </button>
 
@@ -1971,6 +2550,11 @@
               loading="lazy"
             >
 
+            <div class="galeria-texto">
+              <h4>Artesanía en cada capa</h4>
+              <p>Texturas construidas con técnica y pasión.</p>
+            </div>
+
           </button>
 
           <button
@@ -1985,6 +2569,11 @@
               loading="lazy"
             >
 
+            <div class="galeria-texto">
+              <h4>Suavidad inconfundible</h4>
+              <p>Una textura que invita a repetir la experiencia.</p>
+            </div>
+
           </button>
 
           <button
@@ -1998,6 +2587,11 @@
               alt="Alfajor Paceño"
               loading="lazy"
             >
+
+            <div class="galeria-texto">
+              <h4>Placer textural</h4>
+              <p>Un viaje de sensaciones en cada bocado.</p>
+            </div>
 
           </button>
 
@@ -2072,20 +2666,31 @@
 
             <p>
 
-              Próximamente este botón podrá abrir el
-              WhatsApp oficial de la marca.
+              Elegí la opción que mejor se adapte a lo que necesitás:
 
             </p>
 
-            <a
-              class="boton"
-              href="#"
-              onclick="return false;"
-            >
+            <div class="botones-contacto">
 
-              Contactar por WhatsApp
+              <a
+                class="boton boton-whatsapp"
+                href="https://wa.me/5491123456789?text=Hola%21%20Quisiera%20m%C3%A1s%20informaci%C3%B3n%20sobre%20Alfajor%20Pace%C3%B1o."
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                💬 Contactar por WhatsApp
+              </a>
 
-            </a>
+              <a
+                class="boton boton-revendedor"
+                href="https://wa.me/5491123456789?text=Hola%21%20Quiero%20ser%20revendedor%20de%20Alfajor%20Pace%C3%B1o."
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                🤝 Sumate como revendedor
+              </a>
+
+            </div>
 
           </div>
 
@@ -2235,7 +2840,7 @@
 
 
   <!-- =====================================================
-       MODAL DE GALERÍA
+       MODAL DE GALERÍA - CON TEXTO DENTRO
   ====================================================== -->
 
   <div
@@ -2249,9 +2854,7 @@
       id="modalCerrar"
       aria-label="Cerrar galería"
     >
-
       ×
-
     </button>
 
     <button
@@ -2259,27 +2862,32 @@
       id="modalAnterior"
       aria-label="Imagen anterior"
     >
-
       ‹
-
     </button>
 
-    <img
-      class="modal-imagen"
-      id="modalImagen"
-      src=""
-      alt="Imagen de Alfajor Paceño"
-    >
+    <div class="modal-contenedor-imagen">
+      <img
+        class="modal-imagen"
+        id="modalImagen"
+        src=""
+        alt="Imagen de Alfajor Paceño"
+      >
+      <!-- Texto superpuesto DENTRO de la imagen -->
+      <div class="modal-texto-imagen" id="modalTextoImagen">
+        <h3 id="modalTitulo"></h3>
+        <p id="modalDescripcion"></p>
+      </div>
+    </div>
 
     <button
       class="modal-siguiente"
       id="modalSiguiente"
       aria-label="Imagen siguiente"
     >
-
       ›
-
     </button>
+
+    <div class="modal-contador" id="modalContador">1 / 9</div>
 
   </div>
 
@@ -2291,8 +2899,64 @@
   <script>
 
     /* =====================================================
+       CARRUSEL DE LA SECCIÓN HISTORIA
+    ===================================================== */
+
+    const trackHistoria = document.getElementById('carruselHistoriaTrack');
+    const dotsHistoria = document.querySelectorAll('.control-dot');
+    let slideHistoriaActual = 0;
+    let intervaloHistoria = null;
+    const totalSlidesHistoria = 2;
+
+    function irASlideHistoria(index) {
+      slideHistoriaActual = (index + totalSlidesHistoria) % totalSlidesHistoria;
+      trackHistoria.style.transform = `translateX(-${slideHistoriaActual * 100}%)`;
+
+      dotsHistoria.forEach((dot, i) => {
+        dot.classList.toggle('activo', i === slideHistoriaActual);
+      });
+    }
+
+    function siguienteSlideHistoria() {
+      irASlideHistoria(slideHistoriaActual + 1);
+    }
+
+    function iniciarCarruselHistoria() {
+      if (intervaloHistoria) clearInterval(intervaloHistoria);
+      intervaloHistoria = setInterval(siguienteSlideHistoria, 4000);
+    }
+
+    function detenerCarruselHistoria() {
+      if (intervaloHistoria) {
+        clearInterval(intervaloHistoria);
+        intervaloHistoria = null;
+      }
+    }
+
+    dotsHistoria.forEach((dot) => {
+      dot.addEventListener('click', () => {
+        const index = parseInt(dot.dataset.index);
+        irASlideHistoria(index);
+        detenerCarruselHistoria();
+        iniciarCarruselHistoria();
+      });
+    });
+
+    const contenedorCarruselHistoria = document.querySelector('.columna-carrusel');
+    if (contenedorCarruselHistoria) {
+      contenedorCarruselHistoria.addEventListener('mouseenter', detenerCarruselHistoria);
+      contenedorCarruselHistoria.addEventListener('mouseleave', iniciarCarruselHistoria);
+      contenedorCarruselHistoria.addEventListener('touchstart', detenerCarruselHistoria);
+      contenedorCarruselHistoria.addEventListener('touchend', () => {
+        setTimeout(iniciarCarruselHistoria, 3000);
+      });
+    }
+
+    iniciarCarruselHistoria();
+
+
+    /* =====================================================
        DATOS DE EJEMPLO - PUNTOS DE VENTA
-       (Reemplazar con conexión a Supabase más adelante)
     ===================================================== */
 
     const puntosDeVenta = [
@@ -2365,7 +3029,6 @@
         </button>
       `).join("");
 
-      // Agregar event listeners a cada círculo
       document.querySelectorAll(".punto-circulo").forEach((btn) => {
         btn.addEventListener("click", () => {
           const index = parseInt(btn.dataset.index);
@@ -2373,7 +3036,6 @@
         });
       });
 
-      // Aplicar animación de revelado
       const nuevosElementos = contenedor.querySelectorAll(".revelar");
       nuevosElementos.forEach((el) => {
         observador.observe(el);
@@ -2538,8 +3200,21 @@
 
 
     /* =====================================================
-       GALERÍA
+       GALERÍA - MODAL CON TEXTO DENTRO DE LA IMAGEN
     ===================================================== */
+
+    // Datos de la galería con títulos y descripciones
+    const datosGaleria = [
+      { titulo: "Textura perfecta", descripcion: "La combinación ideal entre lo crujiente y lo suave." },
+      { titulo: "Untuosidad artesanal", descripcion: "Una textura cremosa que se siente en cada bocado." },
+      { titulo: "Equilibrio sensorial", descripcion: "El contraste perfecto entre firmeza y suavidad." },
+      { titulo: "Dedicación en cada detalle", descripcion: "Texturas logradas con esmero y paciencia." },
+      { titulo: "Experiencia única", descripcion: "Cada mordida es una exploración de texturas." },
+      { titulo: "Cremoso y envolvente", descripcion: "Una textura que abraza el paladar suavemente." },
+      { titulo: "Artesanía en cada capa", descripcion: "Texturas construidas con técnica y pasión." },
+      { titulo: "Suavidad inconfundible", descripcion: "Una textura que invita a repetir la experiencia." },
+      { titulo: "Placer textural", descripcion: "Un viaje de sensaciones en cada bocado." }
+    ];
 
     const imagenesGaleria = [
       "https://iili.io/C8TGzcN.jpg",
@@ -2557,6 +3232,9 @@
     const botonVerMas = document.getElementById("botonVerMas");
     const modalGaleria = document.getElementById("modalGaleria");
     const modalImagen = document.getElementById("modalImagen");
+    const modalTitulo = document.getElementById("modalTitulo");
+    const modalDescripcion = document.getElementById("modalDescripcion");
+    const modalContador = document.getElementById("modalContador");
     const modalCerrar = document.getElementById("modalCerrar");
     const modalAnterior = document.getElementById("modalAnterior");
     const modalSiguiente = document.getElementById("modalSiguiente");
@@ -2564,23 +3242,9 @@
     let indiceModal = 0;
     let galeriaExpandida = false;
 
-    botonesGaleria.forEach((boton) => {
-      boton.addEventListener("click", () => {
-        indiceModal = Number(boton.dataset.imagen);
-        abrirModalGaleria();
-      });
-    });
-
-    botonVerMas.addEventListener("click", () => {
-      galeriaExpandida = !galeriaExpandida;
-      document.querySelectorAll(".galeria-item.oculta").forEach((item) => {
-        item.style.display = galeriaExpandida ? "block" : "none";
-      });
-      botonVerMas.textContent = galeriaExpandida ? "Ver menos" : "Ver más imágenes";
-    });
-
-    function abrirModalGaleria() {
-      modalImagen.src = imagenesGaleria[indiceModal];
+    function abrirModalGaleria(index) {
+      indiceModal = index;
+      actualizarModalGaleria();
       modalGaleria.classList.add("abierto");
       modalGaleria.setAttribute("aria-hidden", "false");
       document.body.classList.add("menu-abierto");
@@ -2594,30 +3258,130 @@
 
     function actualizarModalGaleria() {
       modalImagen.src = imagenesGaleria[indiceModal];
+      modalImagen.alt = datosGaleria[indiceModal].titulo;
+      modalTitulo.textContent = datosGaleria[indiceModal].titulo;
+      modalDescripcion.textContent = datosGaleria[indiceModal].descripcion;
+      modalContador.textContent = `${indiceModal + 1} / ${imagenesGaleria.length}`;
     }
 
-    modalSiguiente.addEventListener("click", () => {
-      indiceModal = (indiceModal + 1) % imagenesGaleria.length;
-      actualizarModalGaleria();
-    });
-
-    modalAnterior.addEventListener("click", () => {
+    function irAnterior() {
       indiceModal = (indiceModal - 1 + imagenesGaleria.length) % imagenesGaleria.length;
       actualizarModalGaleria();
+    }
+
+    function irSiguiente() {
+      indiceModal = (indiceModal + 1) % imagenesGaleria.length;
+      actualizarModalGaleria();
+    }
+
+    // Event listeners para los botones de la galería
+    botonesGaleria.forEach((boton) => {
+      boton.addEventListener("click", () => {
+        const index = Number(boton.dataset.imagen);
+        abrirModalGaleria(index);
+      });
     });
 
+    // Ver más / Ver menos
+    botonVerMas.addEventListener("click", () => {
+      galeriaExpandida = !galeriaExpandida;
+      document.querySelectorAll(".galeria-item.oculta").forEach((item) => {
+        item.style.display = galeriaExpandida ? "block" : "none";
+      });
+      botonVerMas.textContent = galeriaExpandida ? "Ver menos" : "Ver más imágenes";
+    });
+
+    // Controles del modal
     modalCerrar.addEventListener("click", cerrarModalGaleria);
+    modalAnterior.addEventListener("click", irAnterior);
+    modalSiguiente.addEventListener("click", irSiguiente);
 
     modalGaleria.addEventListener("click", (evento) => {
       if (evento.target === modalGaleria) cerrarModalGaleria();
     });
 
+    // Teclado
     document.addEventListener("keydown", (evento) => {
       if (!modalGaleria.classList.contains("abierto")) return;
       if (evento.key === "Escape") cerrarModalGaleria();
-      if (evento.key === "ArrowRight") modalSiguiente.click();
-      if (evento.key === "ArrowLeft") modalAnterior.click();
+      if (evento.key === "ArrowRight") irSiguiente();
+      if (evento.key === "ArrowLeft") irAnterior();
     });
+
+
+    /* =====================================================
+       CARRUSEL DE BANNERS
+    ===================================================== */
+
+    const carruselTrack = document.getElementById('carruselTrack');
+    const slides = carruselTrack.querySelectorAll('.carrusel-slide');
+    const btnAnterior = document.getElementById('carruselAnterior');
+    const btnSiguiente = document.getElementById('carruselSiguiente');
+    const indicadoresContainer = document.getElementById('carruselIndicadores');
+
+    let slideActual = 0;
+    let intervaloAutomatico = null;
+    const totalSlides = slides.length;
+
+    for (let i = 0; i < totalSlides; i++) {
+      const indicador = document.createElement('button');
+      indicador.classList.add('carrusel-indicador');
+      if (i === 0) indicador.classList.add('activo');
+      indicador.dataset.index = i;
+      indicador.addEventListener('click', () => irASlide(i));
+      indicadoresContainer.appendChild(indicador);
+    }
+
+    function irASlide(index) {
+      slideActual = (index + totalSlides) % totalSlides;
+      carruselTrack.style.transform = `translateX(-${slideActual * 100}%)`;
+
+      document.querySelectorAll('.carrusel-indicador').forEach((el, i) => {
+        el.classList.toggle('activo', i === slideActual);
+      });
+    }
+
+    function slideSiguiente() {
+      irASlide(slideActual + 1);
+    }
+
+    function slideAnterior() {
+      irASlide(slideActual - 1);
+    }
+
+    function iniciarAutomatico() {
+      if (intervaloAutomatico) clearInterval(intervaloAutomatico);
+      intervaloAutomatico = setInterval(slideSiguiente, 5000);
+    }
+
+    function detenerAutomatico() {
+      if (intervaloAutomatico) {
+        clearInterval(intervaloAutomatico);
+        intervaloAutomatico = null;
+      }
+    }
+
+    btnSiguiente.addEventListener('click', () => {
+      slideSiguiente();
+      detenerAutomatico();
+      iniciarAutomatico();
+    });
+
+    btnAnterior.addEventListener('click', () => {
+      slideAnterior();
+      detenerAutomatico();
+      iniciarAutomatico();
+    });
+
+    const carruselContenedor = document.querySelector('.carrusel-contenedor');
+    carruselContenedor.addEventListener('mouseenter', detenerAutomatico);
+    carruselContenedor.addEventListener('mouseleave', iniciarAutomatico);
+    carruselContenedor.addEventListener('touchstart', detenerAutomatico);
+    carruselContenedor.addEventListener('touchend', () => {
+      setTimeout(iniciarAutomatico, 2000);
+    });
+
+    iniciarAutomatico();
 
 
     /* =====================================================
